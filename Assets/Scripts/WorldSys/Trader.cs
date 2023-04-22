@@ -2,8 +2,8 @@ using System;
 
 namespace WorldSystem
 {
-    class Fermer : NPC{
-        public Fermer(string npcName, string npcLocation, float npcXCord, float npcYCord) : base(npcName, npcLocation, npcXCord, npcYCord, 20, 100, 20){
+    class Trader: NPC{
+        public Trader(string npcName, string npcLocation, float npcXCord, float npcYCord) : base(npcName, npcLocation, npcXCord, npcYCord, 20, 100, 20){
             generateStartInventory();
         }
         private void generateStartInventory(){

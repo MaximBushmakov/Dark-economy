@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace WorldSystem
 {
@@ -16,15 +17,19 @@ namespace WorldSystem
         public int findMinQ(string type, int wisdom){
             int minQProductPlace = -1;
             int minQProductQuality = 5;
-            for(int i = 0; i < listOfProducts.Count(); ++i){
-                if(listOfProducts[i].returnType(wisdom) == type){
-                    if(listOfProducts[i].returnQuality() < minQProductQuality){
+            for(int i = 0; i < listOfProducts.Count; ++i){
+                if(listOfProducts[i].getType(wisdom) == type){
+                    if(listOfProducts[i].getQuality() < minQProductQuality){
                         minQProductPlace = i;
-                        minQProductQuality = listOfProducts[i].returnQuality();
+                        minQProductQuality = listOfProducts[i].getQuality();
                     }
                 }
             }
             return minQProductPlace;
+        }
+        public void deleteProd(int i){
+            listOfProducts[i].deleteThis();
+            listOfProducts.RemoveAt(i);
         }
     }
 }

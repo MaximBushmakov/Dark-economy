@@ -20,29 +20,32 @@ namespace WorldSystem
             wisdomLevel = wisdomlevel;
             TimeSystem.getInstance().addProducttoTimeSystem(this);
         }
-        public string returnType(int wisdom){
+        public string getType(int wisdom){
             if(wisdom < wisdomLevel){
                 return mainType;
             }
             return subType;
         }
-        public string returnMainType(){
+        public string getMainType(){
             return mainType;
         }
-        public string returnSubType(){
+        public string getSubType(){
             return subType;
         }
-        public virtual void makeTicks(int n){
-            ticks += n;
+        public virtual void makeTick(){
+            ticks += 1;
         }
-        public int returnQuality(){
+        public int getQuality(){
             return this.quality;
         }
-        public int returnCost(int wisdom){
+        public int getCost(int wisdom){
             if(wisdom < wisdomLevel){
                 return basicCost;
             }
             return mainCost;
+        }
+        public void deleteThis(){
+            quality = 0;
         }
     }
 }

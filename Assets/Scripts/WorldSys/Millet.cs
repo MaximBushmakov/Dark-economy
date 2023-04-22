@@ -9,8 +9,8 @@ namespace WorldSystem
     class NormalMillet : Millet{
         public NormalMillet() : base("Обычное Пшено", 10, 0){
         }
-        public override void makeTicks(int n){
-            ticks += n;
+        public override void makeTick(){
+            ++ticks;
             switch(ticks){
                 case > 15:
                     quality = 0;
@@ -27,8 +27,8 @@ namespace WorldSystem
     class GoldenMillet : Millet{
         public GoldenMillet() : base("Золотое Пшено", 30, 20){
         }
-        public override void makeTicks(int n){
-            ticks += n;
+        public override void makeTick(){
+            ticks++;
             switch(ticks){
                 case > 20:
                     quality = 0;
@@ -45,8 +45,8 @@ namespace WorldSystem
     class BadMillet : Millet{
         public BadMillet() : base("Пшено для скота", 5, 10){
         }
-        public override void makeTicks(int n){
-            ticks += n;
+        public override void makeTick(){
+            ++ticks;
             switch(ticks){
                 case > 40:
                     quality = 0;

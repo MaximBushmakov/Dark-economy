@@ -9,8 +9,8 @@ namespace WorldSystem
     class NormalFlour : Flour{
         public NormalFlour() : base("Обычная Мука", 15, 0){
         }
-        public override void makeTicks(int n){
-            ticks += n;
+        public override void makeTick(){
+            ++ticks;
             switch(ticks){
                 case > 100:
                     quality = 0;
@@ -21,8 +21,8 @@ namespace WorldSystem
     class GoldenFlour : Flour{
         public GoldenFlour() : base("Золотая Мука", 45, 25){
         }
-        public override void makeTicks(int n){
-            ticks += n;
+        public override void makeTick(){
+            ++ticks;
             switch(ticks){
                 case > 100:
                     quality = 0;
@@ -33,8 +33,8 @@ namespace WorldSystem
     class BadFlour : Flour{
         public BadFlour() : base("Твёрдая мука", 3, 5){
         }
-        public override void makeTicks(int n){
-            ticks += n;
+        public override void makeTick(){
+            ++ticks;
             switch(ticks){
                 case > 100:
                     quality = 0;

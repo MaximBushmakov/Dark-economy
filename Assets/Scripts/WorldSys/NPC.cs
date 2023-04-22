@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace WorldSystem
 {
     class NPC{
         protected string name;
+        protected string location;
         protected  float xCord;
         protected  float yCord;
         protected Inventory inventory;
@@ -11,8 +13,10 @@ namespace WorldSystem
         protected int wisdomLevel;
         protected int kapital;
         protected int playerReputation;
-        public NPC(string npcName, float npcXCord, float npcYCord, int wisdomlevel, int money, int reputation){
+        private List<Effect> ListOfEffects;
+        public NPC(string npcName, string npcLocation, float npcXCord, float npcYCord, int wisdomlevel, int money, int reputation){
             name = npcName;
+            location = npcLocation;
             xCord = npcXCord;
             yCord = npcYCord;
             wisdomlevel = wisdomLevel;
@@ -20,37 +24,51 @@ namespace WorldSystem
             inventory = new Inventory();
             kapital = money;
             playerReputation = reputation;
+            ListOfEffects = new List<Effect>();
             TimeSystem.getInstance().addNPCtoTimeSystem(this);
         }
-        public string returnName(){
+        public string getName(){
             return name;
         }
         public void proveInventory(){
             List<Product> products = inventory.getInventory();
-            for(int i = products.Count() - 1; i >= 0; --i){
-                if(products[i].returnQuality() == 0){
-                    Console.WriteLine(name + " выкидывает " + products[i].returnSubType());
+            for(int i = products.Count - 1; i >= 0; --i){
+                if(products[i].getQuality() == 0){
+                    Console.WriteLine(name + " выкидывает " + products[i].getSubType());
                     products.RemoveAt(i);
                 }
             }
         }
-        public virtual void produceProduct(int n){
-            int randNum;
-            for(int i = 0; i < n; ++i){
-                randNum = rand.Next() % 100;
-                switch(randNum){
-                case > 90:
-                    break;
-                case > 50:
-                    break;
-                default:
-                    break;
-            }
+        public void proveEffects(){
+            for(int i = ListOfEffects.Count - 1; i >= 0; --i){
+                if(ListOfEffects[i].provDone()){
+                    Console.WriteLine(ListOfEffects[i].getName() + " перестаёт оказывать эффект на " + name);
+                    ListOfEffects.RemoveAt(i);
+                }
             }
         }
-        public void makeTicks(int n){
+        public virtual void produceProduct(){
+            int randNum;
+            randNum = rand.Next() % 100;
+            switch(randNum){
+            case > 90:
+                break;
+            case > 50:
+                break;
+            default:
+                break;
+            }
+        }
+        public void makeTick(){
             proveInventory();
-            produceProduct(n);
+            proveEffects();
+            produceProduct();
+        }
+        public string getLocation(){
+            return location;
+        }
+        public void addEffect(Effect thisEffect){
+            ListOfEffects.Add(thisEffect);
         }
     }
 }
