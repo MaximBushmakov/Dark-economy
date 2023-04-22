@@ -42,15 +42,3 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: inside
-    uniqueID: 609040531
-    locked: 0
-  - name: player
-    uniqueID: 1764831009
-    locked: 0
-  - name: door
-    uniqueID: 2064250103
-    locked: 0
-  - name: roof
-    uniqueID: 3990009215
-    locked: 0
