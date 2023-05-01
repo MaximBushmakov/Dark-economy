@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class buttonTemplate : MonoBehaviour
+public class ButtonTemplate : MonoBehaviour
 {
     private new Renderer renderer;
     protected void Start()

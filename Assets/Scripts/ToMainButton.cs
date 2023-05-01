@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class toMain : buttonTemplate
+public class ToMainButton : ButtonTemplate
 {
     public void OnMouseDown()
     {

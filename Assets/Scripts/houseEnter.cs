@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class houseEnter : buttonTemplate
+public class HouseEnter : ButtonTemplate
 {
     public void OnMouseDown()
     {
