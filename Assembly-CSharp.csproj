@@ -41,11 +41,12 @@
      <Compile Include="Assets\Scripts\WorldSys\TimeSystem.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Trader.cs" />
      <Compile Include="Assets\Scripts\BuyAction.cs" />
-     <Compile Include="Assets\InventoryDrag.cs" />
+     <Compile Include="Assets\Scripts\InventoryDrag.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+     <Compile Include="Assets\Scripts\PlayerSys\PlayerData.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
      <Compile Include="Assets\Scripts\ButtonTemplate.cs" />
@@ -95,7 +96,10 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\GenerateInventory.cs" />
+     <Compile Include="Assets\Scripts\PlayerSys\GameData.cs" />
+     <Compile Include="Assets\Scripts\PlayerSys\Wagon.cs" />
+     <Compile Include="Assets\Scripts\GenInventoryTrader.cs" />
+     <Compile Include="Assets\Scripts\GenInventoryPlayer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

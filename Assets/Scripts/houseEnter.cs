@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using PlayerSystem;
 using UnityEngine.SceneManagement;
 
 public class HouseEnter : ButtonTemplate
 {
     public void OnMouseDown()
     {
+        GameData.SetLocationName(name);
         SceneManager.LoadScene(name);
     }
 }

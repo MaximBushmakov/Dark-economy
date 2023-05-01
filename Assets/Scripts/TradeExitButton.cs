@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using PlayerSystem;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TradeExitButton : MonoBehaviour
@@ -21,5 +20,10 @@ public class TradeExitButton : MonoBehaviour
     protected void OnMouseExit()
     {
         component.color += deltaColor;
+    }
+
+    protected void OnMouseDown()
+    {
+        SceneManager.LoadScene(GameData.GetLocationName());
     }
 }
