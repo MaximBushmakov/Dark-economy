@@ -1,13 +1,14 @@
 using System;
+using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
     class Flour : Product{
-        public Flour(string subtype, int maincost, int wisdomlevel) : base("Пшено", subtype, 5, maincost, wisdomlevel){
+        public Flour(string subtype, int maincost, int wisdomlevel) : base(NormalFlourName, subtype, 5, maincost, wisdomlevel){
         }
     }
     class NormalFlour : Flour{
-        public NormalFlour() : base("Обычная Мука", 15, 0){
+        public NormalFlour() : base(NormalFlourName, 150, 0){
         }
         public override void makeTick(){
             ++ticks;
@@ -19,7 +20,7 @@ namespace WorldSystem
         }
     }
     class GoldenFlour : Flour{
-        public GoldenFlour() : base("Золотая Мука", 45, 25){
+        public GoldenFlour() : base(GoldenFlourName, 450, 25){
         }
         public override void makeTick(){
             ++ticks;
@@ -31,7 +32,7 @@ namespace WorldSystem
         }
     }
     class BadFlour : Flour{
-        public BadFlour() : base("Твёрдая мука", 3, 5){
+        public BadFlour() : base(BadFlourName, 30, 5){
         }
         public override void makeTick(){
             ++ticks;
@@ -43,3 +44,5 @@ namespace WorldSystem
         }
     }
 }
+
+

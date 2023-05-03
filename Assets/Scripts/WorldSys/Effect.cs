@@ -7,15 +7,28 @@ namespace WorldSystem
         string type;
         int lifeTime;
         int ticks;
-        public Effect(string thisName, string thisType, int thisLifeTime){
+        string owner;
+        private int effectBaf;
+        public Effect(string thisName, string thisType, string thisOwner, int thisEffectBaf, int thisLifeTime){
             name = thisName;
             type = thisType;
             lifeTime = thisLifeTime;
             ticks = 0;
+            owner = thisOwner;
+            effectBaf = thisEffectBaf;
             TimeSystem.getInstance().addEffecttoTimeSystem(this);
         }
         public string getName(){
             return name;
+        }
+        public int getEffectBaf(){
+            return effectBaf;
+        }
+        public string getOwner(){
+            return owner;
+        }
+        public String getEffectType(){
+            return type;
         }
         public bool provDone(){
             return(ticks >= lifeTime);
@@ -25,11 +38,7 @@ namespace WorldSystem
         }
     }
     class PriceEffect : Effect{
-        private int effectBaf;
-        private string productType;
-        public PriceEffect(string thisName, int thisLifeTime, int thisEffectBaf, string thisproductType) : base(thisName, "Price", thisLifeTime){
-            effectBaf = thisEffectBaf;
-            productType = thisproductType;
+        public PriceEffect(string thisName, int thisLifeTime, int thisEffectBaf, string thisproductType) : base(thisName, "Price", thisproductType, thisEffectBaf, thisLifeTime){
         }
     }
 }

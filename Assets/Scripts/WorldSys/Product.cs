@@ -2,8 +2,7 @@ using System;
 
 namespace WorldSystem
 {
-    public class Product
-    {
+    class Product{
         protected string mainType;
         protected string subType;
         protected int mainCost;
@@ -11,8 +10,7 @@ namespace WorldSystem
         protected int quality;
         protected int ticks;
         protected int wisdomLevel;
-        public Product(string type, string subtype, int basiccost, int maincost, int wisdomlevel)
-        {
+        public Product(string type, string subtype, int basiccost, int maincost, int wisdomlevel){
             mainType = type;
             subType = subtype;
             mainCost = maincost;
@@ -22,40 +20,31 @@ namespace WorldSystem
             wisdomLevel = wisdomlevel;
             TimeSystem.getInstance().addProducttoTimeSystem(this);
         }
-        public string getType(int wisdom)
-        {
-            if (wisdom < wisdomLevel)
-            {
+        public string getType(int wisdom){
+            if(wisdom < wisdomLevel){
                 return mainType;
             }
             return subType;
         }
-        public string getMainType()
-        {
+        public string getMainType(){
             return mainType;
         }
-        public string getSubType()
-        {
+        public string getSubType(){
             return subType;
         }
-        public virtual void makeTick()
-        {
+        public virtual void makeTick(){
             ticks += 1;
         }
-        public int getQuality()
-        {
+        public int getQuality(){
             return this.quality;
         }
-        public int getCost(int wisdom)
-        {
-            if (wisdom < wisdomLevel)
-            {
+        public int getCost(int wisdom){
+            if(wisdom < wisdomLevel){
                 return basicCost;
             }
             return mainCost;
         }
-        public void deleteThis()
-        {
+        public void deleteThis(){
             quality = 0;
         }
     }
