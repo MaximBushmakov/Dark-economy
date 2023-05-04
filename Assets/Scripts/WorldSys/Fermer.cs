@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class Fermer : NPC{
+    public class Fermer : NPC{
         public Fermer(string npcName, string npcLocation, float npcXCord, float npcYCord) : base(npcName, npcLocation, FermerProfessionName, new List<string>(), new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, npcXCord, npcYCord, 20, 10000, 20){
             generateStartInventory();
             fullWantToBuy();

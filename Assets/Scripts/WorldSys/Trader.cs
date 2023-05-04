@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class Trader: NPC{
+    public class Trader: NPC{
         private int ticks;
         private int roadPoint;
         private List<string> roadMap;

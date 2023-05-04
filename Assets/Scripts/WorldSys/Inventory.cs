@@ -4,7 +4,7 @@ using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
-    class Inventory{
+    public class Inventory{
         private List<Product> listOfProducts;
         public Inventory(){
             listOfProducts = new List<Product>();

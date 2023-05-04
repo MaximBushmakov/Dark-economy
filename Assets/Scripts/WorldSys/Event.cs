@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class Event{
+    public class Event{
         protected string name;
         protected string location;
         protected string text;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class Product{
+    public class Product{
         protected string mainType;
         protected string subType;
         protected int mainCost;

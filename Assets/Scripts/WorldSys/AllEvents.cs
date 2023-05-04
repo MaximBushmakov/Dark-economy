@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class AllEvents{
+    public class AllEvents{
         private static AllEvents instance;
         private Dictionary<string, Event> DictionaryOfEvents;
         protected Random rand;

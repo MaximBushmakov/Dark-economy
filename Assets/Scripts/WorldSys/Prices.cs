@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class Price{
+    public class Price{
         private Product product;
         private int truePrice;
         private int viewPrice;
@@ -22,7 +22,7 @@ namespace WorldSystem
             return product;
         }
     }
-    class Prices{
+    public class Prices{
         private List<Price> listOfPrices;
         private List<int> listOfIdBought;
         private Inventory traderInventory;

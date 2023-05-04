@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class LocalEventEffect{
+    public class LocalEventEffect{
         protected string type;
         protected int baf;
         public LocalEventEffect(string thisType, int thisBaf){
@@ -11,7 +11,7 @@ namespace WorldSystem
             baf = thisBaf;
         }
     }
-    class LocalEvent{
+    public class LocalEvent{
         protected string name;
         protected string text;
         protected string type;

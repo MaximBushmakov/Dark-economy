@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class AllLocalEvents{
+    public class AllLocalEvents{
         private static AllLocalEvents instance;
         private Dictionary<int, LocalEvent> DictionaryOfGoodRoadEvents;
         private Dictionary<int, LocalEvent> DictionaryOfBadRoadEvents;

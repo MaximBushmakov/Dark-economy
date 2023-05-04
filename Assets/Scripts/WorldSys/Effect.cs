@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class Effect{
+    public class Effect{
         string name;
         string type;
         int lifeTime;
@@ -38,7 +38,7 @@ namespace WorldSystem
             ++ticks;
         }
     }
-    class PriceEffect : Effect{
+    public class PriceEffect : Effect{
         public PriceEffect(string thisName, int thisLifeTime, int thisEffectBaf, string thisproductType) : base(thisName, "Price", thisproductType, thisEffectBaf, thisLifeTime){
         }
     }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class WorldSystem{
+    public class WorldSystem{
         private static TimeSystem timeSystem;
         private static void printPricesSell(NPC thisNPC){
             Prices thisPrices = thisNPC.makePricesSell();

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class Bread : Product{
+    public class Bread : Product{
         public Bread(string subtype, int maincost, int wisdomlevel) : base(NormalBreadName, subtype, 5, maincost, wisdomlevel){
         }
     }
-    class NormalBread : Bread{
+    public class NormalBread : Bread{
         public NormalBread() : base(NormalBreadName, 200, 0){
         }
         public override void makeTick(){
@@ -26,7 +26,7 @@ namespace WorldSystem
             }
         }
     }
-    class GoldenBread : Bread{
+    public class GoldenBread : Bread{
         public GoldenBread() : base(GoldenBreadName, 500, 25){
         }
         public override void makeTick(){
@@ -44,7 +44,7 @@ namespace WorldSystem
             }
         }
     }
-    class BadBread : Bread{
+    public class BadBread : Bread{
         public BadBread() : base(BadFlourName, 40, 5){
         }
         public override void makeTick(){

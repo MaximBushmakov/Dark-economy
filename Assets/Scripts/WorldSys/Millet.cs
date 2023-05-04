@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    class Millet : Product{
+    public class Millet : Product{
         public Millet(string subtype, int maincost, int wisdomlevel) : base(NormalMilletName, subtype, 100, maincost, wisdomlevel){
         }
     }
-    class NormalMillet : Millet{
+    public class NormalMillet : Millet{
         public NormalMillet() : base(NormalMilletName, 100, 0){
         }
         public override void makeTick(){
@@ -26,7 +26,7 @@ namespace WorldSystem
             }
         }
     }
-    class GoldenMillet : Millet{
+    public class GoldenMillet : Millet{
         public GoldenMillet() : base(GoldenMilletName, 300, 20){
         }
         public override void makeTick(){
@@ -44,7 +44,7 @@ namespace WorldSystem
             }
         }
     }
-    class BadMillet : Millet{
+    public class BadMillet : Millet{
         public BadMillet() : base(BadMilletName, 50, 10){
         }
         public override void makeTick(){

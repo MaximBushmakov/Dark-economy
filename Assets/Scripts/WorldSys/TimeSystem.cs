@@ -5,7 +5,7 @@ using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
-    class TimeSystem{
+    public class TimeSystem{
         private object threadLock = new object();
         private static TimeSystem instance;
         private List<Product> ListOfProducts;

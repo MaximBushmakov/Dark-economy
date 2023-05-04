@@ -4,7 +4,7 @@ using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
-    class NPC{
+    public class NPC{
         protected string name;
         protected string location;
         protected string type;
