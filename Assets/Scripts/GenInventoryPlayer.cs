@@ -21,7 +21,7 @@ public class GenInventoryPlayer : MonoBehaviour
         {
             GameObject curCell = Instantiate(cell, transform.GetChild(i));
             Product product = inventory[i];
-            Instantiate(ImageData.GetProductObject(product.getType(player.GetWisdom())),
+            Instantiate(ImageData.GetProductObject(product.GetVisibleType(player.GetWisdom())),
                 curCell.transform);
         }
     }

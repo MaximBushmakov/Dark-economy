@@ -32,7 +32,7 @@ namespace PlayerSystem
         public static GameObject GetProductObject(string type)
         {
             GameObject obj = new();
-            GameObject productObj = new GameObject();
+            GameObject productObj = new();
             productObj.transform.SetParent(obj.transform);
             Image img = obj.AddComponent<Image>();
             img.sprite = _productSprites[type];
