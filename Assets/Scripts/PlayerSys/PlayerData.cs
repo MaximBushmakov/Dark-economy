@@ -1,4 +1,4 @@
-using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace PlayerSystem
 {
@@ -7,10 +7,11 @@ namespace PlayerSystem
         private readonly WorldSystem.Inventory _inventory;
         private readonly Wagon _wagon;
         private int _money;
+        private int _wisdom;
 
-        public WorldSystem.Inventory GetInventory()
+        public List<WorldSystem.Product> GetInventory()
         {
-            return _inventory;
+            return _inventory.getInventory();
         }
 
         public Wagon GetWagon()
@@ -23,11 +24,17 @@ namespace PlayerSystem
             return _money;
         }
 
+        public int GetWisdom()
+        {
+            return _wisdom;
+        }
+
         public Player()
         {
             _inventory = new WorldSystem.Inventory();
             _wagon = new Wagon("donkey", 10);
             _money = 100;
+            _wisdom = 100;
         }
     }
 }
