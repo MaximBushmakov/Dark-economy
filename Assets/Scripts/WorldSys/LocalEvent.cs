@@ -24,8 +24,8 @@ namespace WorldSystem
             ListOfAnswerId = thisListOfAnswerId;
             ListofEffects = thisListOfEffects;
         }
-        public LocalEvent makeChose(int id, string type){
-            return AllLocalEvents.getInstance().getEvent(id, type);
+        public LocalEvent MakeChose(int id, string type){
+            return AllLocalEvents.GetInstance().GetEvent(id, type);
         }
     }
 }

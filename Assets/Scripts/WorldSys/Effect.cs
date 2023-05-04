@@ -17,24 +17,24 @@ namespace WorldSystem
             ticks = 0;
             owner = thisOwner;
             effectBaf = thisEffectBaf;
-            TimeSystem.getInstance().addEffecttoTimeSystem(this);
+            TimeSystem.GetInstance().AddEffecttoTimeSystem(this);
         }
-        public string getName(){
+        public string GetName(){
             return name;
         }
-        public int getEffectBaf(){
+        public int GetEffectBaf(){
             return effectBaf;
         }
-        public string getOwner(){
+        public string GetOwner(){
             return owner;
         }
-        public String getEffectType(){
+        public String GetEffectType(){
             return type;
         }
-        public bool provDone(){
+        public bool ProvDone(){
             return(ticks >= lifeTime);
         }
-        public void makeTick(){
+        public void MakeTick(){
             ++ticks;
         }
     }

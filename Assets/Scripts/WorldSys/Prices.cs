@@ -12,13 +12,13 @@ namespace WorldSystem
             truePrice = thisTruePrice;
             viewPrice = thisViewPrice;
         }
-        public int getTruePrice(){
+        public int GetTruePrice(){
             return truePrice;
         }
-        public int getViewPrice(){
+        public int GetViewPrice(){
             return viewPrice;
         }
-        public Product getProduct(){
+        public Product GetProduct(){
             return product;
         }
     }
@@ -35,31 +35,31 @@ namespace WorldSystem
             money = 0;
             reputationChage = 0;
         }
-        public void setMoney(int sumOfMoney){
+        public void SetMoney(int sumOfMoney){
             money = sumOfMoney;
         }
-        public int getMoney(){
+        public int GetMoney(){
             return money;
         }
-        public void setReputationChange(int thisReputationChange){
+        public void SetReputationChange(int thisReputationChange){
             reputationChage = thisReputationChange;
         }
-        public int getReputationChange(){
+        public int GetReputationChange(){
             return reputationChage;
         }
-        public void addPrice(Price price){
+        public void AddPrice(Price price){
             listOfPrices.Add(price);
         }
-        public void addTraderInventory(Inventory thisInventory){
+        public void AddTraderInventory(Inventory thisInventory){
             traderInventory = thisInventory;
         }
-        public List<Price> getPrices(){
+        public List<Price> GetPrices(){
             return listOfPrices;
         }
-        public void addBought(int i){
+        public void AddBought(int i){
             listOfIdBought.Add(i);
         }
-        public List<int> getBought(){
+        public List<int> GetBought(){
             return listOfIdBought;
         }
     }

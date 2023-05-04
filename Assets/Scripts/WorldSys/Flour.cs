@@ -11,7 +11,7 @@ namespace WorldSystem
     public class NormalFlour : Flour{
         public NormalFlour() : base(NormalFlourName, 150, 0){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ++ticks;
             switch(ticks){
                 case > 100:
@@ -23,7 +23,7 @@ namespace WorldSystem
     public class GoldenFlour : Flour{
         public GoldenFlour() : base(GoldenFlourName, 450, 25){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ++ticks;
             switch(ticks){
                 case > 100:
@@ -35,7 +35,7 @@ namespace WorldSystem
     public class BadFlour : Flour{
         public BadFlour() : base(BadFlourName, 30, 5){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ++ticks;
             switch(ticks){
                 case > 100:

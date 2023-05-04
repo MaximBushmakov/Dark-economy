@@ -5,34 +5,32 @@ using System.Collections.Generic;
 namespace WorldSystem
 {
     public class Baker : NPC{
-        public Baker(string npcName, string npcLocation, float npcXCord, float npcYCord) : base(npcName, npcLocation, BakerProfessionName, new List<string>(), new List<string>() { GoldenBreadName, NormalBreadName, BadBreadName}, npcXCord, npcYCord, 20, 10000, 20){
-            generateStartInventory();
-            fullWantToBuy();
+        public Baker(string npcName, string npcLocation) : base(npcName, npcLocation, BakerProfessionName, new List<string>(), new List<string>() { GoldenBreadName, NormalBreadName, BadBreadName}, 20, 10000, 20){
         }
-        private void generateStartInventory(){
-            inventory.addProduct(new NormalFlour());
-            inventory.addProduct(new NormalFlour());
-            inventory.addProduct(new NormalFlour());
+        protected override void GenerateStartInventory(){
+            inventory.AddProduct(new NormalFlour());
+            inventory.AddProduct(new NormalFlour());
+            inventory.AddProduct(new NormalFlour());
         }
-        private void fullWantToBuy(){
+        protected override void FullWantToBuy(){
             ListOfBuyProducts.Add(NormalBreadName);
             ListOfBuyProducts.Add(BadBreadName);
         }
-        public override void produceProduct(){
-            int prodPlace = inventory.findMinQ(GoldenFlourName, wisdomLevel);
+        public override void DoActivity(){
+            int prodPlace = inventory.FindMinQ(GoldenFlourName, wisdomLevel);
             if(prodPlace != -1){
-                inventory.deleteProd(prodPlace);
-                inventory.addProduct(new GoldenBread());
+                inventory.DeleteProd(prodPlace);
+                inventory.AddProduct(new GoldenBread());
             } else{
-                prodPlace = inventory.findMinQ(NormalFlourName, wisdomLevel);
+                prodPlace = inventory.FindMinQ(NormalFlourName, wisdomLevel);
                 if(prodPlace != -1){
-                    inventory.deleteProd(prodPlace);
-                    inventory.addProduct(new NormalBread());
+                    inventory.DeleteProd(prodPlace);
+                    inventory.AddProduct(new NormalBread());
                 } else{
-                    prodPlace = inventory.findMinQ(BadFlourName, wisdomLevel);
+                    prodPlace = inventory.FindMinQ(BadFlourName, wisdomLevel);
                     if(prodPlace != -1){
-                        inventory.deleteProd(prodPlace);
-                        inventory.addProduct(new BadBread());
+                        inventory.DeleteProd(prodPlace);
+                        inventory.AddProduct(new BadBread());
                     }
                 }
             }

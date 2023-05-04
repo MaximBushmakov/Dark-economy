@@ -7,7 +7,6 @@ namespace WorldSystem
 {
     public class Location{
         protected string name;
-        protected string type;
         private List<NPC> listOfNPC;
         private List<NPC> listOfNPCSellers;
         protected List<Effect> ListOfEffects;
@@ -15,71 +14,67 @@ namespace WorldSystem
         protected Random rand;
         public Location(string thisName, string thisType){
             name = thisName;
-            type = thisType;
             listOfNPC = new List<NPC>();
             listOfNPCSellers = new List<NPC>();
             ListOfEffects = new List<Effect>();
             DictionaryofPriceEffects = new Dictionary<string, List<Effect>>();
             rand = new Random();
-            TimeSystem.getInstance().addLocationtoTimeSystem(this);
+            TimeSystem.GetInstance().AddLocationtoTimeSystem(this);
         }
-        public string getName(){
+        public string GetName(){
             return this.name;
         }
-        public string getType(){
-            return this.type;
-        }
-        public void addNPC(NPC newNPC){
-            if(sellerNames.Contains(newNPC.getType())){
+        public void AddNPC(NPC newNPC){
+            if(sellerNames.Contains(newNPC.GetProfessionType())){
                 listOfNPCSellers.Add(newNPC);
             }
             listOfNPC.Add(newNPC);
         }
-        public void deleteNPC(NPC thisNPC){
+        public void DeleteNPC(NPC thisNPC){
             listOfNPC.Remove(thisNPC);
         }
-        public List<NPC> getNPC(){
+        public List<NPC> GetNPC(){
             return listOfNPC;
         }
-        public NPC findRandomNPCType(string npcType){
+        public NPC FindRandomNPCType(string npcType){
             List<int> correctNPC = new List<int>();
             for(int i = 0; i < listOfNPC.Count; ++i){
-                if(listOfNPC[i].getType() == npcType){
+                if(listOfNPC[i].GetProfessionType() == npcType){
                     correctNPC.Add(i);
                 }
             }
             int randNPCId = rand.Next() % correctNPC.Count;
             return listOfNPC[correctNPC[randNPCId]];
         }
-        public void proveEffects(){
+        public void ProveEffects(){
             for(int i = ListOfEffects.Count - 1; i >= 0; --i){
-                if(ListOfEffects[i].provDone()){
-                    TimeSystem.getInstance().writeLog(ListOfEffects[i].getName() + " перестаёт оказывать эффект на " + name);
-                    if(ListOfEffects[i].getEffectType() == PriceEffectType){
-                        DictionaryofPriceEffects[ListOfEffects[i].getOwner()].Remove(ListOfEffects[i]);
+                if(ListOfEffects[i].ProvDone()){
+                    TimeSystem.GetInstance().WriteLog(ListOfEffects[i].GetName() + " перестаёт оказывать эффект на " + name);
+                    if(ListOfEffects[i].GetEffectType() == PriceEffectType){
+                        DictionaryofPriceEffects[ListOfEffects[i].GetOwner()].Remove(ListOfEffects[i]);
                     }
                     ListOfEffects.RemoveAt(i);
                 }
             }
         }
-        public void addEffect(Effect thisEffect){
+        public void AddEffect(Effect thisEffect){
             ListOfEffects.Add(thisEffect);
-            if(thisEffect.getEffectType() == PriceEffectType){
-                if(!DictionaryofPriceEffects.ContainsKey(thisEffect.getOwner())){
-                    DictionaryofPriceEffects.Add(thisEffect.getOwner(), new List<Effect>());
+            if(thisEffect.GetEffectType() == PriceEffectType){
+                if(!DictionaryofPriceEffects.ContainsKey(thisEffect.GetOwner())){
+                    DictionaryofPriceEffects.Add(thisEffect.GetOwner(), new List<Effect>());
                 }
-                DictionaryofPriceEffects[thisEffect.getOwner()].Add(thisEffect);
+                DictionaryofPriceEffects[thisEffect.GetOwner()].Add(thisEffect);
             }
         }
-        public Dictionary<String, List<Effect>> getDictionaryPrice(){
+        public Dictionary<String, List<Effect>> GetDictionaryPrice(){
             return DictionaryofPriceEffects;
         }
-        public void makeTick(){
-            proveEffects();
+        public void MakeTick(){
+            ProveEffects();
         }
         public bool NPCBuyFood(NPC thisNPC){
             for(int i = 0; i < listOfNPCSellers.Count; ++i){
-                if(listOfNPCSellers[i].buyFood(thisNPC)){
+                if(listOfNPCSellers[i].BuyFood(thisNPC)){
                     return true;
                 }
             }

@@ -15,26 +15,26 @@ namespace WorldSystem
         private StreamWriter sw;
         private Event currentEvent;
         protected Random rand;
-        public void addEffecttoTimeSystem(Effect newEffect){
+        public void AddEffecttoTimeSystem(Effect newEffect){
             lock (threadLock);
             ListOfEffects.Add(newEffect);
-            sw.WriteLine(newEffect.getName() + " now is a part of TimeSystem");
+            sw.WriteLine(newEffect.GetName() + " now is a part of TimeSystem");
         }
-        public void addNPCtoTimeSystem(NPC newNPC){
+        public void AddNPCtoTimeSystem(NPC newNPC){
             lock (threadLock);
             ListOfNPC.Add(newNPC);
-            DictionaryOfLocations[newNPC.getLocation()].addNPC(newNPC);
-            sw.WriteLine(newNPC.getName() + " now is a part of TimeSystem");
+            DictionaryOfLocations[newNPC.GetLocation()].AddNPC(newNPC);
+            sw.WriteLine(newNPC.GetName() + " now is a part of TimeSystem");
         }
-        public void addProducttoTimeSystem(Product newProduct){
+        public void AddProducttoTimeSystem(Product newProduct){
             lock (threadLock);
             ListOfProducts.Add(newProduct);
-            sw.WriteLine(newProduct.getSubType() + " now is a part of TimeSystem");
+            sw.WriteLine(newProduct.GetSubType() + " now is a part of TimeSystem");
         }
-        public void addLocationtoTimeSystem(Location location){
-            DictionaryOfLocations.Add(location.getName(), location);
+        public void AddLocationtoTimeSystem(Location location){
+            DictionaryOfLocations.Add(location.GetName(), location);
         }
-        public static TimeSystem getInstance(){
+        public static TimeSystem GetInstance(){
             if (instance == null){
                 instance = new TimeSystem();
                 instance.ListOfNPC = new List<NPC>();
@@ -46,81 +46,81 @@ namespace WorldSystem
             }
             return instance;
         }
-        public void writeLog(string text){
+        public void WriteLog(string text){
             sw.WriteLine(text);
         }
-        public void endLog(){
+        public void EndLog(){
             sw.Close();
         }
-        public void startRumors(Event thisevent){
-            List<string> ListofRumors = AllEvents.getInstance().getRumors(thisevent, ListOfNPC.Count);
+        public void StartRumors(Event thisevent){
+            List<string> ListofRumors = AllEvents.getInstance().GetRumors(thisevent, ListOfNPC.Count);
             int randid;
             for(int i = 0; i < ListOfNPC.Count; ++i){
                 randid = rand.Next() % ListofRumors.Count;
-                ListOfNPC[i].setRumor(ListofRumors[randid]);
-                writeLog(ListOfNPC[i].getName() + " получает слух: " + ListOfNPC[i].getRumor());
+                ListOfNPC[i].SetRumor(ListofRumors[randid]);
+                WriteLog(ListOfNPC[i].GetName() + " получает слух: " + ListOfNPC[i].GetRumor());
                 ListofRumors.RemoveAt(randid);
             }
 
         }
-        public void startFirstEvent(){
-            currentEvent = AllEvents.getInstance().getRandomEvent();
-            startRumors(currentEvent);
+        public void StartFirstEvent(){
+            currentEvent = AllEvents.getInstance().GetRandomEvent();
+            StartRumors(currentEvent);
         }
-        public void makeEventStep(){
-            if(instance.currentEvent.start()){
-                List<Effect> newEffects = currentEvent.getEffects();
-                String location = currentEvent.getLocation();
+        public void MakeEventStep(){
+            if(instance.currentEvent.Start()){
+                List<Effect> newEffects = currentEvent.GetEffects();
+                String location = currentEvent.GetLocation();
                 if(location == AllLocationsName){
                     foreach(var thislocation in DictionaryOfLocations){
                         for(int i = 0; i < newEffects.Count; ++i){
-                            thislocation.Value.addEffect(newEffects[i]);
+                            thislocation.Value.AddEffect(newEffects[i]);
                         }
                     }
                 } else{
                     foreach(var thislocation in DictionaryOfLocations){
                         for(int i = 0; i < newEffects.Count; ++i){
                             if(location == thislocation.Key){
-                                thislocation.Value.addEffect(newEffects[i]);
+                                thislocation.Value.AddEffect(newEffects[i]);
                             }
                         }
                     }
                 }
-                currentEvent = AllEvents.getInstance().getRandomEvent();
-                startRumors(currentEvent);
+                currentEvent = AllEvents.getInstance().GetRandomEvent();
+                StartRumors(currentEvent);
             }
         }
-        public void makeTicks(int n){
+        public void MakeTicks(int n){
             for(int j = 0; j < n; ++j){
-                makeEventStep();
+                MakeEventStep();
                 foreach(var location in DictionaryOfLocations){
-                    location.Value.makeTick();
+                    location.Value.MakeTick();
                 }
                 for(int i = ListOfProducts.Count - 1; i >= 0; --i){
-                    ListOfProducts[i].makeTick();
-                    if(ListOfProducts[i].getQuality() == 0){
-                        sw.WriteLine("TimeSystem отключавет " + ListOfProducts[i].getSubType());
+                    ListOfProducts[i].MakeTick();
+                    if(ListOfProducts[i].GetQuality() == 0){
+                        sw.WriteLine("TimeSystem отключавет " + ListOfProducts[i].GetSubType());
                         ListOfProducts.RemoveAt(i);
                     }
                 }
                 for(int i = ListOfEffects.Count - 1; i >= 0; --i){
-                    ListOfEffects[i].makeTick();
-                    if(ListOfEffects[i].provDone()){
-                        sw.WriteLine("TimeSystem отключавет " + ListOfEffects[i].getName());
+                    ListOfEffects[i].MakeTick();
+                    if(ListOfEffects[i].ProvDone()){
+                        sw.WriteLine("TimeSystem отключавет " + ListOfEffects[i].GetName());
                         ListOfEffects.RemoveAt(i);
                     }
                 }
                 for(int i = 0; i < ListOfNPC.Count; ++i){
-                    ListOfNPC[i].makeTick();
+                    ListOfNPC[i].MakeTick();
                 }
             }
         }
-        public Location getLocation(string nameLocation){
+        public Location GetLocation(string nameLocation){
             return DictionaryOfLocations[nameLocation];
         }
-        public void traderChangeLocation(NPC thisNPC, string newlocation){
-            DictionaryOfLocations[newlocation].deleteNPC(thisNPC);
-            DictionaryOfLocations[newlocation].addNPC(thisNPC);
+        public void TraderChangeLocation(NPC thisNPC, string newlocation){
+            DictionaryOfLocations[newlocation].DeleteNPC(thisNPC);
+            DictionaryOfLocations[newlocation].AddNPC(thisNPC);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace WorldSystem
     public class NormalMillet : Millet{
         public NormalMillet() : base(NormalMilletName, 100, 0){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ++ticks;
             switch(ticks){
                 case > 15:
@@ -29,7 +29,7 @@ namespace WorldSystem
     public class GoldenMillet : Millet{
         public GoldenMillet() : base(GoldenMilletName, 300, 20){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ticks++;
             switch(ticks){
                 case > 20:
@@ -47,7 +47,7 @@ namespace WorldSystem
     public class BadMillet : Millet{
         public BadMillet() : base(BadMilletName, 50, 10){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ++ticks;
             switch(ticks){
                 case > 40:

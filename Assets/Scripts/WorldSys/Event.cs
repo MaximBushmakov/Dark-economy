@@ -22,7 +22,7 @@ namespace WorldSystem
             ListOfEffects = thisListOfEffects;
             ListOfRumors = thisListOfRumors;
         }
-        public bool start(){
+        public bool Start(){
             if(timeToStart > 0){
                 --timeToStart;
                 used = true;
@@ -33,19 +33,19 @@ namespace WorldSystem
                 return true;
             }
         }
-        public List<String> getRumors(){
+        public List<String> GetRumors(){
             return ListOfRumors;
         }
-        public List<Effect> getEffects(){
+        public List<Effect> GetEffects(){
             return ListOfEffects;
         }
-        public string getName(){
+        public string GetName(){
             return name;
         }
-        public string getText(){
+        public string GetText(){
             return text;
         }
-        public string getLocation(){
+        public string GetLocation(){
             return location;
         }
     }

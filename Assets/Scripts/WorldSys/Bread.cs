@@ -11,7 +11,7 @@ namespace WorldSystem
     public class NormalBread : Bread{
         public NormalBread() : base(NormalBreadName, 200, 0){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ++ticks;
             switch(ticks){
                 case > 15:
@@ -29,7 +29,7 @@ namespace WorldSystem
     public class GoldenBread : Bread{
         public GoldenBread() : base(GoldenBreadName, 500, 25){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ++ticks;
             switch(ticks){
                 case > 15:
@@ -47,7 +47,7 @@ namespace WorldSystem
     public class BadBread : Bread{
         public BadBread() : base(BadFlourName, 40, 5){
         }
-        public override void makeTick(){
+        public override void MakeTick(){
             ++ticks;
             switch(ticks){
                 case > 15:

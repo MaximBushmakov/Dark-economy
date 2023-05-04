@@ -10,35 +10,35 @@ namespace WorldSystem
         public Inventory(){
             listOfProducts = new List<Product>();
         }
-        public void addProduct(Product newProduct){
+        public void AddProduct(Product newProduct){
             listOfProducts.Add(newProduct);
         }
-        public List<Product> getInventory(){
+        public List<Product> GetInventory(){
             return listOfProducts;
         }
-        public int findMinQ(string type, int wisdom){
+        public int FindMinQ(string type, int wisdom){
             int minQProductPlace = -1;
             int minQProductQuality = 5;
             for(int i = 0; i < listOfProducts.Count; ++i){
-                if(listOfProducts[i].getType(wisdom) == type){
-                    if(listOfProducts[i].getQuality() < minQProductQuality){
+                if(listOfProducts[i].GetVisibleType(wisdom) == type){
+                    if(listOfProducts[i].GetQuality() < minQProductQuality){
                         minQProductPlace = i;
-                        minQProductQuality = listOfProducts[i].getQuality();
+                        minQProductQuality = listOfProducts[i].GetQuality();
                     }
                 }
             }
             return minQProductPlace;
         }
-        public void deleteProd(int i){
-            listOfProducts[i].deleteThis();
+        public void DeleteProd(int i){
+            listOfProducts[i].DeleteThis();
             listOfProducts.RemoveAt(i);
         }
-        public void deleteFromInventoryProd(int i){
+        public void DeleteFromInventoryProd(int i){
             listOfProducts.RemoveAt(i);
         }
-        public bool eatFood(int wisdom){
+        public bool EatFood(int wisdom){
             for(int i = 0; i < listOfProducts.Count; ++i){
-                if(foodNames.Contains(listOfProducts[i].getType(wisdom))){
+                if(foodNames.Contains(listOfProducts[i].GetVisibleType(wisdom))){
                     listOfProducts.RemoveAt(i);
                     return true;
                 }

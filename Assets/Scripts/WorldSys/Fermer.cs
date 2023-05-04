@@ -5,31 +5,29 @@ using System.Collections.Generic;
 namespace WorldSystem
 {
     public class Fermer : NPC{
-        public Fermer(string npcName, string npcLocation, float npcXCord, float npcYCord) : base(npcName, npcLocation, FermerProfessionName, new List<string>(), new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, npcXCord, npcYCord, 20, 10000, 20){
-            generateStartInventory();
-            fullWantToBuy();
+        public Fermer(string npcName, string npcLocation) : base(npcName, npcLocation, FermerProfessionName, new List<string>(), new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, 20, 10000, 20){
         }
-        private void generateStartInventory(){
-            inventory.addProduct(new NormalMillet());
-            inventory.addProduct(new NormalMillet());
-            inventory.addProduct(new NormalMillet());
-            inventory.addProduct(new GoldenMillet());
+        protected override void GenerateStartInventory(){
+            inventory.AddProduct(new NormalMillet());
+            inventory.AddProduct(new NormalMillet());
+            inventory.AddProduct(new NormalMillet());
+            inventory.AddProduct(new GoldenMillet());
         }
-        private void fullWantToBuy(){
+        protected override void FullWantToBuy(){
             ListOfBuyProducts.Add(NormalBreadName);
             ListOfBuyProducts.Add(BadBreadName);
         }
-        public override void produceProduct(){
+        public override void DoActivity(){
             int randNum = rand.Next() % 100;
             switch(randNum){
             case > 90:
-                inventory.addProduct(new GoldenMillet());
+                inventory.AddProduct(new GoldenMillet());
                 break;
             case > 50:
-                inventory.addProduct(new BadMillet());
+                inventory.AddProduct(new BadMillet());
                 break;
             default:
-                inventory.addProduct(new NormalMillet());
+                inventory.AddProduct(new NormalMillet());
                 break;
             }
         }

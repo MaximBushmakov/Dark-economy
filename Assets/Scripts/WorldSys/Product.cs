@@ -19,33 +19,33 @@ namespace WorldSystem
             quality = 3;
             ticks = 0;
             wisdomLevel = wisdomlevel;
-            TimeSystem.getInstance().addProducttoTimeSystem(this);
+            TimeSystem.GetInstance().AddProducttoTimeSystem(this);
         }
-        public string getType(int wisdom){
+        public string GetVisibleType(int wisdom){
             if(wisdom < wisdomLevel){
                 return mainType;
             }
             return subType;
         }
-        public string getMainType(){
+        public string GetMainType(){
             return mainType;
         }
-        public string getSubType(){
+        public string GetSubType(){
             return subType;
         }
-        public virtual void makeTick(){
+        public virtual void MakeTick(){
             ticks += 1;
         }
-        public int getQuality(){
+        public int GetQuality(){
             return this.quality;
         }
-        public int getCost(int wisdom){
+        public int GetCost(int wisdom){
             if(wisdom < wisdomLevel){
                 return basicCost;
             }
             return mainCost;
         }
-        public void deleteThis(){
+        public void DeleteThis(){
             quality = 0;
         }
     }

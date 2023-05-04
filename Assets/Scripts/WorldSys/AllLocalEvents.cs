@@ -13,15 +13,15 @@ namespace WorldSystem
         private Dictionary<int, LocalEvent> DictionaryOfGoodVillageEvents;
         private Dictionary<int, LocalEvent> DictionaryOfBadVillageEvents;
         protected Random rand;
-        public static AllLocalEvents getInstance(){
+        public static AllLocalEvents GetInstance(){
             if (instance == null){
                 instance = new AllLocalEvents();
                 instance.rand = new Random();
-                setEvents();
+                SetEvents();
             }
             return instance;
         }
-        private static void setEvents(){
+        private static void SetEvents(){
             instance.DictionaryOfGoodRoadEvents = new Dictionary<int, LocalEvent>();
             instance.DictionaryOfGoodTownEvents = new Dictionary<int, LocalEvent>();
             instance.DictionaryOfGoodVillageEvents = new Dictionary<int, LocalEvent>();
@@ -29,7 +29,7 @@ namespace WorldSystem
             instance.DictionaryOfBadTownEvents = new Dictionary<int, LocalEvent>();
             instance.DictionaryOfBadVillageEvents = new Dictionary<int, LocalEvent>();
         }
-        public LocalEvent getEvent(int id, string type){
+        public LocalEvent GetEvent(int id, string type){
             switch (type){
                 case GoodRoadEventName:
                 	return DictionaryOfGoodRoadEvents[id];

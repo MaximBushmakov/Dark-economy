@@ -5,35 +5,33 @@ using System.Collections.Generic;
 namespace WorldSystem
 {
     public class Millworker : NPC{
-        public Millworker(string npcName, string npcLocation, float npcXCord, float npcYCord) : base(npcName, npcLocation, MillworkerProfessionName, new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, new List<string>() { GoldenFlourName, NormalFlourName, BadFlourName} ,npcXCord, npcYCord, 20, 20000, 20){
-            generateStartInventory();
-            fullWantToBuy();
+        public Millworker(string npcName, string npcLocation) : base(npcName, npcLocation, MillworkerProfessionName, new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, new List<string>() { GoldenFlourName, NormalFlourName, BadFlourName} , 20, 20000, 20){
         }
-        private void fullWantToBuy(){
+        protected override void FullWantToBuy(){
             ListOfBuyProducts.Add(NormalBreadName);
             ListOfBuyProducts.Add(NormalMilletName);
             ListOfBuyProducts.Add(GoldenMilletName);
             ListOfBuyProducts.Add(BadMilletName);
         }
-        private void generateStartInventory(){
-            inventory.addProduct(new NormalMillet());
-            inventory.addProduct(new NormalFlour());
+        protected override void GenerateStartInventory(){
+            inventory.AddProduct(new NormalMillet());
+            inventory.AddProduct(new NormalFlour());
         }
-        public override void produceProduct(){
-            int prodPlace = inventory.findMinQ(GoldenMilletName, wisdomLevel);
+        public override void DoActivity(){
+            int prodPlace = inventory.FindMinQ(GoldenMilletName, wisdomLevel);
             if(prodPlace != -1){
-                inventory.deleteProd(prodPlace);
-                inventory.addProduct(new GoldenFlour());
+                inventory.DeleteProd(prodPlace);
+                inventory.AddProduct(new GoldenFlour());
             } else{
-                prodPlace = inventory.findMinQ(NormalMilletName, wisdomLevel);
+                prodPlace = inventory.FindMinQ(NormalMilletName, wisdomLevel);
                 if(prodPlace != -1){
-                    inventory.deleteProd(prodPlace);
-                    inventory.addProduct(new NormalFlour());
+                    inventory.DeleteProd(prodPlace);
+                    inventory.AddProduct(new NormalFlour());
                 } else{
-                    prodPlace = inventory.findMinQ(BadMilletName, wisdomLevel);
+                    prodPlace = inventory.FindMinQ(BadMilletName, wisdomLevel);
                     if(prodPlace != -1){
-                        inventory.deleteProd(prodPlace);
-                        inventory.addProduct(new BadFlour());
+                        inventory.DeleteProd(prodPlace);
+                        inventory.AddProduct(new BadFlour());
                     }
                 }
             }
