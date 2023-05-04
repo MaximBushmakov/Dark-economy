@@ -1,16 +1,22 @@
 using System;
+using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
     class Fermer : NPC{
-        public Fermer(string npcName, string npcLocation, float npcXCord, float npcYCord) : base(npcName, npcLocation, npcXCord, npcYCord, 20, 100, 20){
+        public Fermer(string npcName, string npcLocation, float npcXCord, float npcYCord) : base(npcName, npcLocation, FermerProfessionName, new List<string>(), new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, npcXCord, npcYCord, 20, 10000, 20){
             generateStartInventory();
+            fullWantToBuy();
         }
         private void generateStartInventory(){
             inventory.addProduct(new NormalMillet());
             inventory.addProduct(new NormalMillet());
             inventory.addProduct(new NormalMillet());
             inventory.addProduct(new GoldenMillet());
+        }
+        private void fullWantToBuy(){
+            ListOfBuyProducts.Add(NormalBreadName);
+            ListOfBuyProducts.Add(BadBreadName);
         }
         public override void produceProduct(){
             int randNum = rand.Next() % 100;
