@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 61
+  controlID: 57
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 266
     height: 681
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -401,23 +401,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a88f0000
-      m_LastClickedID: 36776
-      m_ExpandedIDs: beb1ffff42b9ffff5cbbffff94c4ffffdec4ffff00c6ffff0ecdffff22fbffffe25d0000e65d0000fa5d00000c5e00002c5e0000345e00003c5e0000565e0000985e0000e45e0000f25e0000cc7f0000d07f0000e47f0000f67f0000168000001e800000268000004080000082800000ce800000dc8000007c8300009a830000a8830000c6830000de830000ea830000d4870000668f0000848f0000c88f0000d48f0000
+      m_SelectedIDs: 50600000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 98f9ffff2cfbffff385f00003c5f0000625f00008a5f00002a60000038600000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Cell
-        m_OriginalName: Cell
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 24254
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -674,9 +674,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.090181, y: 4.4803753, z: 327.95016}
+    m_Target: {x: 1.1333293, y: 1.405649, z: 253.00209}
     speed: 2
-    m_Value: {x: 3.0479054, y: 4.68738, z: 342.436}
+    m_Value: {x: 1.1333293, y: 1.405649, z: 253.00209}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -727,9 +727,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.807138
+    m_Target: 7.4398217
     speed: 2
-    m_Value: 10.269255
+    m_Value: 7.4398217
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -795,22 +795,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Maksim\Prototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: cc630000
-    m_LastClickedID: 25548
-    m_ExpandedIDs: 000000002c5f00002e5f0000305f0000325f0000345f0000365f0000385f00003a5f00003c5f00003e5f0000405f0000425f0000445f0000465f0000485f000000ca9a3b
+    m_SelectedIDs: 1a5f0000
+    m_LastClickedID: 24346
+    m_ExpandedIDs: 00000000865e0000885e00008a5e00008c5e00008e5e0000905e0000925e0000945e0000965e0000985e00009a5e00009c5e00009e5e0000a05e0000a25e00001a5f00007e60000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -838,7 +838,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002c5f00002e5f0000305f0000325f0000345f0000365f0000385f00003a5f00003c5f00003e5f0000405f0000425f0000445f0000465f0000485f0000
+    m_ExpandedIDs: 00000000865e0000885e00008a5e00008c5e00008e5e0000905e0000925e0000945e0000965e0000985e00009a5e00009c5e00009e5e0000a05e0000a25e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -863,9 +863,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a88f0000
-    m_LastClickedInstanceID: 36776
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 50600000
+    m_LastClickedInstanceID: 24656
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000062680000ce6300000000000054600000c85e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
