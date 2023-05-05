@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WorldSystem
 {
     public class Fermer : NPC{
-        public Fermer(string npcName, string npcLocation) : base(npcName, npcLocation, FermerProfessionName, new List<string>(), new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, 20, 10000, 20){
+        public Fermer(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, FermerProfessionName, new List<string>(), new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, ListofSubLocations, 20, 10000, 20){
         }
         protected override void GenerateStartInventory(){
             inventory.AddProduct(new NormalMillet());

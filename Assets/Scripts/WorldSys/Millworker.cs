@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WorldSystem
 {
     public class Millworker : NPC{
-        public Millworker(string npcName, string npcLocation) : base(npcName, npcLocation, MillworkerProfessionName, new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, new List<string>() { GoldenFlourName, NormalFlourName, BadFlourName} , 20, 20000, 20){
+        public Millworker(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, MillworkerProfessionName, new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName}, new List<string>() { GoldenFlourName, NormalFlourName, BadFlourName} , ListofSubLocations, 20, 20000, 20){
         }
         protected override void FullWantToBuy(){
             ListOfBuyProducts.Add(NormalBreadName);

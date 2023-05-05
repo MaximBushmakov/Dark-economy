@@ -23,23 +23,37 @@ namespace WorldSystem
         }
     }
     public class Prices{
+        // список цен
         private List<Price> listOfPrices;
+        // Список id купленных товаров в списке цен
         private List<int> listOfIdBought;
+        // 
         private Inventory traderInventory;
+        // деньги которые получает или отдаёт NPC
         private int money;
+        // изменение репутации при торговле
         private int reputationChage;
+        // отказ от торговли на время
+        private int ban;
         public Prices(){
             listOfPrices = new List<Price>();
             listOfIdBought = new List<int>();
             traderInventory = new Inventory();
             money = 0;
             reputationChage = 0;
+            ban = 0;
         }
         public void SetMoney(int sumOfMoney){
             money = sumOfMoney;
         }
         public int GetMoney(){
             return money;
+        }
+        public void SetBan(int thisBan){
+            ban = thisBan;
+        }
+        public int GetBan(){
+            return ban;
         }
         public void SetReputationChange(int thisReputationChange){
             reputationChage = thisReputationChange;

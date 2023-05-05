@@ -7,6 +7,7 @@ namespace WorldSystem
 {
     public class Location{
         protected string name;
+        protected string type;
         private List<NPC> listOfNPC;
         private List<NPC> listOfNPCSellers;
         protected List<Effect> ListOfEffects;
@@ -14,6 +15,7 @@ namespace WorldSystem
         protected Random rand;
         public Location(string thisName, string thisType){
             name = thisName;
+            type = thisType;
             listOfNPC = new List<NPC>();
             listOfNPCSellers = new List<NPC>();
             ListOfEffects = new List<Effect>();
@@ -22,7 +24,10 @@ namespace WorldSystem
             TimeSystem.GetInstance().AddLocationtoTimeSystem(this);
         }
         public string GetName(){
-            return this.name;
+            return name;
+        }
+        public string GetLocationType(){
+            return type;
         }
         public void AddNPC(NPC newNPC){
             if(sellerNames.Contains(newNPC.GetProfessionType())){
@@ -79,6 +84,15 @@ namespace WorldSystem
                 }
             }
             return false;
+        }
+        public List<NPC> FindNPCInSublocation(string sublocationName){
+            List<NPC> ListOfNPCSub = new List<NPC>();
+            for(int i = 0; i < listOfNPC.Count; ++i){
+                if(listOfNPC[i].GetSublocation() == sublocationName){
+                    ListOfNPCSub.Add(listOfNPC[i]);
+                }
+            }
+            return ListOfNPCSub;
         }
     }
 }

@@ -109,7 +109,7 @@ namespace WorldSystem
                         }
                     }
                 }
-                currentEvent = AllEvents.getInstance().GetRandomEvent();
+                currentEvent = AllEvents.GetInstance().GetRandomEvent();
                 StartRumors(currentEvent);
             }
         }

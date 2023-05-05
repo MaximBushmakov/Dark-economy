@@ -45,5 +45,55 @@ namespace WorldSystem
             }
             return false;
         }
+        public void AddProductType(string type, int numb){
+            switch(type){
+                case NormalMilletName:
+                    for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new NormalMillet());
+                    }
+                    break;
+                case BadMilletName:
+                	for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new BadMillet());
+                    }
+                    break;
+                case GoldenMilletName:
+                	for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new GoldenMillet());
+                    }
+                    break;
+                case NormalFlourName:
+                	for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new NormalFlour());
+                    }
+                    break;
+                case BadFlourName:
+                	for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new BadFlour());
+                    }
+                    break;
+                case GoldenFlourName:
+                	for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new GoldenFlour());
+                    }
+                    break;
+                case NormalBreadName:
+                	for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new NormalBread());
+                    }
+                    break;
+                case BadBreadName:
+                	for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new BadBread());
+                    }
+                    break;
+                case GoldenBreadName:
+                	for(int i = 0; i < numb; ++i){
+                        listOfProducts.Add(new GoldenBread());
+                    }
+                    break;    
+            }
+
+        }
     }
 }
