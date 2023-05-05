@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
-using static WorldSystem.GlobalNames;
 using System.Linq;
+using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
-    public class NPC{
+    public class NPC
+    {
         protected string name;
         protected string location;
         protected int subLocationId;
@@ -16,15 +17,16 @@ namespace WorldSystem
         protected int kapital;
         protected int playerReputation;
         protected List<Effect> ListOfEffects;
-        protected Dictionary<String, List<Effect>> DictionaryofPriceEffects;
-        protected List<String> ListOfBuyProducts;
-        protected List<String> ListofProduceMaterial;
-        protected List<String> ListofProduceProduct;
-        protected List<String> ListofSubLocations;
+        protected Dictionary<string, List<Effect>> DictionaryofPriceEffects;
+        protected List<string> ListOfBuyProducts;
+        protected List<string> ListofProduceMaterial;
+        protected List<string> ListofProduceProduct;
+        protected List<string> ListofSubLocations;
         protected string rumor;
         protected int hunger;
         protected int ban;
-        public NPC(string npcName, string npcLocation, string npcType, List<String> npcListofProduceMaterial, List<String> npcListofProduceProduct, List<String> thisListofSubLocations, int thisWisdomLevel, int money, int reputation){
+        public NPC(string npcName, string npcLocation, string npcType, List<string> npcListofProduceMaterial, List<string> npcListofProduceProduct, List<string> thisListofSubLocations, int thisWisdomLevel, int money, int reputation)
+        {
             name = npcName;
             location = npcLocation;
             type = npcType;
@@ -46,79 +48,100 @@ namespace WorldSystem
             ListofSubLocations = thisListofSubLocations;
             subLocationId = 0;
         }
-        public bool CheckBan(){
-            if(ban > 0){
+        public bool CheckBan()
+        {
+            if (ban > 0)
+            {
                 return false;
             }
-            if(playerReputation < 0){
+            if (playerReputation < 0)
+            {
                 return false;
             }
             return true;
         }
-        public string GetName(){
+        public string GetName()
+        {
             return name;
         }
-        public virtual string GetSublocation(){
+        public virtual string GetSublocation()
+        {
             return ListofSubLocations[subLocationId];
         }
-        public int GetKapital(){
+        public int GetKapital()
+        {
             return kapital;
         }
-        public void ReduceKapital(int n){
+        public void ReduceKapital(int n)
+        {
             kapital -= n;
         }
-        public string GetProfessionType(){
+        public string GetProfessionType()
+        {
             return type;
         }
-        public int GetWisdomLevel(){
+        public int GetWisdomLevel()
+        {
             return wisdomLevel;
         }
-        public List<String> GetMaterial(){
+        public List<string> GetMaterial()
+        {
             return ListofProduceMaterial;
         }
-        public List<String> GetProduceProduct(){
+        public List<string> GetProduceProduct()
+        {
             return ListofProduceProduct;
         }
-        public void SetRumor(string thisrumor){
+        public void SetRumor(string thisrumor)
+        {
             rumor = thisrumor;
         }
-        public string GetRumor(){
+        public string GetRumor()
+        {
             return rumor;
         }
-        public void ProveInventory(){
+        public void ProveInventory()
+        {
             List<Product> products = inventory.GetInventory();
-            for(int i = products.Count - 1; i >= 0; --i){
-                if(products[i].GetQuality() == 0){
+            for (int i = products.Count - 1; i >= 0; --i)
+            {
+                if (products[i].GetQuality() == 0)
+                {
                     TimeSystem.GetInstance().WriteLog(name + " выкидывает " + products[i].GetSubType());
                     products.RemoveAt(i);
                 }
             }
         }
-        public void ProveEffects(){
-            for(int i = ListOfEffects.Count - 1; i >= 0; --i){
-                if(ListOfEffects[i].ProvDone()){
+        public void ProveEffects()
+        {
+            for (int i = ListOfEffects.Count - 1; i >= 0; --i)
+            {
+                if (ListOfEffects[i].ProvDone())
+                {
                     TimeSystem.GetInstance().WriteLog(ListOfEffects[i].GetName() + " перестаёт оказывать эффект на " + name);
-                    if(ListOfEffects[i].GetEffectType() == PriceEffectType){
+                    if (ListOfEffects[i].GetEffectType() == PriceEffectType)
+                    {
                         DictionaryofPriceEffects[ListOfEffects[i].GetOwner()].Remove(ListOfEffects[i]);
                     }
                     ListOfEffects.RemoveAt(i);
                 }
             }
         }
-        public virtual void DoActivity(){
-        }
-        protected virtual void FullWantToBuy(){
-        }
-        protected virtual void GenerateStartInventory(){
-        }
-        protected virtual void ChangeLocation(){
+        public virtual void DoActivity() { }
+        protected virtual void FullWantToBuy() { }
+        protected virtual void GenerateStartInventory() { }
+        protected virtual void ChangeLocation()
+        {
             ++subLocationId;
-            if(subLocationId == ListofSubLocations.Count){
+            if (subLocationId == ListofSubLocations.Count)
+            {
                 subLocationId = 0;
             }
         }
-        public void MakeTick(){
-            if(ban > 0){
+        public void MakeTick()
+        {
+            if (ban > 0)
+            {
                 --ban;
             }
             ChangeLocation();
@@ -127,32 +150,40 @@ namespace WorldSystem
             DoActivity();
             Eat();
         }
-        public string GetLocation(){
+        public string GetLocation()
+        {
             return location;
         }
-        public void AddEffect(Effect thisEffect){
+        public void AddEffect(Effect thisEffect)
+        {
             ListOfEffects.Add(thisEffect);
-            if(thisEffect.GetEffectType() == PriceEffectType){
-                if(!DictionaryofPriceEffects.ContainsKey(thisEffect.GetOwner())){
+            if (thisEffect.GetEffectType() == PriceEffectType)
+            {
+                if (!DictionaryofPriceEffects.ContainsKey(thisEffect.GetOwner()))
+                {
                     DictionaryofPriceEffects.Add(thisEffect.GetOwner(), new List<Effect>());
                 }
                 DictionaryofPriceEffects[thisEffect.GetOwner()].Add(thisEffect);
             }
         }
         // Создаёт список цен когда этот НПС продаёт товар
-        public Prices MakePricesSell(){
-            Prices thisPrices = new Prices();
+        public Prices MakePricesSell()
+        {
+            Prices thisPrices = new();
             List<Product> thisInventory = inventory.GetInventory();
             List<Effect> thisEffects;
             string productType;
             Price thisPrice;
-            for(int i = 0; i < thisInventory.Count; ++i){
+            for (int i = 0; i < thisInventory.Count; ++i)
+            {
                 productType = thisInventory[i].GetVisibleType(wisdomLevel);
                 int tPrice = thisInventory[i].GetCost(wisdomLevel);
-                if(!ListofProduceMaterial.Contains(productType)){
-                    tPrice = tPrice * 2;
+                if (!ListofProduceMaterial.Contains(productType))
+                {
+                    tPrice *= 2;
                 }
-                switch (thisInventory[i].GetQuality()){
+                switch (thisInventory[i].GetQuality())
+                {
                     case 2:
                         tPrice = tPrice * 8 / 10;
                         break;
@@ -163,44 +194,53 @@ namespace WorldSystem
                         tPrice = tPrice * 1 / 10;
                         break;
                 }
-                if(DictionaryofPriceEffects.ContainsKey(productType)){
+                if (DictionaryofPriceEffects.ContainsKey(productType))
+                {
                     thisEffects = DictionaryofPriceEffects[productType];
-                    for(int j = 0; j < thisEffects.Count; ++j){
-                        tPrice = tPrice + tPrice * thisEffects[j].GetEffectBaf() / 100;
+                    for (int j = 0; j < thisEffects.Count; ++j)
+                    {
+                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
                     }
                 }
-                if(DictionaryofPriceEffects.ContainsKey(AllProductsName)){
+                if (DictionaryofPriceEffects.ContainsKey(AllProductsName))
+                {
                     thisEffects = DictionaryofPriceEffects[AllProductsName];
-                    for(int j = 0; j < thisEffects.Count; ++j){
-                        tPrice = tPrice + tPrice * thisEffects[j].GetEffectBaf() / 100;
+                    for (int j = 0; j < thisEffects.Count; ++j)
+                    {
+                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
                     }
                 }
-                Dictionary<String, List<Effect>> localEffects = TimeSystem.GetInstance().GetLocation(location).GetDictionaryPrice();
-                if(localEffects.ContainsKey(productType)){
+                Dictionary<string, List<Effect>> localEffects = TimeSystem.GetInstance().GetLocation(location).GetDictionaryPrice();
+                if (localEffects.ContainsKey(productType))
+                {
                     thisEffects = localEffects[productType];
-                    for(int j = 0; j < thisEffects.Count; ++j){
-                        tPrice = tPrice + tPrice * thisEffects[j].GetEffectBaf() / 100;
+                    for (int j = 0; j < thisEffects.Count; ++j)
+                    {
+                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
                     }
                 }
-                if(localEffects.ContainsKey(AllProductsName)){
+                if (localEffects.ContainsKey(AllProductsName))
+                {
                     thisEffects = localEffects[AllProductsName];
-                    for(int j = 0; j < thisEffects.Count; ++j){
-                        tPrice = tPrice + tPrice * thisEffects[j].GetEffectBaf() / 100;
+                    for (int j = 0; j < thisEffects.Count; ++j)
+                    {
+                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
                     }
                 }
                 int vPrice = tPrice;
-                switch(playerReputation){
+                switch (playerReputation)
+                {
                     case < 20:
-                        vPrice = vPrice + vPrice;
+                        vPrice += vPrice;
                         break;
                     case < 40:
-                        vPrice = vPrice + vPrice / 2;
+                        vPrice += vPrice / 2;
                         break;
                     case < 70:
-                        vPrice = vPrice + vPrice / 4;
+                        vPrice += vPrice / 4;
                         break;
                     case < 90:
-                        vPrice = vPrice + vPrice / 10;
+                        vPrice += vPrice / 10;
                         break;
                 }
                 thisPrice = new Price(thisInventory[i], tPrice, vPrice);
@@ -209,19 +249,23 @@ namespace WorldSystem
             return thisPrices;
         }
         // Создаёт список цен когда этот НПС покупает товар
-        public Prices MakePricesBuy(Inventory sellInventory){
-            Prices thisPrices = new Prices();
+        public Prices MakePricesBuy(Inventory sellInventory)
+        {
+            Prices thisPrices = new();
             thisPrices.SetMoney(kapital);
             List<Product> thisInventory = sellInventory.GetInventory();
             List<Effect> thisEffects;
             string productType;
-            for(int i = 0; i < thisInventory.Count; ++i){
+            for (int i = 0; i < thisInventory.Count; ++i)
+            {
                 productType = thisInventory[i].GetVisibleType(wisdomLevel);
                 int tPrice = thisInventory[i].GetCost(wisdomLevel);
-                if(!ListOfBuyProducts.Contains(productType)){
-                    tPrice = tPrice / 10;
+                if (!ListOfBuyProducts.Contains(productType))
+                {
+                    tPrice /= 10;
                 }
-                switch (thisInventory[i].GetQuality()){
+                switch (thisInventory[i].GetQuality())
+                {
                     case 2:
                         tPrice = tPrice * 8 / 10;
                         break;
@@ -232,95 +276,121 @@ namespace WorldSystem
                         tPrice = tPrice * 1 / 10;
                         break;
                 }
-                if(DictionaryofPriceEffects.ContainsKey(productType)){
+                if (DictionaryofPriceEffects.ContainsKey(productType))
+                {
                     thisEffects = DictionaryofPriceEffects[productType];
-                    for(int j = 0; j < thisEffects.Count; ++j){
-                        tPrice = tPrice + tPrice * thisEffects[j].GetEffectBaf() / 100;
+                    for (int j = 0; j < thisEffects.Count; ++j)
+                    {
+                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
                     }
                 }
-                if(DictionaryofPriceEffects.ContainsKey(AllProductsName)){
+                if (DictionaryofPriceEffects.ContainsKey(AllProductsName))
+                {
                     thisEffects = DictionaryofPriceEffects[AllProductsName];
-                    for(int j = 0; j < thisEffects.Count; ++j){
-                        tPrice = tPrice + tPrice * thisEffects[j].GetEffectBaf() / 100;
+                    for (int j = 0; j < thisEffects.Count; ++j)
+                    {
+                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
                     }
                 }
-                Dictionary<String, List<Effect>> localEffects = TimeSystem.GetInstance().GetLocation(location).GetDictionaryPrice();
-                if(localEffects.ContainsKey(productType)){
+                Dictionary<string, List<Effect>> localEffects = TimeSystem.GetInstance().GetLocation(location).GetDictionaryPrice();
+                if (localEffects.ContainsKey(productType))
+                {
                     thisEffects = localEffects[productType];
-                    for(int j = 0; j < thisEffects.Count; ++j){
-                        tPrice = tPrice + tPrice * thisEffects[j].GetEffectBaf() / 100;
+                    for (int j = 0; j < thisEffects.Count; ++j)
+                    {
+                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
                     }
                 }
-                if(localEffects.ContainsKey(AllProductsName)){
+                if (localEffects.ContainsKey(AllProductsName))
+                {
                     thisEffects = localEffects[AllProductsName];
-                    for(int j = 0; j < thisEffects.Count; ++j){
-                        tPrice = tPrice + tPrice * thisEffects[j].GetEffectBaf() / 100;
+                    for (int j = 0; j < thisEffects.Count; ++j)
+                    {
+                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
                     }
                 }
                 int vPrice = tPrice;
-                switch(playerReputation){
+                switch (playerReputation)
+                {
                     case < 20:
-                        vPrice = vPrice + vPrice;
+                        vPrice += vPrice;
                         break;
                     case < 40:
-                        vPrice = vPrice + vPrice / 2;
+                        vPrice += vPrice / 2;
                         break;
                     case < 70:
-                        vPrice = vPrice + vPrice / 4;
+                        vPrice += vPrice / 4;
                         break;
                     case < 90:
-                        vPrice = vPrice + vPrice / 10;
+                        vPrice += vPrice / 10;
                         break;
                 }
-                Price thisPrice = new Price(thisInventory[i], tPrice, vPrice);
+                Price thisPrice = new(thisInventory[i], tPrice, vPrice);
                 thisPrices.AddPrice(thisPrice);
             }
             return thisPrices;
         }
         // Конец продажи товара, который был у NPC
-        public void EndSellTrade(Prices answerFromTrader){
+        public void EndSellTrade(Prices answerFromTrader)
+        {
             kapital += answerFromTrader.GetMoney();
             playerReputation += answerFromTrader.GetReputationChange();
             List<int> ListOfBought = answerFromTrader.GetBought();
             ListOfBought.Sort();
-            for(int i = ListOfBought.Count - 1; i > 0; --i){
+            for (int i = ListOfBought.Count - 1; i > 0; --i)
+            {
                 inventory.DeleteFromInventoryProd(ListOfBought[i]);
             }
             ban += answerFromTrader.GetBan();
         }
         // Конец покупки товара, который был у NPC
-        public void EndBuyTrade(Prices answerFromTrader){
+        public void EndBuyTrade(Prices answerFromTrader)
+        {
             kapital -= answerFromTrader.GetMoney();
             playerReputation += answerFromTrader.GetReputationChange();
             List<int> ListOfBought = answerFromTrader.GetBought();
             ListOfBought.Sort();
-            for(int i = ListOfBought.Count - 1; i > 0; --i){
+            for (int i = ListOfBought.Count - 1; i > 0; --i)
+            {
                 inventory.AddProduct(answerFromTrader.GetPrices()[ListOfBought[i]].GetProduct());
             }
             ban += answerFromTrader.GetBan();
         }
-        private void Eat(){
-            if(hunger == 0){
-                if(inventory.EatFood(wisdomLevel)){
+        private void Eat()
+        {
+            if (hunger == 0)
+            {
+                if (inventory.EatFood(wisdomLevel))
+                {
                     TimeSystem.GetInstance().WriteLog(name + " поел из запасов.");
                     hunger = 8;
-                } else{
-                    if(TimeSystem.GetInstance().GetLocation(location).NPCBuyFood(this)){
+                }
+                else
+                {
+                    if (TimeSystem.GetInstance().GetLocation(location).NPCBuyFood(this))
+                    {
                         hunger = 8;
-                    } else{
+                    }
+                    else
+                    {
                         TimeSystem.GetInstance().WriteLog(name + " голоден и не смог купить поесть");
                     }
                 }
-            } else{
-                --hunger; 
+            }
+            else
+            {
+                --hunger;
             }
         }
-        public bool BuyFood(NPC NPCbuyer){
+        public bool BuyFood(NPC NPCbuyer)
+        {
             List<Price> prices = MakePricesSell().GetPrices();
             int NPCkapital = NPCbuyer.GetKapital();
-            for(int i = 0; i < prices.Count; ++i){
-                if(foodNames.Contains(prices[i].GetProduct().GetVisibleType(NPCbuyer.GetWisdomLevel())) & prices[i].GetTruePrice() < NPCkapital ){
-                    TimeSystem.GetInstance().WriteLog(NPCbuyer.GetName() + " купил " + prices[i].GetProduct().GetSubType() +  " у " + name);
+            for (int i = 0; i < prices.Count; ++i)
+            {
+                if (foodNames.Contains(prices[i].GetProduct().GetVisibleType(NPCbuyer.GetWisdomLevel())) & prices[i].GetTruePrice() < NPCkapital)
+                {
+                    TimeSystem.GetInstance().WriteLog(NPCbuyer.GetName() + " купил " + prices[i].GetProduct().GetSubType() + " у " + name);
                     NPCbuyer.ReduceKapital(prices[i].GetTruePrice());
                     inventory.GetInventory().RemoveAt(i);
                     return true;

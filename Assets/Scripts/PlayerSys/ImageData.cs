@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +14,9 @@ namespace PlayerSystem
         {
             _inventoryCell = Resources.Load("Prefabs/cell") as GameObject;
 
-            _productSprites = new();
-            foreach (var sprite in Resources.LoadAll("Images/Products") as Sprite[])
-            {
-                _productSprites.Add(sprite.name, sprite);
-            }
-
-
+            _productSprites =
+                (Resources.LoadAll("Images/Products") as Sprite[])
+                .ToDictionary(sprite => sprite.name, sprite => sprite);
         }
 
         public static GameObject GetCellObject()

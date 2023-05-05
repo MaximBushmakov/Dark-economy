@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\WorldSys\WorldSystem.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Event.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Millet.cs" />
+     <Compile Include="Assets\Scripts\WorldSys\LocationData.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Fermer.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Inventory.cs" />
      <Compile Include="Assets\Scripts\WorldSys\NPC.cs" />
@@ -58,6 +59,7 @@
      <Compile Include="Assets\Scripts\WorldSys\Baker.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Prices.cs" />
      <Compile Include="Assets\Scripts\WorldSys\AllEvents.cs" />
+     <Compile Include="Assets\Scripts\WorldSys\NPCData.cs" />
      <None Include="Assets\Scripts\WorldSys\WorldSystem.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

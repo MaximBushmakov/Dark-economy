@@ -36,7 +36,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerSys\Location.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\Wagon.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\GameData.cs" />

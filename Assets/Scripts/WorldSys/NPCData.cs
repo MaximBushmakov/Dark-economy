@@ -1,0 +1,39 @@
+using System.Collections.Generic;
+using System.Linq;
+using static WorldSystem.GlobalNames;
+namespace WorldSystem
+{
+    public static class NPCData
+    {
+        // initializing static class upon call
+        public static void Initialize()
+        {
+            return;
+        }
+
+        public readonly static Dictionary<string, NPC> NPC = new List<NPC>
+        {
+            new Fermer("Марк", "Деревня",
+                new List<string> { "Хата Марка", "Улица", "Поле", "Хата Марка" }),
+
+            new Millworker("Рудольф", "Деревня",
+                new List<string> { "Хата Рудольфа", "Улица", "Мельница", "Хата Рудольфа" }),
+
+            new Fermer("Олег", "Деревня",
+                new List<string> { "Хата Олега", "Улица", "Поле", "Хата Олега" }),
+
+            new Baker("Андрей", "Город",
+                new List<string> { "Дом Андрея", "Улица", "Пекарня", "Дом Андрея" }),
+
+            new Elder("Александро", "Деревня",
+                new List<string> { "Дом Александро", "Улица", "Зал старейшины", "Дом Александро" }),
+
+            new Trader("Джон", new List<string> { "Деревня", "Город" }, new List<List<string>> {
+                new List<string> { ElderProfessionName, FermerProfessionName, MillworkerProfessionName },
+                new List<string> { BakerProfessionName }
+                }, 10)
+
+        }.ToDictionary(npc => npc.GetName(), npc => npc);
+
+    }
+}
