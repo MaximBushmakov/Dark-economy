@@ -1,6 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldSystem", "WorldSystem.csproj", "{a465ee24-de24-e7f5-7249-6845831da7c2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "Inventory.csproj", "{d4f99fe1-3f7b-4dfe-fc02-fcbf50b889cb}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerSystem", "PlayerSystem.csproj", "{ca73ffd2-a64b-dfa2-d118-9973e7a3a136}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{e45e23b1-ee71-15c8-28f8-c3378e5adb84}"
 EndProject
 Global
@@ -8,6 +14,12 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{a465ee24-de24-e7f5-7249-6845831da7c2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{a465ee24-de24-e7f5-7249-6845831da7c2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{d4f99fe1-3f7b-4dfe-fc02-fcbf50b889cb}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{d4f99fe1-3f7b-4dfe-fc02-fcbf50b889cb}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ca73ffd2-a64b-dfa2-d118-9973e7a3a136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ca73ffd2-a64b-dfa2-d118-9973e7a3a136}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{e45e23b1-ee71-15c8-28f8-c3378e5adb84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{e45e23b1-ee71-15c8-28f8-c3378e5adb84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection

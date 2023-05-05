@@ -30,18 +30,15 @@ namespace WorldSystem
                 "Not so safe road"),
             Dangerous = new("Dangerous", ("Город", "Деревня"), 1, 2,
                 "Very dangerous road");
-        private static readonly List<Road> RoadsList = new()
-        {
+        public static readonly Dictionary<string, Road> Roads = new List<Road> {
             Safe,
             Unsafe,
             Dangerous
-        };
-        public static readonly Dictionary<string, Road> Roads =
-            RoadsList.ToDictionary(road => road.Name, road => road);
+        }.ToDictionary(road => road.Name, road => road);
 
         static public int GetSafeRoadTime(string origin, string destination)
         {
-            return (from road in RoadsList
+            return (from road in Roads.Values
                     where
                        road.Locations.origin == origin && road.Locations.destination == destination ||
                        road.Locations.origin == destination && road.Locations.destination == origin

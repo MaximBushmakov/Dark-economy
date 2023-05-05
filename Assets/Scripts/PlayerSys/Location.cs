@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO.Compression;
 using System.Linq;
 
 namespace PlayerSystem
@@ -21,22 +20,21 @@ namespace PlayerSystem
         public static Location
             Town = new("Город", new List<string>
             {
-                "main",
-                "house 1",
-                "house 2"
+                "",
+                "Дом 1",
+                "Дом 2"
             }),
             Village = new("Деревня", new List<string>
             {
-                "main",
-                "hut 1",
-                "hut 2"
+                "",
+                "Хата 1",
+                "Хата 2"
             });
-        private static readonly Location[] LocationsList = {
+
+        public static Dictionary<string, Location> Locations = new List<Location>
+        {
             Town,
             Village
-        };
-
-        public static Dictionary<string, Location> Locations =
-            LocationsList.ToDictionary(loc => loc.Name, loc => loc);
+        }.ToDictionary(loc => loc.Name, loc => loc);
     }
 }

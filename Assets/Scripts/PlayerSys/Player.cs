@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using WorldSystem;
 
 namespace PlayerSystem
@@ -59,6 +57,8 @@ namespace PlayerSystem
             _wagon = WagonData.Donkey;
             _money = 100;
             _wisdom = 0;
+            _location = "Деревня";
+            _sublocation = "";
         }
     }
 }

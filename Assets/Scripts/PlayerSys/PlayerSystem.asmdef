@@ -1,0 +1,16 @@
+{
+    "name": "PlayerSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:87ac4101810913043a8a9e89c488a0bc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
