@@ -16,6 +16,7 @@ namespace WorldSystem
         public const string BadVillageEventName = "Плохое событие в деревне";
         public const string KapitalLocalEffectName = "Капитал";
         public const string ReputationLocalEffectName = "Репутация";
+        public const string MinusProductLocalEffectName = "Потеря товара";
         public const string ElderProfessionName = "Старейшина";
         public const string FermerProfessionName = "Фермер";
         public const string MillworkerProfessionName = "Мельник";

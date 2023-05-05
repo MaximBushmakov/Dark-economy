@@ -64,10 +64,10 @@ namespace WorldSystem
                     return new LocalEvent("", "", "", new List<int>(), new List<LocalEventEffect>());
             }
         }
-        public LocalEvent GetRandomEvent(int luck, string type){
+        public LocalEvent GetRandomEvent(int luck, string typeLocation){
             if(rand.Next() % 100 > (30 + luck * 6 / 10)){
                 //Bad
-                switch (type){
+                switch (typeLocation){
                     case RoadName:
                 	    return DictionaryOfBadRoadEvents[BadRoadEventsStartEvents[rand.Next() % BadRoadEventsStartEvents.Count]];
                     case VillageName:
@@ -78,7 +78,7 @@ namespace WorldSystem
                         return new LocalEvent("", "", "", new List<int>(), new List<LocalEventEffect>());
                 }
             } else{
-                switch (type){
+                switch (typeLocation){
                     case RoadName:
                 	    return DictionaryOfGoodRoadEvents[GoodRoadEventsStartEvents[rand.Next() % GoodRoadEventsStartEvents.Count]];
                     case VillageName:

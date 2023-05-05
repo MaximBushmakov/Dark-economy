@@ -22,7 +22,8 @@ namespace WorldSystem
         protected List<String> ListofProduceProduct;
         protected List<String> ListofSubLocations;
         protected string rumor;
-        public int hunger;
+        protected int hunger;
+        protected int ban;
         public NPC(string npcName, string npcLocation, string npcType, List<String> npcListofProduceMaterial, List<String> npcListofProduceProduct, List<String> thisListofSubLocations, int thisWisdomLevel, int money, int reputation){
             name = npcName;
             location = npcLocation;
@@ -44,6 +45,15 @@ namespace WorldSystem
             hunger = 10;
             ListofSubLocations = thisListofSubLocations;
             subLocationId = 0;
+        }
+        public bool CheckBan(){
+            if(ban > 0){
+                return false;
+            }
+            if(playerReputation < 0){
+                return false;
+            }
+            return true;
         }
         public string GetName(){
             return name;
@@ -108,6 +118,9 @@ namespace WorldSystem
             }
         }
         public void MakeTick(){
+            if(ban > 0){
+                --ban;
+            }
             ChangeLocation();
             ProveInventory();
             ProveEffects();
@@ -126,6 +139,7 @@ namespace WorldSystem
                 DictionaryofPriceEffects[thisEffect.GetOwner()].Add(thisEffect);
             }
         }
+        // Создаёт список цен когда этот НПС продаёт товар
         public Prices MakePricesSell(){
             Prices thisPrices = new Prices();
             List<Product> thisInventory = inventory.GetInventory();
@@ -194,6 +208,7 @@ namespace WorldSystem
             }
             return thisPrices;
         }
+        // Создаёт список цен когда этот НПС покупает товар
         public Prices MakePricesBuy(Inventory sellInventory){
             Prices thisPrices = new Prices();
             thisPrices.SetMoney(kapital);
@@ -262,6 +277,7 @@ namespace WorldSystem
             }
             return thisPrices;
         }
+        // Конец продажи товара, который был у NPC
         public void EndSellTrade(Prices answerFromTrader){
             kapital += answerFromTrader.GetMoney();
             playerReputation += answerFromTrader.GetReputationChange();
@@ -269,8 +285,10 @@ namespace WorldSystem
             ListOfBought.Sort();
             for(int i = ListOfBought.Count - 1; i > 0; --i){
                 inventory.DeleteFromInventoryProd(ListOfBought[i]);
-            } 
+            }
+            ban += answerFromTrader.GetBan();
         }
+        // Конец покупки товара, который был у NPC
         public void EndBuyTrade(Prices answerFromTrader){
             kapital -= answerFromTrader.GetMoney();
             playerReputation += answerFromTrader.GetReputationChange();
@@ -278,7 +296,8 @@ namespace WorldSystem
             ListOfBought.Sort();
             for(int i = ListOfBought.Count - 1; i > 0; --i){
                 inventory.AddProduct(answerFromTrader.GetPrices()[ListOfBought[i]].GetProduct());
-            } 
+            }
+            ban += answerFromTrader.GetBan();
         }
         private void Eat(){
             if(hunger == 0){
