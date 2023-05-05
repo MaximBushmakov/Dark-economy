@@ -7,12 +7,15 @@ namespace WorldSystem
     public static class GlobalNames{
         public const string VillageName = "Деревня";
         public const string TownName = "Город";
+        public const string RoadName = "Дорога";
         public const string GoodRoadEventName = "Хорошее событие в пути";
         public const string BadRoadEventName = "Плохое событие в пути";
         public const string GoodTownEventName = "Хорошее событие в городе";
         public const string BadTownEventName =  "Плохое событие в городе";
         public const string GoodVillageEventName = "Хорошее событие в деревне";
         public const string BadVillageEventName = "Плохое событие в деревне";
+        public const string KapitalLocalEffectName = "Капитал";
+        public const string ReputationLocalEffectName = "Репутация";
         public const string ElderProfessionName = "Старейшина";
         public const string FermerProfessionName = "Фермер";
         public const string MillworkerProfessionName = "Мельник";

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WorldSystem
 {
     public class Elder : NPC{
-        public Elder(string npcName, string npcLocation) : base(npcName, npcLocation, ElderProfessionName, new List<string>(), new List<string>() {}, 100, 10000, 20){
+        public Elder(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, ElderProfessionName, new List<string>(), new List<string>() {}, ListofSubLocations, 100, 10000, 20){
         }
         protected override void GenerateStartInventory(){
             inventory.AddProduct(new NormalBread());

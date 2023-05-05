@@ -8,6 +8,7 @@ namespace WorldSystem
     public class NPC{
         protected string name;
         protected string location;
+        protected int subLocationId;
         protected string type;
         protected Inventory inventory;
         protected Random rand;
@@ -19,9 +20,10 @@ namespace WorldSystem
         protected List<String> ListOfBuyProducts;
         protected List<String> ListofProduceMaterial;
         protected List<String> ListofProduceProduct;
+        protected List<String> ListofSubLocations;
         protected string rumor;
         public int hunger;
-        public NPC(string npcName, string npcLocation, string npcType, List<String> npcListofProduceMaterial, List<String> npcListofProduceProduct, int thisWisdomLevel, int money, int reputation){
+        public NPC(string npcName, string npcLocation, string npcType, List<String> npcListofProduceMaterial, List<String> npcListofProduceProduct, List<String> thisListofSubLocations, int thisWisdomLevel, int money, int reputation){
             name = npcName;
             location = npcLocation;
             type = npcType;
@@ -40,9 +42,14 @@ namespace WorldSystem
             GenerateStartInventory();
             FullWantToBuy();
             hunger = 10;
+            ListofSubLocations = thisListofSubLocations;
+            subLocationId = 0;
         }
         public string GetName(){
             return name;
+        }
+        public virtual string GetSublocation(){
+            return ListofSubLocations[subLocationId];
         }
         public int GetKapital(){
             return kapital;
@@ -94,7 +101,14 @@ namespace WorldSystem
         }
         protected virtual void GenerateStartInventory(){
         }
+        protected virtual void ChangeLocation(){
+            ++subLocationId;
+            if(subLocationId == ListofSubLocations.Count){
+                subLocationId = 0;
+            }
+        }
         public void MakeTick(){
+            ChangeLocation();
             ProveInventory();
             ProveEffects();
             DoActivity();

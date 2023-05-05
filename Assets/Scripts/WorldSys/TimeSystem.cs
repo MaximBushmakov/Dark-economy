@@ -53,7 +53,7 @@ namespace WorldSystem
             sw.Close();
         }
         public void StartRumors(Event thisevent){
-            List<string> ListofRumors = AllEvents.getInstance().GetRumors(thisevent, ListOfNPC.Count);
+            List<string> ListofRumors = AllEvents.GetInstance().GetRumors(thisevent, ListOfNPC.Count);
             int randid;
             for(int i = 0; i < ListOfNPC.Count; ++i){
                 randid = rand.Next() % ListofRumors.Count;
@@ -64,7 +64,7 @@ namespace WorldSystem
 
         }
         public void StartFirstEvent(){
-            currentEvent = AllEvents.getInstance().GetRandomEvent();
+            currentEvent = AllEvents.GetInstance().GetRandomEvent();
             StartRumors(currentEvent);
         }
         public void MakeEventStep(){
@@ -86,7 +86,7 @@ namespace WorldSystem
                         }
                     }
                 }
-                currentEvent = AllEvents.getInstance().GetRandomEvent();
+                currentEvent = AllEvents.GetInstance().GetRandomEvent();
                 StartRumors(currentEvent);
             }
         }
