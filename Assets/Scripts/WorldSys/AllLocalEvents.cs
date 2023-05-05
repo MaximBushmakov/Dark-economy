@@ -41,6 +41,11 @@ namespace WorldSystem
             DictionaryOfGoodVillageEvents = new Dictionary<int, LocalEvent>();
             // Bad Road
             DictionaryOfBadRoadEvents = new Dictionary<int, LocalEvent>();
+            BadRoadEventsStartEvents = new List<int>();
+            DictionaryOfBadRoadEvents.Add(0, new LocalEvent("Часть товара в пути испортился", BadRoadEventName, "На окраине дороги вы находите чью-то потерянную повозку, внутри лежат какие-то товары. Есть варианты: забрать товары или забрать из повозки деньги.", new List<int>(){1, 2}, new List<LocalEventEffect>()));
+            DictionaryOfBadRoadEvents.Add(1, new LocalEvent("Найдено золото", BadRoadEventName, "Разрывая повозку, на дну вы находите мешочек с золотом", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(KapitalLocalEffectName, 100)}));
+            DictionaryOfBadRoadEvents.Add(2, new LocalEvent("Найдено зерно", BadRoadEventName, "Разрывая повозку, вы находите немного зерна", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(NormalMilletName, 2)}));
+            BadRoadEventsStartEvents.Add(0);
             // Bad Towm
             DictionaryOfBadTownEvents = new Dictionary<int, LocalEvent>();
             // Bad Village

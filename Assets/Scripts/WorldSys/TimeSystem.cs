@@ -38,7 +38,7 @@ namespace WorldSystem
         }
         public void AddLocationtoTimeSystem(Location location)
         {
-            DictionaryOfLocations.Add(location.GetName(), location);
+            DictionaryOfLocations.Add(location.Name, location);
         }
         public static TimeSystem GetInstance()
         {
@@ -64,7 +64,7 @@ namespace WorldSystem
         }
         public void StartRumors(Event thisevent)
         {
-            List<string> ListofRumors = AllEvents.getInstance().GetRumors(thisevent, ListOfNPC.Count);
+            List<string> ListofRumors = AllEvents.GetInstance().GetRumors(thisevent, ListOfNPC.Count);
             int randid;
             for (int i = 0; i < ListOfNPC.Count; ++i)
             {
@@ -77,7 +77,7 @@ namespace WorldSystem
         }
         public void StartFirstEvent()
         {
-            currentEvent = AllEvents.getInstance().GetRandomEvent();
+            currentEvent = AllEvents.GetInstance().GetRandomEvent();
             StartRumors(currentEvent);
         }
         public void MakeEventStep()
