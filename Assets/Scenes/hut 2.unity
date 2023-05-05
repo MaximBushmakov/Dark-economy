@@ -294,7 +294,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 71471739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc223b216f95a4e44bffaadfefb81792, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d335dff33220ec4fb1ba347cbeaaabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &99578030
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 583456503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df68be72f3406f8498f32d60a13ad25f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a3229852f9b1814dab46aa773ef7461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &715410291
@@ -674,7 +674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: 300}
+  m_AnchoredPosition: {x: 501, y: 300}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &715410293
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 715410291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d584d3498493a4d88cf1b730031761, type: 3}
+  m_Script: {fileID: 11500000, guid: 85205193bebb8724095839535673cdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &715410297
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1361763770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb225b1251f59e48bf4a0c7478c8c35, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d70549a1b2f57e409657c56ab122af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1384061136
@@ -1338,10 +1338,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1384061136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 653b5ffa55d6f864789d922bf3f5dfc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c2591f7e1ee39e4dad834212f10bf9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionButtons: {fileID: 1775936251}
+  interactionButtons: {fileID: 0}
 --- !u!224 &1384061141
 RectTransform:
   m_ObjectHideFlags: 0
