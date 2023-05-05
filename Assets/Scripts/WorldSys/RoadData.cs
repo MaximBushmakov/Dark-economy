@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using WorldSystem;
 
-namespace PlayerSystem
+namespace WorldSystem
 {
     public static class RoadData
     {

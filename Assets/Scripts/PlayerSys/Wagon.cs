@@ -2,23 +2,26 @@ namespace PlayerSystem
 {
     public class Wagon
     {
-        private readonly string _name;
-        private readonly int _capacity;
+        public string Name { get; }
+        public int Capacity { get; }
+        public float Speed { get; }
 
-        public Wagon(string name, int capacity)
+
+        public Wagon(string name, int capacity, float speed)
         {
-            _name = name;
-            _capacity = capacity;
+            Name = name;
+            Capacity = capacity;
+            Speed = speed;
         }
+    }
 
-        public string GetName()
-        {
-            return _name;
-        }
+    public static class WagonData
+    {
+        public static Wagon Donkey;
 
-        public int GetCapacity()
+        static WagonData()
         {
-            return _capacity;
+            Donkey = new("Donkey", 10, 1.0f);
         }
     }
 }

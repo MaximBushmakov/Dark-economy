@@ -24,6 +24,6 @@ public class TradeExitButton : MonoBehaviour
 
     protected void OnMouseDown()
     {
-        SceneManager.LoadScene(GameData.GetLocationName());
+        SceneManager.LoadScene(GameData.Player.Location);
     }
 }

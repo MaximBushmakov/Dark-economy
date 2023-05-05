@@ -5,7 +5,7 @@ public class HouseEnter : ButtonTemplate
 {
     public void OnMouseDown()
     {
-        GameData.SetLocationName(name);
+        GameData.Player.Location = name;
         SceneManager.LoadScene(name);
     }
 }

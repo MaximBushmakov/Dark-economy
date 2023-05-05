@@ -1,39 +1,53 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using WorldSystem;
 
 namespace PlayerSystem
 {
     public class Player
     {
-        private readonly Inventory _inventory;
+        private Inventory _inventory;
+        public List<Product> Inventory { get => _inventory.GetInventory(); }
         private readonly Wagon _wagon;
+        public int Capacity { get => _wagon.Capacity; }
+        public float Speed { get => _wagon.Speed; }
         private int _money;
-        private int _wisdom;
+        public int Money { get => _money; }
         private int _reputation;
+        public int Reputation { get => _reputation; }
+        private int _wisdom;
+        public int Wisdom { get => _wisdom; }
 
-        public List<Product> GetInventory()
+
+        private string _location;
+        public string Location
         {
-            return _inventory.GetInventory();
+            get => _location;
+            set
+            {
+                if (!LocationData.Locations.ContainsKey(value))
+                {
+                    throw new Exception("There is no location named " + value);
+                }
+                _location = value;
+            }
         }
 
-        public Wagon GetWagon()
+        private string _sublocation;
+        public string Sublocation
         {
-            return _wagon;
-        }
+            get => _sublocation;
+            set
+            {
+                if (!LocationData.Locations[_location].Sublocations.Contains(value))
+                {
+                    throw new Exception("There is no sublocation named " + value + " in location named " + _location);
+                }
+                _sublocation = value;
 
-        public int GetMoney()
-        {
-            return _money;
-        }
-
-        public int GetWisdom()
-        {
-            return _wisdom;
-        }
-
-        public int GetReputation()
-        {
-            return _reputation;
+            }
         }
 
         public Player()

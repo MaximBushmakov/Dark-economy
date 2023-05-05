@@ -51,7 +51,6 @@
      <Compile Include="Assets\Scripts\GenInventoryTrader.cs" />
      <Compile Include="Assets\Scripts\NPCDialogOpen.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Effect.cs" />
-     <Compile Include="Assets\Scripts\PlayerSys\WagonData.cs" />
      <Compile Include="Assets\Scripts\npc_script.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Location.cs" />
      <Compile Include="Assets\Scripts\WorldSys\Millworker.cs" />
@@ -78,6 +77,7 @@
      <Compile Include="Assets\Scripts\WorldSys\AllEvents.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\ImageData.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\PlayerSys\Location.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

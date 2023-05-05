@@ -4,28 +4,13 @@ namespace PlayerSystem
 {
     public static class GameData
     {
-        private static readonly Player _player;
+        public static readonly Player Player;
         private static readonly List<string> _notes;
-        private static string _locationName;
 
-        public static Player GetPlayer()
-        {
-            return _player;
-        }
-
-        public static string GetLocationName()
-        {
-            return _locationName;
-        }
-
-        public static void SetLocationName(string locationName)
-        {
-            _locationName = locationName;
-        }
 
         static GameData()
         {
-            _player = new Player();
+            Player = new Player();
             _notes = new List<string>();
         }
     }
