@@ -11,29 +11,32 @@ namespace WorldSystem
             return;
         }
 
-        public readonly static Dictionary<string, NPC> NPC = new List<NPC>
+        public readonly static Dictionary<string, NPC> NPC;
+        static NPCData()
         {
-            new Fermer("Марк", "Деревня",
-                new List<string> { "Хата Марка", "Улица", "Поле", "Хата Марка" }),
+            NPC = new List<NPC>
+            {
+                new Fermer("Марк", "Деревня",
+                    new List<string> { "Хата Марка", "Улица", "Поле", "Хата Марка" }),
 
-            new Millworker("Рудольф", "Деревня",
-                new List<string> { "Хата Рудольфа", "Улица", "Мельница", "Хата Рудольфа" }),
+                new Millworker("Рудольф", "Деревня",
+                    new List<string> { "Хата Рудольфа", "Улица", "Мельница", "Хата Рудольфа" }),
 
-            new Fermer("Олег", "Деревня",
-                new List<string> { "Хата Олега", "Улица", "Поле", "Хата Олега" }),
+                new Fermer("Олег", "Деревня",
+                    new List<string> { "Хата Олега", "Улица", "Поле", "Хата Олега" }),
 
-            new Baker("Андрей", "Город",
-                new List<string> { "Дом Андрея", "Улица", "Пекарня", "Дом Андрея" }),
+                new Baker("Андрей", "Город",
+                    new List<string> { "Дом Андрея", "Улица", "Пекарня", "Дом Андрея" }),
 
-            new Elder("Александро", "Деревня",
-                new List<string> { "Дом Александро", "Улица", "Зал старейшины", "Дом Александро" }),
+                new Elder("Александро", "Деревня",
+                    new List<string> { "Дом Александро", "Улица", "Зал старейшины", "Дом Александро" }),
 
-            new Trader("Джон", new List<string> { "Деревня", "Город" }, new List<List<string>> {
-                new List<string> { ElderProfessionName, FermerProfessionName, MillworkerProfessionName },
-                new List<string> { BakerProfessionName }
-                }, 10)
+                new Trader("Джон", new List<string> { "Деревня", "Город" }, new List<List<string>> {
+                    new List<string> { ElderProfessionName, FermerProfessionName, MillworkerProfessionName },
+                    new List<string> { BakerProfessionName }
+                    }, 10)
 
-        }.ToDictionary(npc => npc.GetName(), npc => npc);
-
+            }.ToDictionary(npc => npc.GetName(), npc => npc);
+        }
     }
 }

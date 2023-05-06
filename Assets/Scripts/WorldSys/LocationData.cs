@@ -12,23 +12,27 @@ namespace WorldSystem
             return;
         }
 
-        public readonly static Dictionary<string, Location> Locations = new List<Location>
+        public readonly static Dictionary<string, Location> Locations;
+        static LocationData()
         {
-            new ("Город", TownName, new List<string>
+            Locations = new List<Location>
             {
-                "Улица",
-                "Дом 1",
-                "Дом 2"
-            }),
-            new ("Деревня", VillageName, new List<string>
-            {
-                "Улица",
-                "Поле",
-                "Мельница",
-                "Хата 1",
-                "Хата 2",
-                "Хата 3"
-            })
-        }.ToDictionary(loc => loc.Name, loc => loc);
+                new ("Город", TownName, new List<string>
+                {
+                    "Улица",
+                    "Дом 1",
+                    "Дом 2"
+                }),
+                new ("Деревня", VillageName, new List<string>
+                {
+                    "Улица",
+                    "Поле",
+                    "Мельница",
+                    "Хата 1",
+                    "Хата 2",
+                    "Хата 3"
+                })
+            }.ToDictionary(loc => loc.Name, loc => loc);
+        }
     }
 }
