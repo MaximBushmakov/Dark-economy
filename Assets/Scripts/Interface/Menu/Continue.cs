@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using PlayerSystem;
+using UnityEngine.SceneManagement;
 
 public class Continue : ButtonTemplate
 {
+    public void OnMouseDown()
+    {
+        GameData.Load();
+        SceneManager.LoadScene(GameData.Player.Location);
+    }
 }

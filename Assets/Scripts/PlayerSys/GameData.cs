@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.Search;
 using WorldSystem;
 
 namespace PlayerSystem
@@ -12,9 +11,9 @@ namespace PlayerSystem
     public static class GameData
     {
 
-        private const string _savePath = "/Games/Dark economy/Save/";
+        private const string _savePath = "/Games/Dark economy/Save/Save.dat";
         private static Player _player;
-        public static Player Player { get; }
+        public static Player Player { get => _player; }
         private static TimeSystem timeSystem;
         private static readonly List<string> _notes;
 
@@ -36,9 +35,9 @@ namespace PlayerSystem
 
         public static void Save()
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(_savePath + "Save.dat"));
+            Directory.CreateDirectory(Path.GetDirectoryName(_savePath));
             BinaryFormatter formatter = new();
-            FileStream SaveFS = new(_savePath + "Save.dat", FileMode.Create); ;
+            FileStream SaveFS = new(_savePath, FileMode.Create); ;
             try
             {
                 formatter.Serialize(SaveFS, LocationData.Locations.Values.ToList());
@@ -54,13 +53,12 @@ namespace PlayerSystem
             {
                 SaveFS.Close();
             }
-            Debug.Log("Save complete");
         }
 
         public static void Load()
         {
             TimeSystem.Reset();
-            FileStream SaveFS = new(_savePath + "Save.dat", FileMode.Open);
+            FileStream SaveFS = new(_savePath, FileMode.Open);
             BinaryFormatter formatter = new();
             try
             {
