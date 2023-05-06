@@ -37,19 +37,35 @@ namespace WorldSystem
             GoodRoadEventsStartEvents.Add(0);
             // Good Town
             DictionaryOfGoodTownEvents = new Dictionary<int, LocalEvent>();
+            GoodTownEventsStartEvents = new List<int>();
+            DictionaryOfGoodTownEvents.Add(0, new LocalEvent("Другой Торговец просит спрятать его товар", GoodTownEventName, "В городе вас в переулке находит другой торговец, он просит вас спрятать его товар, а потом вернуть его. Вы можете спрятать товар и получить за это репутацию или забрать товар себе", new List<int>(){1, 2}, new List<LocalEventEffect>()));
+            DictionaryOfGoodTownEvents.Add(1, new LocalEvent("Товар спрятан", GoodTownEventName, "Вам удалось спрятать товар так, чтобы его никто не нашёл. Через несколько дней забрав оттуда свой товар, торговец разнёс о вашей честности слух во всех городах", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(ReputationLocalEffectName, 5)}));
+            DictionaryOfGoodTownEvents.Add(2, new LocalEvent("Товар украден", GoodTownEventName, "Вы украли товар у другого торговца. Разумеется, теперь вы сможете забрать его себе, но слухи о вашем бесчестье уже пущены в народ", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(GoldenFlourName, 5), new LocalEventEffect(ReputationLocalEffectName, -10)}));
+            GoodTownEventsStartEvents.Add(0);
             // Good Village
             DictionaryOfGoodVillageEvents = new Dictionary<int, LocalEvent>();
+            GoodVillageEventsStartEvents = new List<int>();
+            DictionaryOfGoodVillageEvents.Add(0, new LocalEvent("Большой урожай", GoodVillageEventName, "У местоного фермера случился большой урожай. Он решил поделиться им с вами.", new List<int>(){}, new List<LocalEventEffect>(){new LocalEventEffect(NormalFlourName, 2)}));
+            GoodVillageEventsStartEvents.Add(0);
             // Bad Road
             DictionaryOfBadRoadEvents = new Dictionary<int, LocalEvent>();
             BadRoadEventsStartEvents = new List<int>();
-            DictionaryOfBadRoadEvents.Add(0, new LocalEvent("Часть товара в пути испортился", BadRoadEventName, "На окраине дороги вы находите чью-то потерянную повозку, внутри лежат какие-то товары. Есть варианты: забрать товары или забрать из повозки деньги.", new List<int>(){1, 2}, new List<LocalEventEffect>()));
-            DictionaryOfBadRoadEvents.Add(1, new LocalEvent("Найдено золото", BadRoadEventName, "Разрывая повозку, на дну вы находите мешочек с золотом", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(KapitalLocalEffectName, 100)}));
-            DictionaryOfBadRoadEvents.Add(2, new LocalEvent("Найдено зерно", BadRoadEventName, "Разрывая повозку, вы находите немного зерна", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(NormalMilletName, 2)}));
+            DictionaryOfBadRoadEvents.Add(0, new LocalEvent("Часть товара в пути испортился", BadRoadEventName, "Часть товара по дороге испортилось, возможно следует выбросить часть товара, чтобы сохранить другую", new List<int>(){1, 2}, new List<LocalEventEffect>()));
+            DictionaryOfBadRoadEvents.Add(1, new LocalEvent("Выброшена небольшая часть товара", BadRoadEventName, "Вы выбросили часть товара и остальная часть была сохранена", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(MinusProductLocalEffectName, 1)}));
+            DictionaryOfBadRoadEvents.Add(2, new LocalEvent("Выброшена большая часть товара", BadRoadEventName, "Из-за того что вы не выбросили часть товара, большое количество друцгих товаров пришла в негодность", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(MinusProductLocalEffectName, 2)}));
             BadRoadEventsStartEvents.Add(0);
-            // Bad Towm
+            // Bad Town
             DictionaryOfBadTownEvents = new Dictionary<int, LocalEvent>();
+            BadTownEventsStartEvents = new List<int>();
+            DictionaryOfBadTownEvents.Add(0, new LocalEvent("Ограбление!", BadTownEventName, "Что же плохого может случиться в тёмном переулке? Конечно же ограбление! Вы можете попытаться бежать или же спокойно отдать часть ваших денег", new List<int>(){1, 2}, new List<LocalEventEffect>()));
+            DictionaryOfBadTownEvents.Add(1, new LocalEvent("Побег", BadTownEventName, "Вы решили сбежать, однако для этого пришлось оставить часть товара.", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(MinusProductLocalEffectName, 1)}));
+            DictionaryOfBadTownEvents.Add(2, new LocalEvent("Откуп", BadTownEventName, "Вы смогли откупиться от грабителей. Спрятав часть своих денег, вы отдаёте оставшееся преступникам", new List<int>(), new List<LocalEventEffect>(){new LocalEventEffect(KapitalLocalEffectName, -400)}));
+            BadTownEventsStartEvents.Add(0);
             // Bad Village
             DictionaryOfBadVillageEvents = new Dictionary<int, LocalEvent>();
+            BadVillageEventsStartEvents = new List<int>();
+            DictionaryOfBadVillageEvents.Add(0, new LocalEvent("Кража в доме", BadVillageEventName, "Пока вы мирно спали в доме, кто-то украл у кас деньги", new List<int>(){}, new List<LocalEventEffect>(){new LocalEventEffect(KapitalLocalEffectName, -100)}));
+            BadVillageEventsStartEvents.Add(0);
         }
         public LocalEvent GetEvent(int id, string type){
             switch (type){

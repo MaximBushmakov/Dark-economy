@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
+    [Serializable]
     public class Price{
         private Product product;
         private int truePrice;

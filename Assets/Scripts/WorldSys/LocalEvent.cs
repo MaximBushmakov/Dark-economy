@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
+    [Serializable]
     public class LocalEventEffect{
         protected string type;
         protected int baf;
@@ -17,6 +18,7 @@ namespace WorldSystem
             return baf;
         }
     }
+    [Serializable]
     public class LocalEvent{
         protected string name;
         protected string text;

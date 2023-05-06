@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace WorldSystem
 {
+    [Serializable]
     public class Road
     {
         public readonly string Name;
