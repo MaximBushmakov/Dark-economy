@@ -12,12 +12,8 @@ namespace WorldSystem
 
         public static void Initialize(List<Location> locationsList)
         {
-            // if (_locations != null)
-            // {
-            //     throw new System.Exception("Attempt to reinitialize LocationData");
-            // }
             _locations = new ReadOnlyDictionary<string, Location>(locationsList
-                .ToDictionary(loc => loc.Name, loc => loc));
+                .ToDictionary(loc => loc.GetName(), loc => loc));
         }
 
         public static void Initialize()
@@ -39,7 +35,7 @@ namespace WorldSystem
                     "Хата 2",
                     "Хата 3"
                 })
-            }.ToDictionary(loc => loc.Name, loc => loc));
+            }.ToDictionary(loc => loc.GetName(), loc => loc));
         }
     }
 }

@@ -11,10 +11,6 @@ namespace WorldSystem
 
         public static void Initialize(List<NPC> NPCList)
         {
-            // if (_NPC != null)
-            // {
-            //     throw new System.Exception("Attempt to reinitialize NPCData");
-            // }
             _NPC = new ReadOnlyDictionary<string, NPC>(NPCList
                 .ToDictionary(npc => npc.GetName(), npc => npc));
         }

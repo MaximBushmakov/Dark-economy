@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using UnityEditor.PackageManager.Requests;
 using static WorldSystem.GlobalNames;
 #pragma warning disable CS0642
 
@@ -8,15 +10,54 @@ namespace WorldSystem
 {
     public class TimeSystem
     {
-        private object threadLock = new object();
+        private object threadLock = new();
         private static TimeSystem instance;
         private List<Product> ListOfProducts;
         private List<NPC> ListOfNPC;
         private List<Effect> ListOfEffects;
-        private Dictionary<String, Location> DictionaryOfLocations;
+        private Dictionary<string, Location> DictionaryOfLocations;
         private StreamWriter sw;
         private Event currentEvent;
         protected Random rand;
+
+        public TimeSystem()
+        {
+            ListOfNPC = new List<NPC>();
+            ListOfProducts = new List<Product>();
+            DictionaryOfLocations = new Dictionary<string, Location>();
+            ListOfEffects = new List<Effect>();
+            sw = new StreamWriter("Logs.txt");
+            rand = new Random();
+        }
+
+        public static TimeSystem GetInstance()
+        {
+            instance ??= new TimeSystem();
+            return instance;
+        }
+
+        public static void Reset()
+        {
+            instance.EndLog();
+            instance = new TimeSystem();
+        }
+
+        public void Initialize(List<Location> locationList, Event curEvent)
+        {
+            DictionaryOfLocations = locationList
+                .ToDictionary(loc => loc.GetName(), loc => loc);
+            currentEvent = curEvent;
+            ListOfNPC = locationList.SelectMany(loc => loc.GetNPC()).ToList();
+            ListOfEffects = locationList.SelectMany(loc => loc.GetEffects()).ToList();
+            ListOfEffects.AddRange(ListOfNPC.SelectMany(npc => npc.GetEffects()));
+            ListOfProducts = ListOfNPC.SelectMany(npc => npc.GetInventoryProducts()).ToList();
+        }
+
+        public Event GetCurrentEvent()
+        {
+            return currentEvent;
+        }
+
         public void AddEffecttoTimeSystem(Effect newEffect)
         {
             lock (threadLock) ;
@@ -38,21 +79,7 @@ namespace WorldSystem
         }
         public void AddLocationtoTimeSystem(Location location)
         {
-            DictionaryOfLocations.Add(location.Name, location);
-        }
-        public static TimeSystem GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new TimeSystem();
-                instance.ListOfNPC = new List<NPC>();
-                instance.ListOfProducts = new List<Product>();
-                instance.DictionaryOfLocations = new Dictionary<string, Location>();
-                instance.ListOfEffects = new List<Effect>();
-                instance.sw = new StreamWriter("Logs.txt");
-                instance.rand = new Random();
-            }
-            return instance;
+            DictionaryOfLocations.Add(location.GetName(), location);
         }
         public void WriteLog(string text)
         {
@@ -149,6 +176,10 @@ namespace WorldSystem
         public Location GetLocation(string nameLocation)
         {
             return DictionaryOfLocations[nameLocation];
+        }
+        public List<Location> GetLocationList()
+        {
+            return DictionaryOfLocations.Values.ToList();
         }
         public void TraderChangeLocation(NPC thisNPC, string newlocation)
         {

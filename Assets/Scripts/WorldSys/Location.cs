@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
@@ -8,9 +9,9 @@ namespace WorldSystem
     [Serializable]
     public class Location
     {
-        public readonly string Name;
-        public readonly List<string> Sublocations;
-        public readonly string type;
+        private string _name;
+        private List<string> _sublocations;
+        private string _type;
         private List<NPC> listOfNPC;
         private List<NPC> listOfNPCSellers;
         protected List<Effect> ListOfEffects;
@@ -18,11 +19,38 @@ namespace WorldSystem
         [field: NonSerialized]
         protected Random rand;
 
+        [OnDeserialized]
+        private void OnDeserializeMethod(StreamingContext context)
+        {
+            rand = new Random();
+            TimeSystem.GetInstance().AddLocationtoTimeSystem(this);
+        }
+
+        public List<Effect> GetEffects()
+        {
+            return ListOfEffects;
+        }
+
+        public string GetName()
+        {
+            return _name;
+        }
+
+        public List<string> GetSublocations()
+        {
+            return _sublocations;
+        }
+
+        public string GetLocationType()
+        {
+            return _type;
+        }
+
         public Location(string name, string thisType, List<string> sublocations)
         {
-            Name = name;
-            type = thisType;
-            Sublocations = sublocations;
+            _name = name;
+            _type = thisType;
+            _sublocations = sublocations;
             listOfNPC = new List<NPC>();
             listOfNPCSellers = new List<NPC>();
             ListOfEffects = new List<Effect>();
@@ -66,7 +94,7 @@ namespace WorldSystem
             {
                 if (ListOfEffects[i].ProvDone())
                 {
-                    TimeSystem.GetInstance().WriteLog(ListOfEffects[i].GetName() + " перестаёт оказывать эффект на " + Name);
+                    TimeSystem.GetInstance().WriteLog(ListOfEffects[i].GetName() + " перестаёт оказывать эффект на " + _name);
                     if (ListOfEffects[i].GetEffectType() == PriceEffectType)
                     {
                         DictionaryofPriceEffects[ListOfEffects[i].GetOwner()].Remove(ListOfEffects[i]);

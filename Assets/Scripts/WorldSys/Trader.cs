@@ -1,10 +1,12 @@
 using System;
-using static WorldSystem.GlobalNames;
 using System.Collections.Generic;
+using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
-    public class Trader: NPC{
+    [Serializable]
+    public class Trader : NPC
+    {
         private int ticks;
         private int roadPoint;
         private string sublocation;
@@ -12,7 +14,8 @@ namespace WorldSystem
         private List<List<string>> tradeMap;
         private int roadTicks;
         private int luck;
-        public Trader(string npcName, List<string> npcRoadMap, List<List<string>> npcTradeMap, int thisLuck) : base(npcName, npcRoadMap[0], TraderProfessionName, new List<string>(), new List<string>(), new List<string>(), 20, 100, 20){
+        public Trader(string npcName, List<string> npcRoadMap, List<List<string>> npcTradeMap, int thisLuck) : base(npcName, npcRoadMap[0], TraderProfessionName, new List<string>(), new List<string>(), new List<string>(), 20, 100, 20)
+        {
             ticks = 0;
             roadMap = npcRoadMap;
             tradeMap = npcTradeMap;
@@ -20,8 +23,10 @@ namespace WorldSystem
             roadTicks = 0;
             thisLuck = luck;
         }
-        public override void DoActivity(){
-            if(roadTicks == 0){
+        public override void DoActivity()
+        {
+            if (roadTicks == 0)
+            {
                 NPC tradeNPC = TimeSystem.GetInstance().GetLocation(location).FindRandomNPCType(tradeMap[roadPoint][ticks]);
                 sublocation = tradeNPC.GetSublocation();
                 TimeSystem.GetInstance().WriteLog(name + " торгует с " + tradeNPC.GetProfessionType() + " " + tradeNPC.GetName());
@@ -31,8 +36,10 @@ namespace WorldSystem
                 List<string> npcWantToBuy = tradeNPC.GetMaterial();
                 List<Price> ListPrices = pricesBuy.GetPrices();
                 int money = 0;
-                for(int i = 0; i < ListPrices.Count; ++i){
-                    if(npcWantToSell.Contains(ListPrices[i].GetProduct().GetVisibleType(wisdomLevel))){
+                for (int i = 0; i < ListPrices.Count; ++i)
+                {
+                    if (npcWantToSell.Contains(ListPrices[i].GetProduct().GetVisibleType(wisdomLevel)))
+                    {
                         pricesBuy.AddBought(i);
                         inventory.AddProduct(ListPrices[i].GetProduct());
                         TimeSystem.GetInstance().WriteLog(name + " покупает " + ListPrices[i].GetProduct().GetSubType());
@@ -47,9 +54,12 @@ namespace WorldSystem
                 ListPrices = pricesSell.GetPrices();
                 int moneyNPC = pricesSell.GetMoney();
                 money = 0;
-                for(int i = ListPrices.Count - 1; i > 0; --i){
-                    if(npcWantToBuy.Contains(ListPrices[i].GetProduct().GetVisibleType(wisdomLevel))){
-                        if(money + ListPrices[i].GetTruePrice() < moneyNPC){
+                for (int i = ListPrices.Count - 1; i > 0; --i)
+                {
+                    if (npcWantToBuy.Contains(ListPrices[i].GetProduct().GetVisibleType(wisdomLevel)))
+                    {
+                        if (money + ListPrices[i].GetTruePrice() < moneyNPC)
+                        {
                             pricesSell.AddBought(i);
                             inventory.DeleteFromInventoryProd(i);
                             TimeSystem.GetInstance().WriteLog(name + " продаёт " + ListPrices[i].GetProduct().GetSubType());
@@ -62,16 +72,24 @@ namespace WorldSystem
                 ++ticks;
             }
         }
-        protected override void ChangeLocation(){
-            if(roadTicks > 0){
+        protected override void ChangeLocation()
+        {
+            if (roadTicks > 0)
+            {
                 --roadTicks;
-                if(roadTicks == 0){
+                if (roadTicks == 0)
+                {
                     TimeSystem.GetInstance().WriteLog(name + " прибыл в локацию " + location);
                 }
-            } else if(ticks >= tradeMap[roadPoint].Count){
-                if(roadPoint < roadMap.Count - 1){
+            }
+            else if (ticks >= tradeMap[roadPoint].Count)
+            {
+                if (roadPoint < roadMap.Count - 1)
+                {
                     ++roadPoint;
-                } else{
+                }
+                else
+                {
                     roadPoint = 0;
                 }
                 TimeSystem.GetInstance().TraderChangeLocation(this, roadMap[roadPoint]);
@@ -83,17 +101,21 @@ namespace WorldSystem
                 ticks = 0;
             }
         }
-        public void DoLocalEvent(LocalEvent thisLocalEvent){
+        public void DoLocalEvent(LocalEvent thisLocalEvent)
+        {
             TimeSystem.GetInstance().WriteLog(name + " происходит событие " + thisLocalEvent.GetName());
             List<LocalEventEffect> effects = thisLocalEvent.GetEffects();
-            for(int i = 0; i < effects.Count; ++i){
+            for (int i = 0; i < effects.Count; ++i)
+            {
                 DoLocalEffect(effects[i]);
             }
             List<int> answers = thisLocalEvent.GetAnswers();
             DoLocalEvent(thisLocalEvent.MakeChose(answers[rand.Next() % answers.Count]));
         }
-        public void DoLocalEffect(LocalEventEffect effect){
-            switch(effect.GetEffectType()){
+        public void DoLocalEffect(LocalEventEffect effect)
+        {
+            switch (effect.GetEffectType())
+            {
                 case (KapitalLocalEffectName):
                     kapital += effect.GetBaf();
                     break;
@@ -104,7 +126,8 @@ namespace WorldSystem
                     break;
             }
         }
-        public override string GetSublocation(){
+        public override string GetSublocation()
+        {
             return sublocation;
         }
     }

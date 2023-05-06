@@ -1,17 +1,24 @@
 using System;
-using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace WorldSystem
 {
     [Serializable]
     public class Effect
     {
-        string name;
-        string type;
-        int lifeTime;
-        int ticks;
-        string owner;
+        private string name;
+        private string type;
+        private int lifeTime;
+        private int ticks;
+        private string owner;
         private int effectBaf;
+
+        [OnDeserialized]
+        private void OnDeserializeMethod(StreamingContext context)
+        {
+            TimeSystem.GetInstance().AddEffecttoTimeSystem(this);
+        }
+
         public Effect(string thisName, string thisType, string thisOwner, int thisEffectBaf, int thisLifeTime)
         {
             name = thisName;
@@ -34,13 +41,13 @@ namespace WorldSystem
         {
             return owner;
         }
-        public String GetEffectType()
+        public string GetEffectType()
         {
             return type;
         }
         public bool ProvDone()
         {
-            return (ticks >= lifeTime);
+            return ticks >= lifeTime;
         }
         public void MakeTick()
         {
@@ -49,8 +56,7 @@ namespace WorldSystem
     }
     public class PriceEffect : Effect
     {
-        public PriceEffect(string thisName, int thisLifeTime, int thisEffectBaf, string thisproductType) : base(thisName, "Price", thisproductType, thisEffectBaf, thisLifeTime)
-        {
-        }
+        public PriceEffect(string thisName, int thisLifeTime, int thisEffectBaf, string thisproductType)
+            : base(thisName, "Price", thisproductType, thisEffectBaf, thisLifeTime) { }
     }
 }

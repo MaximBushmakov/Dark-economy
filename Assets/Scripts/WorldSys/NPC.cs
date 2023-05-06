@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
@@ -13,7 +15,6 @@ namespace WorldSystem
         protected int subLocationId;
         protected string type;
         protected Inventory inventory;
-        protected Random rand;
         protected int wisdomLevel;
         protected int kapital;
         protected int playerReputation;
@@ -26,6 +27,26 @@ namespace WorldSystem
         protected string rumor;
         protected int hunger;
         protected int ban;
+        [field: NonSerialized]
+        protected Random rand;
+
+        [OnDeserialized]
+        private void OnDeserializeMethod(StreamingContext context)
+        {
+            rand = new Random();
+            TimeSystem.GetInstance().AddNPCtoTimeSystem(this);
+        }
+
+        public List<Effect> GetEffects()
+        {
+            return ListOfEffects;
+        }
+
+        public List<Product> GetInventoryProducts()
+        {
+            return inventory.GetInventory();
+        }
+
         public NPC(string npcName, string npcLocation, string npcType, List<string> npcListofProduceMaterial, List<string> npcListofProduceProduct, List<string> thisListofSubLocations, int thisWisdomLevel, int money, int reputation)
         {
             name = npcName;

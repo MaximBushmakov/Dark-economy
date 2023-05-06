@@ -40,7 +40,7 @@ namespace PlayerSystem
             get => _sublocation;
             set
             {
-                if (!LocationData.Locations[_location].Sublocations.Contains(value))
+                if (!LocationData.Locations[_location].GetSublocations().Contains(value))
                 {
                     throw new Exception("There is no sublocation named " + value + " in location named " + _location);
                 }

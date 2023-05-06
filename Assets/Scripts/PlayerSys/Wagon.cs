@@ -1,5 +1,8 @@
+using System;
+
 namespace PlayerSystem
 {
+    [Serializable]
     public class Wagon
     {
         public string Name { get; }

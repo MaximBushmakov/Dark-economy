@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    public class Product{
+    [Serializable]
+    public class Product
+    {
         protected string mainType;
         protected string subType;
         protected int mainCost;
@@ -11,7 +13,8 @@ namespace WorldSystem
         protected int quality;
         protected int ticks;
         protected int wisdomLevel;
-        public Product(string type, string subtype, int basiccost, int maincost, int wisdomlevel){
+        public Product(string type, string subtype, int basiccost, int maincost, int wisdomlevel)
+        {
             mainType = type;
             subType = subtype;
             mainCost = maincost;
@@ -21,31 +24,40 @@ namespace WorldSystem
             wisdomLevel = wisdomlevel;
             TimeSystem.GetInstance().AddProducttoTimeSystem(this);
         }
-        public string GetVisibleType(int wisdom){
-            if(wisdom < wisdomLevel){
+        public string GetVisibleType(int wisdom)
+        {
+            if (wisdom < wisdomLevel)
+            {
                 return mainType;
             }
             return subType;
         }
-        public string GetMainType(){
+        public string GetMainType()
+        {
             return mainType;
         }
-        public string GetSubType(){
+        public string GetSubType()
+        {
             return subType;
         }
-        public virtual void MakeTick(){
+        public virtual void MakeTick()
+        {
             ticks += 1;
         }
-        public int GetQuality(){
+        public int GetQuality()
+        {
             return this.quality;
         }
-        public int GetCost(int wisdom){
-            if(wisdom < wisdomLevel){
+        public int GetCost(int wisdom)
+        {
+            if (wisdom < wisdomLevel)
+            {
                 return basicCost;
             }
             return mainCost;
         }
-        public void DeleteThis(){
+        public void DeleteThis()
+        {
             quality = 0;
         }
     }
