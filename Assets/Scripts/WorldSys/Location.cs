@@ -5,6 +5,7 @@ using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
+    [Serializable]
     public class Location
     {
         public readonly string Name;
@@ -14,6 +15,7 @@ namespace WorldSystem
         private List<NPC> listOfNPCSellers;
         protected List<Effect> ListOfEffects;
         protected Dictionary<string, List<Effect>> DictionaryofPriceEffects;
+        [field: NonSerialized]
         protected Random rand;
 
         public Location(string name, string thisType, List<string> sublocations)

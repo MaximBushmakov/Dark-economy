@@ -4,6 +4,7 @@ using WorldSystem;
 
 namespace PlayerSystem
 {
+    [Serializable]
     public class Player
     {
         private Inventory _inventory;

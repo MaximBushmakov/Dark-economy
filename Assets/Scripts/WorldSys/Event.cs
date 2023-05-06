@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 namespace WorldSystem
 {
-    public class Event{
+    [Serializable]
+    public class Event
+    {
         protected string name;
         protected string location;
         protected string text;
@@ -11,8 +13,9 @@ namespace WorldSystem
         protected int startTime;
         protected bool used;
         List<Effect> ListOfEffects;
-        List<String> ListOfRumors;
-        public Event(string thisName, string thisLocation, string thisText, int thisTimeToStart, List<Effect> thisListOfEffects, List<String> thisListOfRumors){
+        List<string> ListOfRumors;
+        public Event(string thisName, string thisLocation, string thisText, int thisTimeToStart, List<Effect> thisListOfEffects, List<String> thisListOfRumors)
+        {
             name = thisName;
             location = thisLocation;
             text = thisText;
@@ -22,30 +25,39 @@ namespace WorldSystem
             ListOfEffects = thisListOfEffects;
             ListOfRumors = thisListOfRumors;
         }
-        public bool Start(){
-            if(timeToStart > 0){
+        public bool Start()
+        {
+            if (timeToStart > 0)
+            {
                 --timeToStart;
                 used = true;
                 return false;
-            } else{
+            }
+            else
+            {
                 used = false;
                 timeToStart = startTime;
                 return true;
             }
         }
-        public List<String> GetRumors(){
+        public List<String> GetRumors()
+        {
             return ListOfRumors;
         }
-        public List<Effect> GetEffects(){
+        public List<Effect> GetEffects()
+        {
             return ListOfEffects;
         }
-        public string GetName(){
+        public string GetName()
+        {
             return name;
         }
-        public string GetText(){
+        public string GetText()
+        {
             return text;
         }
-        public string GetLocation(){
+        public string GetLocation()
+        {
             return location;
         }
     }

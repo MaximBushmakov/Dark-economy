@@ -1,19 +1,27 @@
 using System;
-using static WorldSystem.GlobalNames;
 using System.Collections.Generic;
+using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
-    public class Bread : Product{
-        public Bread(string subtype, int maincost, int wisdomlevel) : base(NormalBreadName, subtype, 5, maincost, wisdomlevel){
+    [Serializable]
+    public class Bread : Product
+    {
+        public Bread(string subtype, int maincost, int wisdomlevel) : base(NormalBreadName, subtype, 5, maincost, wisdomlevel)
+        {
         }
     }
-    public class NormalBread : Bread{
-        public NormalBread() : base(NormalBreadName, 200, 0){
+    [Serializable]
+    public class NormalBread : Bread
+    {
+        public NormalBread() : base(NormalBreadName, 200, 0)
+        {
         }
-        public override void MakeTick(){
+        public override void MakeTick()
+        {
             ++ticks;
-            switch(ticks){
+            switch (ticks)
+            {
                 case > 15:
                     quality = 0;
                     break;
@@ -26,12 +34,17 @@ namespace WorldSystem
             }
         }
     }
-    public class GoldenBread : Bread{
-        public GoldenBread() : base(GoldenBreadName, 500, 25){
+    [Serializable]
+    public class GoldenBread : Bread
+    {
+        public GoldenBread() : base(GoldenBreadName, 500, 25)
+        {
         }
-        public override void MakeTick(){
+        public override void MakeTick()
+        {
             ++ticks;
-            switch(ticks){
+            switch (ticks)
+            {
                 case > 15:
                     quality = 0;
                     break;
@@ -44,12 +57,17 @@ namespace WorldSystem
             }
         }
     }
-    public class BadBread : Bread{
-        public BadBread() : base(BadFlourName, 40, 5){
+    [Serializable]
+    public class BadBread : Bread
+    {
+        public BadBread() : base(BadFlourName, 40, 5)
+        {
         }
-        public override void MakeTick(){
+        public override void MakeTick()
+        {
             ++ticks;
-            switch(ticks){
+            switch (ticks)
+            {
                 case > 15:
                     quality = 0;
                     break;

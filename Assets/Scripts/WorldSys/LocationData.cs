@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using static WorldSystem.GlobalNames;
 
@@ -6,16 +7,22 @@ namespace WorldSystem
 {
     public static class LocationData
     {
-        // initializing static class upon call
-        public static void Initialize()
+        public static ReadOnlyDictionary<string, Location> _locations;
+        public static ReadOnlyDictionary<string, Location> Locations { get => _locations; }
+
+        public static void Initialize(List<Location> locationsList)
         {
-            return;
+            // if (_locations != null)
+            // {
+            //     throw new System.Exception("Attempt to reinitialize LocationData");
+            // }
+            _locations = new ReadOnlyDictionary<string, Location>(locationsList
+                .ToDictionary(loc => loc.Name, loc => loc));
         }
 
-        public readonly static Dictionary<string, Location> Locations;
-        static LocationData()
+        public static void Initialize()
         {
-            Locations = new List<Location>
+            _locations = new ReadOnlyDictionary<string, Location>(new List<Location>
             {
                 new ("Город", TownName, new List<string>
                 {
@@ -32,7 +39,7 @@ namespace WorldSystem
                     "Хата 2",
                     "Хата 3"
                 })
-            }.ToDictionary(loc => loc.Name, loc => loc);
+            }.ToDictionary(loc => loc.Name, loc => loc));
         }
     }
 }

@@ -5,6 +5,7 @@ using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
 {
+    [Serializable]
     public class NPC
     {
         protected string name;

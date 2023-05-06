@@ -1,20 +1,27 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using static WorldSystem.GlobalNames;
 namespace WorldSystem
 {
     public static class NPCData
     {
-        // initializing static class upon call
-        public static void Initialize()
+        private static ReadOnlyDictionary<string, NPC> _NPC;
+        public static ReadOnlyDictionary<string, NPC> NPC { get => _NPC; }
+
+        public static void Initialize(List<NPC> NPCList)
         {
-            return;
+            // if (_NPC != null)
+            // {
+            //     throw new System.Exception("Attempt to reinitialize NPCData");
+            // }
+            _NPC = new ReadOnlyDictionary<string, NPC>(NPCList
+                .ToDictionary(npc => npc.GetName(), npc => npc));
         }
 
-        public readonly static Dictionary<string, NPC> NPC;
-        static NPCData()
+        public static void Initialize()
         {
-            NPC = new List<NPC>
+            _NPC = new ReadOnlyDictionary<string, NPC>(new List<NPC>
             {
                 new Fermer("Марк", "Деревня",
                     new List<string> { "Хата Марка", "Улица", "Поле", "Хата Марка" }),
@@ -36,7 +43,7 @@ namespace WorldSystem
                     new List<string> { BakerProfessionName }
                     }, 10)
 
-            }.ToDictionary(npc => npc.GetName(), npc => npc);
+            }.ToDictionary(npc => npc.GetName(), npc => npc));
         }
     }
 }
