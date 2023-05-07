@@ -129,7 +129,7 @@ namespace WorldSystem
             {
                 if (products[i].GetQuality() == 0)
                 {
-                    TimeSystem.GetInstance().WriteLog(name + " выкидывает " + products[i].GetSubType());
+                    TimeSystem.GetInstance().WriteLog(type + " " + name + " выкидывает " + products[i].GetSubType());
                     products.RemoveAt(i);
                 }
             }
@@ -140,7 +140,7 @@ namespace WorldSystem
             {
                 if (ListOfEffects[i].ProvDone())
                 {
-                    TimeSystem.GetInstance().WriteLog(ListOfEffects[i].GetName() + " перестаёт оказывать эффект на " + name);
+                    TimeSystem.GetInstance().WriteLog(ListOfEffects[i].GetName() + " перестаёт оказывать эффект на " + type + " " + name);
                     if (ListOfEffects[i].GetEffectType() == PriceEffectType)
                     {
                         DictionaryofPriceEffects[ListOfEffects[i].GetOwner()].Remove(ListOfEffects[i]);
@@ -150,7 +150,12 @@ namespace WorldSystem
             }
         }
         public virtual void DoActivity() { }
-        protected virtual void FullWantToBuy() { }
+        protected void FullWantToBuy() {
+            AddFoodProductsToWantBuy();
+            for(int i = 0; i < ListofProduceMaterial.Count; ++i){
+                ListOfBuyProducts.Add(ListofProduceMaterial[i]);
+            }
+        }
         protected virtual void GenerateStartInventory() { }
         protected virtual void ChangeLocation()
         {
@@ -284,7 +289,7 @@ namespace WorldSystem
                 int tPrice = thisInventory[i].GetCost(wisdomLevel);
                 if (!ListOfBuyProducts.Contains(productType))
                 {
-                    tPrice /= 10;
+                    tPrice /= 2;
                 }
                 switch (thisInventory[i].GetQuality())
                 {
@@ -378,13 +383,13 @@ namespace WorldSystem
             }
             ban += answerFromTrader.GetBan();
         }
-        private void Eat()
+        protected virtual void Eat()
         {
             if (hunger == 0)
             {
                 if (inventory.EatFood(wisdomLevel))
                 {
-                    TimeSystem.GetInstance().WriteLog(name + " поел из запасов.");
+                    TimeSystem.GetInstance().WriteLog(type + " " + name + " поел из запасов.");
                     hunger = 8;
                 }
                 else
@@ -395,7 +400,7 @@ namespace WorldSystem
                     }
                     else
                     {
-                        TimeSystem.GetInstance().WriteLog(name + " голоден и не смог купить поесть");
+                        TimeSystem.GetInstance().WriteLog(type + " " + name + " голоден и не смог купить поесть");
                     }
                 }
             }
@@ -412,13 +417,18 @@ namespace WorldSystem
             {
                 if (foodNames.Contains(prices[i].GetProduct().GetVisibleType(NPCbuyer.GetWisdomLevel())) & prices[i].GetTruePrice() < NPCkapital)
                 {
-                    TimeSystem.GetInstance().WriteLog(NPCbuyer.GetName() + " купил " + prices[i].GetProduct().GetSubType() + " у " + name);
+                    TimeSystem.GetInstance().WriteLog(NPCbuyer.GetProfessionType() + " " + NPCbuyer.GetName() + " купил " + prices[i].GetProduct().GetSubType() + " у " +  type + " " + name);
                     NPCbuyer.ReduceKapital(prices[i].GetTruePrice());
                     inventory.GetInventory().RemoveAt(i);
                     return true;
                 }
             }
             return false;
+        }
+        protected void AddFoodProductsToWantBuy(){
+            for(int i = 0; i < foodNames.Count(); ++i){
+                ListOfBuyProducts.Add(foodNames[i]);
+            }
         }
     }
 }

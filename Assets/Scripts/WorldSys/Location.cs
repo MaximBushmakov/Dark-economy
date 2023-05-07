@@ -80,7 +80,7 @@ namespace WorldSystem
             List<int> correctNPC = new();
             for (int i = 0; i < listOfNPC.Count; ++i)
             {
-                if (listOfNPC[i].GetProfessionType() == npcType)
+                if (listOfNPC[i].GetProfessionType() == npcType & listOfNPC[i].GetSublocation() != SeaName)
                 {
                     correctNPC.Add(i);
                 }

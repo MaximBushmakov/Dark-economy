@@ -6,15 +6,11 @@ namespace WorldSystem
 {
     [Serializable]
     public class Hunter : NPC{
-        public Hunter(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, HunterProfessionName, new List<string>(), new List<string>() { GoldenMetalName, NormalMetalName, BadMetalName}, ListofSubLocations, 20, 10000, 20){
+        public Hunter(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, HunterProfessionName, new List<string>(), new List<string>() { GoldenFurName, NormalFurName, BadFurName, GoldenMeatName, NormalMeatName, BadMeatName, GoldenSkinName, NormalSkinName, BadSkinName}, ListofSubLocations, 20, 10000, 20){
         }
         protected override void GenerateStartInventory(){
             inventory.AddProduct(new NormalMeat());
             inventory.AddProduct(new NormalMeat());
-        }
-        protected override void FullWantToBuy(){
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(BadBreadName);
         }
         public override void DoActivity(){
             int randNum = rand.Next() % 100;

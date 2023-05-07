@@ -101,34 +101,60 @@ namespace WorldSystem
                 ticks = 0;
             }
         }
-        public void DoLocalEvent(LocalEvent thisLocalEvent)
-        {
-            TimeSystem.GetInstance().WriteLog(name + " происходит событие " + thisLocalEvent.GetName());
+        public void DoLocalEvent(LocalEvent thisLocalEvent){
+            TimeSystem.GetInstance().WriteLog(type + " " + name + " получает событие: " + thisLocalEvent.GetName());
             List<LocalEventEffect> effects = thisLocalEvent.GetEffects();
-            for (int i = 0; i < effects.Count; ++i)
-            {
+            for(int i = 0; i < effects.Count; ++i){
                 DoLocalEffect(effects[i]);
             }
-            List<int> answers = thisLocalEvent.GetAnswers();
-            DoLocalEvent(thisLocalEvent.MakeChose(answers[rand.Next() % answers.Count]));
+            List<int> answers = thisLocalEvent.GetAnswerId();
+            if(answers.Count > 0){
+                DoLocalEvent(thisLocalEvent.MakeChose(answers[rand.Next() % answers.Count]));
+            }
         }
-        public void DoLocalEffect(LocalEventEffect effect)
-        {
-            switch (effect.GetEffectType())
-            {
+        public void DoLocalEffect(LocalEventEffect effect){
+            switch(effect.GetEffectType()){
                 case (KapitalLocalEffectName):
                     kapital += effect.GetBaf();
                     break;
                 case (ReputationLocalEffectName):
+                    break;
+                case (MinusProductLocalEffectName):
+                    inventory.DeleteSomeProduct(effect.GetBaf());
                     break;
                 default:
                     inventory.AddProductType(effect.GetEffectType(), effect.GetBaf());
                     break;
             }
         }
-        public override string GetSublocation()
-        {
+        public override string GetSublocation(){
             return sublocation;
+        }
+        protected override void Eat()
+        {
+            if (roadTicks == 0 & hunger == 0)
+            {
+                if (inventory.EatFood(wisdomLevel))
+                {
+                    TimeSystem.GetInstance().WriteLog(type + " " + name + " поел из запасов.");
+                    hunger = 8;
+                }
+                else
+                {
+                    if (TimeSystem.GetInstance().GetLocation(location).NPCBuyFood(this))
+                    {
+                        hunger = 8;
+                    }
+                    else
+                    {
+                        TimeSystem.GetInstance().WriteLog(type + " " + name + " голоден и не смог купить поесть");
+                    }
+                }
+            }
+            else
+            {
+                --hunger;
+            }
         }
     }
 }

@@ -8,12 +8,6 @@ namespace WorldSystem
     public class Woodworker : NPC{
         public Woodworker(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, WoodworkerProfessionName, new List<string>() { GoldenWoodName, NormalWoodName, BadWoodName}, new List<string>() { GoldenTableName, NormalTableName, BadTableName, GoldenChairName, NormalChairName, BadChairName, GoldenBoardName, NormalBoardName, BadBoardName} , ListofSubLocations, 20, 20000, 20){
         }
-        protected override void FullWantToBuy(){
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(NormalWoodName);
-            ListOfBuyProducts.Add(GoldenWoodName);
-            ListOfBuyProducts.Add(BadWoodName);
-        }
         protected override void GenerateStartInventory(){
             inventory.AddProduct(new NormalWood());
             inventory.AddProduct(new NormalWood());

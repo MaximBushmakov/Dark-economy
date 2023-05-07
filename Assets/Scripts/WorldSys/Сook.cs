@@ -8,12 +8,6 @@ namespace WorldSystem
     public class Cook : NPC{
         public Cook(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, CookProfessionName, new List<string>() { GoldenMeatName, NormalMeatName, BadMeatName}, new List<string>() { GoldenDriedMeatName, NormalDriedMeatName, BadDriedMeatName} , ListofSubLocations, 20, 20000, 20){
         }
-        protected override void FullWantToBuy(){
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(NormalMeatName);
-            ListOfBuyProducts.Add(GoldenMeatName);
-            ListOfBuyProducts.Add(BadMeatName);
-        }
         protected override void GenerateStartInventory(){
             inventory.AddProduct(new NormalDriedMeat());
             inventory.AddProduct(new NormalMeat());

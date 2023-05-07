@@ -7,7 +7,7 @@ namespace WorldSystem
     [Serializable]
     public class Baker : NPC
     {
-        public Baker(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, BakerProfessionName, new List<string>(), new List<string>() { GoldenBreadName, NormalBreadName, BadBreadName }, ListofSubLocations, 20, 10000, 20)
+        public Baker(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, BakerProfessionName, new List<string>(){GoldenFlourName, NormalFlourName, BadFlourName}, new List<string>() { GoldenBreadName, NormalBreadName, BadBreadName }, ListofSubLocations, 20, 10000, 20)
         {
         }
         protected override void GenerateStartInventory()
@@ -15,11 +15,6 @@ namespace WorldSystem
             inventory.AddProduct(new NormalFlour());
             inventory.AddProduct(new NormalFlour());
             inventory.AddProduct(new NormalFlour());
-        }
-        protected override void FullWantToBuy()
-        {
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(BadBreadName);
         }
         public override void DoActivity()
         {
