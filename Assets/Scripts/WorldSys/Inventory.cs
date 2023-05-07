@@ -9,6 +9,8 @@ namespace WorldSystem
     public class Inventory
     {
         private List<Product> listOfProducts;
+
+        [field: NonSerialized]
         private Random rand = new Random();
         public Inventory()
         {
@@ -60,10 +62,13 @@ namespace WorldSystem
             }
             return false;
         }
-        public void DeleteSomeProduct(int numb){
+        public void DeleteSomeProduct(int numb)
+        {
             int randId;
-            for(int i = 0; i < numb; ++i){
-                if(listOfProducts.Count > 0){
+            for (int i = 0; i < numb; ++i)
+            {
+                if (listOfProducts.Count > 0)
+                {
                     randId = rand.Next() % listOfProducts.Count;
                     listOfProducts[randId].DeleteThis();
                     TimeSystem.GetInstance().WriteLog(listOfProducts[randId].GetSubType() + " был удалён");
