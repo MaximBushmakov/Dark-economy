@@ -1,9 +1,7 @@
 {
-    "name": "PlayerSystem",
+    "name": "WorldSystem",
     "rootNamespace": "",
-    "references": [
-        "GUID:8a377eaca8973f849acdface54d57511"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
