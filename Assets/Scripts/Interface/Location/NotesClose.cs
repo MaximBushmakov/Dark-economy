@@ -1,15 +1,15 @@
 using PlayerSystem;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TradeExitButton : MonoBehaviour
+public class NotesClose : MonoBehaviour
 {
     static Color deltaColor = new(0.1f, 0.1f, 0.1f, 0);
     private Text component;
     protected void Start()
     {
         component = GetComponent<Text>();
+        transform.parent.gameObject.SetActive(false);
     }
 
     protected void OnMouseEnter()
@@ -21,9 +21,10 @@ public class TradeExitButton : MonoBehaviour
     {
         component.color += deltaColor;
     }
-
-    protected void OnMouseDown()
+    public void OnMouseDown()
     {
-        SceneManager.LoadScene(GameData.Player.Sublocation);
+        GameData.Notes[transform.parent.GetChild(0).GetComponent<Text>().text] =
+            transform.parent.GetChild(1).GetComponent<InputField>().text;
+        transform.parent.gameObject.SetActive(false);
     }
 }

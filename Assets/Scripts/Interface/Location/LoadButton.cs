@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using PlayerSystem;
-using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class ToMainButton : ButtonTemplate
+public class LoadButton : ButtonTemplate
 {
     public void OnMouseDown()
     {
+        GameData.Load();
         SceneManager.LoadScene(GameData.Player.Location);
     }
 }

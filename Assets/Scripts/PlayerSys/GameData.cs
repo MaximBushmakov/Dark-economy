@@ -15,14 +15,21 @@ namespace PlayerSystem
         private static Player _player;
         public static Player Player { get => _player; }
         private static TimeSystem timeSystem;
-        private static readonly List<string> _notes;
+        private static Dictionary<string, string> _notes;
+        public static Dictionary<string, string> Notes { get => _notes; }
 
 
         static GameData()
         {
             _player = new();
             timeSystem = TimeSystem.GetInstance();
-            _notes = new();
+            _notes = new Dictionary<string, string>
+            {
+                {"Торговля", ""},
+                {"Квесты", ""},
+                {"Слухи", ""},
+                {"Другое", ""}
+            };
         }
 
         public static void NewGame()
@@ -43,10 +50,11 @@ namespace PlayerSystem
                 formatter.Serialize(SaveFS, LocationData.Locations.Values.ToList());
                 formatter.Serialize(SaveFS, timeSystem.GetCurrentEvent());
                 formatter.Serialize(SaveFS, _player);
+                formatter.Serialize(SaveFS, _notes);
             }
             catch (SerializationException e)
             {
-                Debug.Log("Location serialization error: " + e.Message);
+                Debug.Log("Save serialization error: " + e.Message);
                 throw;
             }
             finally
@@ -66,10 +74,11 @@ namespace PlayerSystem
                     formatter.Deserialize(SaveFS) as List<Location>,
                     formatter.Deserialize(SaveFS) as WorldSystem.Event);
                 _player = formatter.Deserialize(SaveFS) as Player;
+                _notes = formatter.Deserialize(SaveFS) as Dictionary<string, string>;
             }
             catch (SerializationException e)
             {
-                Debug.Log("Location serialization error: " + e.Message);
+                Debug.Log("Load serialization error: " + e.Message);
                 throw;
             }
             finally

@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class NPCDialogOpen : ButtonTemplate
 {
-    public GameObject interactionButtons;
+    [SerializeField] private GameObject interactionButtons;
     protected new void Start()
     {
         base.Start();
