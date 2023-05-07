@@ -8,12 +8,6 @@ namespace WorldSystem
     public class Priest : NPC{
         public Priest(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, PriestProfessionName, new List<string>() { GoldenWaxName, NormalWaxName, BadWaxName}, new List<string>() { GoldenCandleName, NormalCandleName, BadCandleName, GoldenBookName, NormalBookName, BadBookName} , ListofSubLocations, 20, 20000, 20){
         }
-        protected override void FullWantToBuy(){
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(NormalMilletName);
-            ListOfBuyProducts.Add(GoldenMilletName);
-            ListOfBuyProducts.Add(BadMilletName);
-        }
         protected override void GenerateStartInventory(){
             inventory.AddProduct(new NormalMillet());
             inventory.AddProduct(new NormalFlour());

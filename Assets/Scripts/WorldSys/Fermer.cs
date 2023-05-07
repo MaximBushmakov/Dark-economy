@@ -17,11 +17,6 @@ namespace WorldSystem
             inventory.AddProduct(new NormalMillet());
             inventory.AddProduct(new GoldenMillet());
         }
-        protected override void FullWantToBuy()
-        {
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(BadBreadName);
-        }
         public override void DoActivity()
         {
             int randNum = rand.Next() % 100;

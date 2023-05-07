@@ -14,10 +14,6 @@ namespace WorldSystem
             inventory.AddProduct(new NormalWood());
             inventory.AddProduct(new NormalWood());
         }
-        protected override void FullWantToBuy(){
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(BadBreadName);
-        }
         public override void DoActivity(){
             int randNum = rand.Next() % 100;
             switch(randNum){

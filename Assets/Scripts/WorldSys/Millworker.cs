@@ -10,13 +10,6 @@ namespace WorldSystem
         public Millworker(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, MillworkerProfessionName, new List<string>() { GoldenMilletName, NormalMilletName, BadMilletName }, new List<string>() { GoldenFlourName, NormalFlourName, BadFlourName }, ListofSubLocations, 20, 20000, 20)
         {
         }
-        protected override void FullWantToBuy()
-        {
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(NormalMilletName);
-            ListOfBuyProducts.Add(GoldenMilletName);
-            ListOfBuyProducts.Add(BadMilletName);
-        }
         protected override void GenerateStartInventory()
         {
             inventory.AddProduct(new NormalMillet());

@@ -32,7 +32,7 @@ namespace WorldSystem
         public const string HunterProfessionName = "Охотник";
         public const string CookProfessionName = "Повар";
         public const string PriestProfessionName = "Священник";
-        public const string TavernKeeperProfessionName = "Хохяин Таверны";
+        public const string TavernKeeperProfessionName = "Хозяин Таверны";
         public const string ShoemakerProfessionName = "Сапожник";
         public const string BrewerProfessionName = "Пивовар";
         public const string AllProductsName = "Все товары";

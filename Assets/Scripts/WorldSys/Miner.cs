@@ -12,10 +12,6 @@ namespace WorldSystem
             inventory.AddProduct(new NormalMetal());
             inventory.AddProduct(new NormalMetal());
         }
-        protected override void FullWantToBuy(){
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(BadBreadName);
-        }
         public override void DoActivity(){
             int randNum = rand.Next() % 100;
             if(randNum > 65){

@@ -61,20 +61,20 @@ namespace WorldSystem
         {
             lock (threadLock) ;
             ListOfEffects.Add(newEffect);
-            sw.WriteLine(newEffect.GetName() + " now is a part of TimeSystem");
+            sw.WriteLine(newEffect.GetName() + " теперь часть системы времени");
         }
         public void AddNPCtoTimeSystem(NPC newNPC)
         {
             lock (threadLock) ;
             ListOfNPC.Add(newNPC);
             DictionaryOfLocations[newNPC.GetLocation()].AddNPC(newNPC);
-            sw.WriteLine(newNPC.GetName() + " now is a part of TimeSystem");
+            sw.WriteLine(newNPC.GetProfessionType() + " " + newNPC.GetName() + " теперь часть системы времени");
         }
         public void AddProducttoTimeSystem(Product newProduct)
         {
             lock (threadLock) ;
             ListOfProducts.Add(newProduct);
-            sw.WriteLine(newProduct.GetSubType() + " now is a part of TimeSystem");
+            sw.WriteLine(newProduct.GetSubType() + " теперь часть системы времени");
         }
         public void AddLocationtoTimeSystem(Location location)
         {
@@ -96,7 +96,7 @@ namespace WorldSystem
             {
                 randid = rand.Next() % ListofRumors.Count;
                 ListOfNPC[i].SetRumor(ListofRumors[randid]);
-                WriteLog(ListOfNPC[i].GetName() + " получает слух: " + ListOfNPC[i].GetRumor());
+                WriteLog(ListOfNPC[i].GetProfessionType() + " " + ListOfNPC[i].GetName() + " получает слух: " + ListOfNPC[i].GetRumor());
                 ListofRumors.RemoveAt(randid);
             }
 

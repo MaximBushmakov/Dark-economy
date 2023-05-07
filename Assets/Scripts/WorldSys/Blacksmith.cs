@@ -8,13 +8,6 @@ namespace WorldSystem
     public class Blacksmith : NPC{
         public Blacksmith(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, BlacksmithProfessionName, new List<string>() { GoldenMetalName, NormalMetalName, BadMetalName}, new List<string>() { GoldenWeaponName, NormalWeaponName, BadWeaponName, GoldenToolName, NormalToolName, BadToolName, GoldenHorseshoeName, NormalHorseshoeName, BadHorseshoeName} , ListofSubLocations, 20, 20000, 20){
         }
-        protected override void FullWantToBuy(){
-            ListOfBuyProducts.Add(NormalBreadName);
-            ListOfBuyProducts.Add(BadBreadName);
-            ListOfBuyProducts.Add(NormalWoodName);
-            ListOfBuyProducts.Add(GoldenWoodName);
-            ListOfBuyProducts.Add(BadWoodName);
-        }
         protected override void GenerateStartInventory(){
             inventory.AddProduct(new NormalMetal());
             inventory.AddProduct(new NormalMetal());
