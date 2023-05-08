@@ -36,32 +36,38 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Interface\Location\ExitButton.cs" />
-     <Compile Include="Assets\Scripts\Interface\Location\SaveButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Location\PlaceNPC.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\GameExitButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\SaveButton.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\GenInventoryTrader.cs" />
-     <Compile Include="Assets\Scripts\Interface\Location\NotesClose.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\UpdatePlayerMoney.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\NotesClose.cs" />
      <Compile Include="Assets\Scripts\Interface\House\SellAction.cs" />
      <Compile Include="Assets\Scripts\Interface\House\ToMainButton.cs" />
      <Compile Include="Assets\Scripts\Interface\Menu\NewGame.cs" />
      <Compile Include="Assets\Scripts\Interface\ButtonTemplate.cs" />
      <Compile Include="Assets\Scripts\Interface\Map\Road.cs" />
      <Compile Include="Assets\Scripts\Interface\Map\InfoBoard.cs" />
-     <Compile Include="Assets\Scripts\Interface\Location\LoadButton.cs" />
-     <Compile Include="Assets\Scripts\Interface\Location\NotesButton.cs" />
-     <Compile Include="Assets\Scripts\Interface\Trade\TradeExitButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\LoadButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Inventory\GenInventory.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\NotesButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Inventory\TradeExitButton.cs" />
      <Compile Include="Assets\Scripts\Interface\Location\HouseEnter.cs" />
      <Compile Include="Assets\Scripts\Interface\House\NPCDialogOpen.cs" />
      <Compile Include="Assets\Scripts\Interface\Map\TravelButton.cs" />
-     <Compile Include="Assets\Scripts\Interface\Location\OkButton.cs" />
-     <Compile Include="Assets\Scripts\Interface\Location\NotesOpen.cs" />
+     <Compile Include="Assets\Scripts\Interface\Inventory\UpdatePlayerData.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\OkButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\NotesOpen.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\GenInventoryPlayer.cs" />
      <Compile Include="Assets\Scripts\Interface\Menu\Continue.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\TimeUpdate.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\UpdateTraderMoney.cs" />
      <Compile Include="Assets\Scripts\Interface\House\BuyAction.cs" />
-     <Compile Include="Assets\Scripts\Interface\Location\InventoryOpen.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\InventoryOpen.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\InventoryDrag.cs" />
      <Compile Include="Assets\Scripts\Interface\Menu\Exit.cs" />
      <Compile Include="Assets\Scripts\Interface\House\TalkAction.cs" />
-     <Compile Include="Assets\Scripts\Interface\Location\MenuOpen.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\MenuOpen.cs" />
      <None Include="Assets\Scripts\Interface\Inventory.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

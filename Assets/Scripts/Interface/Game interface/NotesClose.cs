@@ -9,7 +9,6 @@ public class NotesClose : MonoBehaviour
     protected void Start()
     {
         component = GetComponent<Text>();
-        transform.parent.gameObject.SetActive(false);
     }
 
     protected void OnMouseEnter()

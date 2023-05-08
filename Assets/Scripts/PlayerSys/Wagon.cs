@@ -24,7 +24,7 @@ namespace PlayerSystem
 
         static WagonData()
         {
-            Donkey = new("Donkey", 10, 1.0f);
+            Donkey = new("Ослик", 10, 1.0f);
         }
     }
 }

@@ -19,10 +19,10 @@ public class GenInventoryPlayer : MonoBehaviour
         }
         for (int i = 0; i < inventory.Count; ++i)
         {
-            GameObject curCell = Instantiate(cell, transform.GetChild(i));
             Product product = inventory[i];
-            Instantiate(ImageData.GetProductObject(product.GetVisibleType(player.Wisdom)),
-                curCell.transform);
+            GameObject productObject = ImageData.CreateProductObject(
+                product.GetVisibleType(player.Wisdom), transform.GetChild(i), 200 / 100);
+            productObject.transform.parent.gameObject.AddComponent<InventoryDrag>();
         }
     }
 }

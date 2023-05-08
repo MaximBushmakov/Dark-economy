@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.Serialization;
 using static WorldSystem.GlobalNames;
 
@@ -150,9 +149,11 @@ namespace WorldSystem
             }
         }
         public virtual void DoActivity() { }
-        protected void FullWantToBuy() {
+        protected void FullWantToBuy()
+        {
             AddFoodProductsToWantBuy();
-            for(int i = 0; i < ListofProduceMaterial.Count; ++i){
+            for (int i = 0; i < ListofProduceMaterial.Count; ++i)
+            {
                 ListOfBuyProducts.Add(ListofProduceMaterial[i]);
             }
         }
@@ -417,7 +418,7 @@ namespace WorldSystem
             {
                 if (foodNames.Contains(prices[i].GetProduct().GetVisibleType(NPCbuyer.GetWisdomLevel())) & prices[i].GetTruePrice() < NPCkapital)
                 {
-                    TimeSystem.GetInstance().WriteLog(NPCbuyer.GetProfessionType() + " " + NPCbuyer.GetName() + " купил " + prices[i].GetProduct().GetSubType() + " у " +  type + " " + name);
+                    TimeSystem.GetInstance().WriteLog(NPCbuyer.GetProfessionType() + " " + NPCbuyer.GetName() + " купил " + prices[i].GetProduct().GetSubType() + " у " + type + " " + name);
                     NPCbuyer.ReduceKapital(prices[i].GetTruePrice());
                     inventory.GetInventory().RemoveAt(i);
                     return true;
@@ -425,8 +426,10 @@ namespace WorldSystem
             }
             return false;
         }
-        protected void AddFoodProductsToWantBuy(){
-            for(int i = 0; i < foodNames.Count(); ++i){
+        protected void AddFoodProductsToWantBuy()
+        {
+            for (int i = 0; i < foodNames.Count(); ++i)
+            {
                 ListOfBuyProducts.Add(foodNames[i]);
             }
         }

@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using UnityEngine;
 using WorldSystem;
 
@@ -14,9 +15,26 @@ namespace PlayerSystem
         private const string _savePath = "/Games/Dark economy/Save/Save.dat";
         private static Player _player;
         public static Player Player { get => _player; }
+        public static NPC CurTrader { get; set; }
         private static TimeSystem timeSystem;
         private static Dictionary<string, string> _notes;
         public static Dictionary<string, string> Notes { get => _notes; }
+        private static int _time;
+        public static int Day { get => _time / 4 + 1; }
+        public static string TimeOfDay
+        {
+            get
+            {
+                return (_time % 4) switch
+                {
+                    0 => "Утро",
+                    1 => "День",
+                    2 => "Вечер",
+                    3 => "Ночь",
+                    _ => throw new System.Exception("Impossible error"),
+                };
+            }
+        }
 
 
         static GameData()
@@ -30,10 +48,21 @@ namespace PlayerSystem
                 {"Слухи", ""},
                 {"Другое", ""}
             };
+            _time = 0;
+        }
+
+        public static void UpdateTime()
+        {
+            ++_time;
+            timeSystem.MakeTicks(1);
         }
 
         public static void NewGame()
         {
+            if (timeSystem != null)
+            {
+                TimeSystem.Reset();
+            }
             timeSystem = TimeSystem.GetInstance();
             LocationData.Initialize();
             NPCData.Initialize();

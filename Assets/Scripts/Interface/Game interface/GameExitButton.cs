@@ -1,7 +1,7 @@
 using PlayerSystem;
 using UnityEngine.SceneManagement;
 
-public class ExitButton : ButtonTemplate
+public class GameExitButton : ButtonTemplate
 {
     public void OnMouseDown()
     {

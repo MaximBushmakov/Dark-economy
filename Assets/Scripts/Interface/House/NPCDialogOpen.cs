@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class NPCDialogOpen : ButtonTemplate
 {
-    [SerializeField] private GameObject interactionButtons;
+    private GameObject _interactionButtons;
     protected new void Start()
     {
         base.Start();
-        interactionButtons.SetActive(false);
+        _interactionButtons = GameObject.Find("Action buttons");
     }
 
     public void OnMouseDown()
     {
-        interactionButtons.SetActive(true);
+        _interactionButtons.SetActive(!_interactionButtons.activeSelf);
     }
 }

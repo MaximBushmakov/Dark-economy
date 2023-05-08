@@ -22,13 +22,13 @@ namespace WorldSystem
             {
                 new ("Город", TownName, new List<string>
                 {
-                    "Улица",
+                    "Город",
                     "Дом 1",
                     "Дом 2"
                 }),
                 new ("Деревня", VillageName, new List<string>
                 {
-                    "Улица",
+                    "Деревня",
                     "Поле",
                     "Мельница",
                     "Хата 1",

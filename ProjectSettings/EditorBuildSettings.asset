@@ -15,9 +15,12 @@ EditorBuildSettings:
     path: "Assets/Scenes/\u0425\u0430\u0442\u0430 1.unity"
     guid: 89ef011358e575a429abc457fef84b63
   - enabled: 1
-    path: Assets/Scenes/Buy.unity
+    path: "Assets/Scenes/\u041F\u043E\u043A\u0443\u043F\u043A\u0430.unity"
     guid: a8e5e3d3dde359340b74f73a465da338
   - enabled: 1
     path: "Assets/Scenes/\u041A\u0430\u0440\u0442\u0430.unity"
     guid: f611f00d8c7431047b9c24a4bb2b3bab
+  - enabled: 1
+    path: "Assets/Scenes/\u0418\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C.unity"
+    guid: a665378a43c01b14888d155ecc293c4f
   m_configObjects: {}
