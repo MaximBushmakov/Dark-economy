@@ -7,7 +7,7 @@ namespace WorldSystem
     [Serializable]
     public class Flour : Product
     {
-        public Flour(string subtype, int maincost, int wisdomlevel) : base(NormalFlourName, subtype, 5, maincost, wisdomlevel)
+        public Flour(string subtype, int maincost, int wisdomlevel) : base(NormalFlourName, subtype, 150, maincost, wisdomlevel)
         {
         }
     }
@@ -48,7 +48,7 @@ namespace WorldSystem
     [Serializable]
     public class BadFlour : Flour
     {
-        public BadFlour() : base(BadFlourName, 30, 5)
+        public BadFlour() : base(BadFlourName, 55, 5)
         {
         }
         public override void MakeTick()

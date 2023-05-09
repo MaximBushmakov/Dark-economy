@@ -6,56 +6,50 @@ namespace WorldSystem
 {
     [Serializable]
     public class Clay : Product{
-        public Clay(string subtype, int maincost, int wisdomlevel) : base(NormalClayName, subtype, 100, maincost, wisdomlevel){
+        public Clay(string subtype, int maincost, int wisdomlevel) : base(NormalClayName, subtype, 120, maincost, wisdomlevel){
         }
     }
     [Serializable]
     public class NormalClay : Clay{
-        public NormalClay() : base(NormalClayName, 100, 0){
+        public NormalClay() : base(NormalClayName, 120, 0){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 15:
+                case > 100:
                     quality = 0;
                     break;
-                case > 10:
+                case > 50:
                     quality = 1;
-                    break;
-                case > 5:
-                    quality = 2;
                     break;
             }
         }
     }
     [Serializable]
     public class GoldenClay : Clay{
-        public GoldenClay() : base(GoldenClayName, 300, 20){
+        public GoldenClay() : base(GoldenClayName, 220, 50){
         }
         public override void MakeTick(){
             ticks++;
             switch(ticks){
-                case > 20:
+                case > 700:
                     quality = 0;
-                    break;
-                case > 15:
-                    quality = 1;
-                    break;
-                case > 10:
-                    quality = 2;
                     break;
             }
         }
     }
     [Serializable]
     public class BadClay : Clay{
-        public BadClay() : base(BadClayName, 50, 10){
+        public BadClay() : base(BadClayName, 70, 20){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 40:
+                case > 10:
                     quality = 0;
+                    break;
+                case > 5:
+                    quality = 1;
                     break;
             }
         }

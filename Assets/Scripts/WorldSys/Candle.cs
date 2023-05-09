@@ -6,55 +6,43 @@ namespace WorldSystem
 {
     [Serializable]
     public class Candle : Product{
-        public Candle(string subtype, int maincost, int wisdomlevel) : base(NormalCandleName, subtype, 100, maincost, wisdomlevel){
+        public Candle(string subtype, int maincost, int wisdomlevel) : base(NormalCandleName, subtype, 300, maincost, wisdomlevel){
         }
     }
     [Serializable]
     public class NormalCandle : Candle{
-        public NormalCandle() : base(NormalCandleName, 100, 0){
+        public NormalCandle() : base(NormalCandleName, 300, 0){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 15:
+                case > 1000:
                     quality = 0;
-                    break;
-                case > 10:
-                    quality = 1;
-                    break;
-                case > 5:
-                    quality = 2;
                     break;
             }
         }
     }
     [Serializable]
     public class GoldenCandle : Candle{
-        public GoldenCandle() : base(GoldenCandleName, 300, 20){
+        public GoldenCandle() : base(GoldenCandleName, 750, 20){
         }
         public override void MakeTick(){
-            ticks++;
+            ++ticks;
             switch(ticks){
-                case > 20:
+                case > 1000:
                     quality = 0;
-                    break;
-                case > 15:
-                    quality = 1;
-                    break;
-                case > 10:
-                    quality = 2;
                     break;
             }
         }
     }
     [Serializable]
     public class BadCandle : Candle{
-        public BadCandle() : base(BadCandleName, 50, 10){
+        public BadCandle() : base(BadCandleName, 150, 10){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 40:
+                case > 10:
                     quality = 0;
                     break;
             }

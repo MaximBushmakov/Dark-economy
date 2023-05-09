@@ -6,23 +6,23 @@ namespace WorldSystem
 {
     [Serializable]
     public class Shoes : Product{
-        public Shoes(string subtype, int maincost, int wisdomlevel) : base(NormalShoesName, subtype, 100, maincost, wisdomlevel){
+        public Shoes(string subtype, int maincost, int wisdomlevel) : base(NormalShoesName, subtype, 270, maincost, wisdomlevel){
         }
     }
     [Serializable]
     public class NormalShoes : Shoes{
-        public NormalShoes() : base(NormalShoesName, 100, 0){
+        public NormalShoes() : base(NormalShoesName, 270, 0){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 15:
+                case > 50:
                     quality = 0;
                     break;
-                case > 10:
+                case > 40:
                     quality = 1;
                     break;
-                case > 5:
+                case > 20:
                     quality = 2;
                     break;
             }
@@ -30,18 +30,18 @@ namespace WorldSystem
     }
     [Serializable]
     public class GoldenShoes : Shoes{
-        public GoldenShoes() : base(GoldenShoesName, 300, 20){
+        public GoldenShoes() : base(GoldenShoesName, 480, 20){
         }
         public override void MakeTick(){
-            ticks++;
+            ++ticks;
             switch(ticks){
-                case > 20:
+                case > 70:
                     quality = 0;
                     break;
-                case > 15:
+                case > 50:
                     quality = 1;
                     break;
-                case > 10:
+                case > 30:
                     quality = 2;
                     break;
             }
@@ -49,13 +49,19 @@ namespace WorldSystem
     }
     [Serializable]
     public class BadShoes : Shoes{
-        public BadShoes() : base(BadMilletName, 50, 10){
+        public BadShoes() : base(BadShoesName, 120, 10){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 40:
+                case > 30:
                     quality = 0;
+                    break;
+                case > 20:
+                    quality = 1;
+                    break;
+                case > 10:
+                    quality = 2;
                     break;
             }
         }
