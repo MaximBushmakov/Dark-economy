@@ -27,7 +27,6 @@ namespace PlayerSystem
             return _inventoryCell;
         }
 
-        // create GameObject for Product in inventory
         public static GameObject CreateProductObject(WorldSystem.Product product, Transform parent, float size, GameObject dataObject)
         {
             string productName = product.GetVisibleType(GameData.Player.Wisdom);
@@ -41,8 +40,13 @@ namespace PlayerSystem
             rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
             rectTransform.pivot = new Vector2(0.5f, 0.5f);
-            productObj.GetComponent<RectTransform>().anchoredPosition = new(0, 0);
-            productObj.transform.localScale = new(0.8f * size / 100, 0.8f * size / 100);
+            rectTransform.localScale = new(1, 1);
+            rectTransform.sizeDelta = new Vector2(size, size);
+
+            RectTransform productRectTransform = productObj.GetComponent<RectTransform>();
+            productRectTransform.anchoredPosition = new(0, 0);
+            productRectTransform.localScale = new Vector2(0.8f, 0.8f);
+            productRectTransform.sizeDelta = new Vector2(size, size);
             var collider = obj.AddComponent<BoxCollider2D>();
             collider.size = new(size, size);
             var popup = obj.AddComponent<PopUp>();
@@ -51,7 +55,7 @@ namespace PlayerSystem
             return obj;
         }
 
-        public static GameObject CreateNPCObject(string name, Transform parent, GameObject actions)
+        public static GameObject CreateNPCObject(string name, Transform parent, GameObject actions, float size)
         {
             GameObject obj = new(name);
             obj.AddComponent<SpriteRenderer>().sprite = _npcSprites[name];
@@ -62,7 +66,7 @@ namespace PlayerSystem
             rectTransform.pivot = new Vector2(0.5f, 0.5f);
             rectTransform.anchoredPosition = new(0, 0);
             rectTransform.sizeDelta = new(1, 1);
-            rectTransform.localScale = new(1, 1);
+            rectTransform.localScale = new(size, size);
             var collider = obj.AddComponent<BoxCollider2D>();
             collider.isTrigger = true;
             collider.size = new(2, 3);

@@ -40,9 +40,9 @@
      <Compile Include="Assets\Scripts\PlayerSys\NPCDialogOpen.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\Wagon.cs" />
+     <Compile Include="Assets\Scripts\PlayerSys\PopUp.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\GameData.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\ImageData.cs" />
-     <Compile Include="Assets\Scripts\PlayerSys\PopUp.cs" />
      <None Include="Assets\Scripts\PlayerSys\PlayerSystem.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

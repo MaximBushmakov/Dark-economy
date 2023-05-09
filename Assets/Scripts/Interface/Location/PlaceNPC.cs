@@ -7,9 +7,9 @@ using WorldSystem;
 
 public class PlaceNPC : MonoBehaviour
 {
+    [SerializeField] private float _size;
     public void Start()
     {
-        GameData.UpdateTime();
         List<NPC> npc = TimeSystem.GetInstance().GetLocation(GameData.Player.Location)
             .FindNPCInSublocation(GameData.Player.Sublocation);
         GameObject actions = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
@@ -18,7 +18,7 @@ public class PlaceNPC : MonoBehaviour
                 .Find(transform => transform.name == "Action buttons").gameObject;
         for (int i = 0; i < npc.Count; ++i)
         {
-            ImageData.CreateNPCObject(npc[i].GetName(), transform.GetChild(i), actions);
+            ImageData.CreateNPCObject(npc[i].GetName(), transform.GetChild(i), actions, _size);
         }
     }
 }

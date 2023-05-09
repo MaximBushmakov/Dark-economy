@@ -27,7 +27,7 @@ namespace PlayerSystem
                 RectTransform rectTransform = _dataObject.GetComponent<RectTransform>();
                 _dataObject.SetActive(true);
                 _dataObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text =
-                    name + "\n\n" +
+                    _product.GetVisibleType(wisdom) + "\n\n" +
                     _product.GetCost(wisdom) + " (c)\n\n" +
                     "Качество:\n" + _product.GetQualityName();
                 rectTransform.anchoredPosition = Input.mousePosition / _dataObject.transform.parent.GetComponent<Canvas>().scaleFactor;

@@ -44,6 +44,7 @@
      <Compile Include="Assets\Scripts\Interface\Game interface\NotesClose.cs" />
      <Compile Include="Assets\Scripts\Interface\House\SellAction.cs" />
      <Compile Include="Assets\Scripts\Interface\House\ToMainButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Inventory\PopUp.cs" />
      <Compile Include="Assets\Scripts\Interface\Menu\NewGame.cs" />
      <Compile Include="Assets\Scripts\Interface\ButtonTemplate.cs" />
      <Compile Include="Assets\Scripts\Interface\Map\Road.cs" />
@@ -68,7 +69,6 @@
      <Compile Include="Assets\Scripts\Interface\Menu\Exit.cs" />
      <Compile Include="Assets\Scripts\Interface\House\TalkAction.cs" />
      <Compile Include="Assets\Scripts\Interface\Game interface\MenuOpen.cs" />
-     <Compile Include="Assets\Scripts\Interface\Inventory\PopUp.cs" />
      <None Include="Assets\Scripts\Interface\Inventory.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Reflection;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class InventoryDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDragHandler
 {
     private static float _scale = 0;
     private RectTransform _rectTransform;
+    private Transform _startObject;
 
     public void Start()
     {
@@ -22,14 +19,37 @@ public class InventoryDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBegi
     }
     public void OnBeginDrag(PointerEventData e)
     {
-        transform.SetParent(GameObject.Find("Canvas").transform);
+        if (e.button == PointerEventData.InputButton.Left)
+        {
+            _startObject ??= transform.parent;
+            transform.SetParent(GameObject.Find("Canvas").transform);
+        }
     }
     public void OnDrag(PointerEventData e)
     {
-        _rectTransform.anchoredPosition += e.delta / _scale;
+        if (e.button == PointerEventData.InputButton.Left)
+        {
+            _rectTransform.anchoredPosition += e.delta / _scale;
+        }
     }
     public void OnEndDrag(PointerEventData e)
     {
+        if (e.button == PointerEventData.InputButton.Left)
+        {
+            var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var colliders = Physics2D.OverlapPointAll(position);
+
+            if (colliders.Count() == 2 && colliders[1].name == "Cell(Clone)" && colliders[1].transform.parent.parent.parent.parent.parent.name == "Player part")
+            {
+                _rectTransform.SetParent(colliders[1].transform);
+                _rectTransform.anchoredPosition = new(0, 0);
+            }
+            else
+            {
+                transform.SetParent(_startObject);
+                _rectTransform.anchoredPosition = new(0, 0);
+            }
+        }
         // transform.SetParent(GameObject.Find("Canvas").transform);
     }
 }
