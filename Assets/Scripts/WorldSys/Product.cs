@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace WorldSystem
 {
@@ -46,7 +45,19 @@ namespace WorldSystem
         }
         public int GetQuality()
         {
-            return this.quality;
+            return quality;
+        }
+
+        public string GetQualityName()
+        {
+            return quality switch
+            {
+                3 => "годен",
+                2 => "частично годен",
+                1 => "почти не годен",
+                0 => "не годен",
+                _ => throw new Exception("Impossible error"),
+            };
         }
         public int GetCost(int wisdom)
         {

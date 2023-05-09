@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using WorldSystem;
 
 public class GenInventoryPlayer : MonoBehaviour
@@ -17,11 +19,16 @@ public class GenInventoryPlayer : MonoBehaviour
         {
             Instantiate(cell, transform);
         }
+
+        GameObject dataObject = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
+                .Find(obj => obj.name == "Canvas")
+                .GetComponentsInChildren<RectTransform>(true).ToList()
+                .Find(transform => transform.name == "Data message").gameObject;
         for (int i = 0; i < inventory.Count; ++i)
         {
             Product product = inventory[i];
             GameObject productObject = ImageData.CreateProductObject(
-                product.GetVisibleType(player.Wisdom), transform.GetChild(i), 200 / 100);
+                product, transform.GetChild(i), 200 / 100, dataObject);
             productObject.transform.parent.gameObject.AddComponent<InventoryDrag>();
         }
     }

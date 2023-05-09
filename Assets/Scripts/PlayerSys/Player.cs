@@ -66,7 +66,7 @@ namespace PlayerSystem
             _inventory.AddProduct(new GoldenMillet());
             _wagon = WagonData.Donkey;
             _money = 100;
-            _wisdom = 0;
+            _wisdom = 100;
             _charisma = 0;
             _location = "Деревня";
             _sublocation = "Деревня";

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using WorldSystem;
 
 public class GenInventory : MonoBehaviour
@@ -13,11 +15,15 @@ public class GenInventory : MonoBehaviour
         // grid has 3 cells in a row, cells has size 200 x 200
         GetComponent<RectTransform>().sizeDelta = new Vector2(0, (size / 3 + 1) * 200);
 
+        GameObject dataObject = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
+                .Find(obj => obj.name == "Canvas")
+                .GetComponentsInChildren<RectTransform>(true).ToList()
+                .Find(transform => transform.name == "Data message").gameObject;
+
         for (int i = 0; i < inventory.Count; ++i)
         {
-            // GameObject curCell = Instantiate(cell, transform.GetChild(i));
             Product product = inventory[i];
-            ImageData.CreateProductObject(product.GetVisibleType(player.Wisdom), transform, 1);
+            ImageData.CreateProductObject(product, transform, 100, dataObject);
         }
 
         var cell = ImageData.GetCellObject();

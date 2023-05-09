@@ -1,6 +1,4 @@
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WorldSystem;
 
@@ -15,10 +13,10 @@ namespace PlayerSystem
             _interactionButtons = interactionButtons;
         }
 
-        private Image _image;
+        private SpriteRenderer _image;
         protected void Start()
         {
-            _image = GetComponent<Image>();
+            _image = GetComponent<SpriteRenderer>();
         }
 
         protected void OnMouseEnter()

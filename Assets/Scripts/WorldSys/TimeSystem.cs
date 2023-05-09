@@ -111,7 +111,7 @@ namespace WorldSystem
             if (instance.currentEvent.Start())
             {
                 List<Effect> newEffects = currentEvent.GetEffects();
-                String location = currentEvent.GetLocation();
+                string location = currentEvent.GetLocation();
                 if (location == AllLocationsName)
                 {
                     foreach (var thislocation in DictionaryOfLocations)

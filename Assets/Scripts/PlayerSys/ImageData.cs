@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace PlayerSystem
@@ -30,40 +28,44 @@ namespace PlayerSystem
         }
 
         // create GameObject for Product in inventory
-        public static GameObject CreateProductObject(string type, Transform parent, float size)
+        public static GameObject CreateProductObject(WorldSystem.Product product, Transform parent, float size, GameObject dataObject)
         {
+            string productName = product.GetVisibleType(GameData.Player.Wisdom);
             GameObject obj = Object.Instantiate(_inventoryCell, parent);
+            obj.name = productName;
             GameObject productObj = new();
             productObj.transform.SetParent(obj.transform);
             Image img = productObj.AddComponent<Image>();
-            img.sprite = _productSprites[type];
-            RectTransform transform = obj.GetComponent<RectTransform>();
-            transform.anchorMin = new Vector2(0.5f, 0.5f);
-            transform.anchorMax = new Vector2(0.5f, 0.5f);
-            transform.pivot = new Vector2(0.5f, 0.5f);
-            productObj.GetComponent<RectTransform>().anchoredPosition = new(0, 0);
-            productObj.transform.localScale = new(0.8f * size, 0.8f * size);
-            return obj;
-        }
-
-        public static GameObject CreateNPCObject(string name, Transform parent)
-        {
-            GameObject obj = new(name);
-            obj.AddComponent<Image>().sprite = _npcSprites[name];
-            obj.transform.SetParent(p: parent);
+            img.sprite = _productSprites[productName];
             RectTransform rectTransform = obj.GetComponent<RectTransform>();
             rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
             rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            productObj.GetComponent<RectTransform>().anchoredPosition = new(0, 0);
+            productObj.transform.localScale = new(0.8f * size / 100, 0.8f * size / 100);
+            var collider = obj.AddComponent<BoxCollider2D>();
+            collider.size = new(size, size);
+            var popup = obj.AddComponent<PopUp>();
+            popup.SetDataObject(dataObject);
+            popup.SetProduct(product);
+            return obj;
+        }
+
+        public static GameObject CreateNPCObject(string name, Transform parent, GameObject actions)
+        {
+            GameObject obj = new(name);
+            obj.AddComponent<SpriteRenderer>().sprite = _npcSprites[name];
+            obj.transform.SetParent(p: parent);
+            RectTransform rectTransform = obj.AddComponent<RectTransform>();
+            rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            rectTransform.pivot = new Vector2(0.5f, 0.5f);
             rectTransform.anchoredPosition = new(0, 0);
-            rectTransform.sizeDelta = new(2, 3);
+            rectTransform.sizeDelta = new(1, 1);
+            rectTransform.localScale = new(1, 1);
             var collider = obj.AddComponent<BoxCollider2D>();
             collider.isTrigger = true;
             collider.size = new(2, 3);
-            GameObject actions = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
-                .Find(obj => obj.name == "Canvas")
-                .GetComponentsInChildren<Transform>(true).ToList()
-                .Find(transform => transform.name == "Action buttons").gameObject;
             obj.AddComponent<NPCDialogOpen>().SetActionButtons(actions);
             return obj;
         }
