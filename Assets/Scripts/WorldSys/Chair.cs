@@ -6,23 +6,23 @@ namespace WorldSystem
 {
     [Serializable]
     public class Chair : Product{
-        public Chair(string subtype, int maincost, int wisdomlevel) : base(NormalChairName, subtype, 100, maincost, wisdomlevel){
+        public Chair(string subtype, int maincost, int wisdomlevel) : base(NormalChairName, subtype, 350, maincost, wisdomlevel){
         }
     }
     [Serializable]
     public class NormalChair : Chair{
-        public NormalChair() : base(NormalChairName, 100, 0){
+        public NormalChair() : base(NormalChairName, 350, 0){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 15:
+                case > 50:
                     quality = 0;
                     break;
-                case > 10:
+                case > 40:
                     quality = 1;
                     break;
-                case > 5:
+                case > 30:
                     quality = 2;
                     break;
             }
@@ -30,7 +30,7 @@ namespace WorldSystem
     }
     [Serializable]
     public class GoldenChair : Chair{
-        public GoldenChair() : base(GoldenChairName, 300, 20){
+        public GoldenChair() : base(GoldenChairName, 1000, 40){
         }
         public override void MakeTick(){
             ticks++;
@@ -49,7 +49,7 @@ namespace WorldSystem
     }
     [Serializable]
     public class BadChair : Chair{
-        public BadChair() : base(BadChairName, 50, 10){
+        public BadChair() : base(BadChairName, 150, 20){
         }
         public override void MakeTick(){
             ++ticks;

@@ -6,23 +6,23 @@ namespace WorldSystem
 {
     [Serializable]
     public class Wood : Product{
-        public Wood(string subtype, int maincost, int wisdomlevel) : base(NormalMilletName, subtype, 100, maincost, wisdomlevel){
+        public Wood(string subtype, int maincost, int wisdomlevel) : base(NormalMilletName, subtype, 150, maincost, wisdomlevel){
         }
     }
     [Serializable]
     public class NormalWood : Wood{
-        public NormalWood() : base(NormalWoodName, 100, 0){
+        public NormalWood() : base(NormalWoodName, 150, 0){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 15:
+                case > 40:
                     quality = 0;
                     break;
-                case > 10:
+                case > 30:
                     quality = 1;
                     break;
-                case > 5:
+                case > 20:
                     quality = 2;
                     break;
             }
@@ -30,10 +30,23 @@ namespace WorldSystem
     }
     [Serializable]
     public class GoldenWood : Wood{
-        public GoldenWood() : base(GoldenWoodName, 300, 20){
+        public GoldenWood() : base(GoldenWoodName, 450, 30){
         }
         public override void MakeTick(){
             ticks++;
+            switch(ticks){
+                case > 50:
+                    quality = 0;
+                    break;
+            }
+        }
+    }
+    [Serializable]
+    public class BadWood : Wood{
+        public BadWood() : base(BadWoodName, 55, 10){
+        }
+        public override void MakeTick(){
+            ++ticks;
             switch(ticks){
                 case > 20:
                     quality = 0;
@@ -43,19 +56,6 @@ namespace WorldSystem
                     break;
                 case > 10:
                     quality = 2;
-                    break;
-            }
-        }
-    }
-    [Serializable]
-    public class BadWood : Wood{
-        public BadWood() : base(BadWoodName, 50, 10){
-        }
-        public override void MakeTick(){
-            ++ticks;
-            switch(ticks){
-                case > 40:
-                    quality = 0;
                     break;
             }
         }

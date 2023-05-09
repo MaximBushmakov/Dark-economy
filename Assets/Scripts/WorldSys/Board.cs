@@ -6,7 +6,7 @@ namespace WorldSystem
 {
     [Serializable]
     public class Board : Product{
-        public Board(string subtype, int maincost, int wisdomlevel) : base(NormalBoardName, subtype, 5, maincost, wisdomlevel){
+        public Board(string subtype, int maincost, int wisdomlevel) : base(NormalBoardName, subtype, 200, maincost, wisdomlevel){
         }
     }
     [Serializable]
@@ -16,13 +16,13 @@ namespace WorldSystem
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 15:
+                case > 25:
                     quality = 0;
                     break;
-                case > 10:
+                case > 20:
                     quality = 1;
                     break;
-                case > 5:
+                case > 15:
                     quality = 2;
                     break;
             }
@@ -33,15 +33,15 @@ namespace WorldSystem
         public GoldenBoard() : base(GoldenBoardName, 500, 25){
         }
         public override void MakeTick(){
-            ++ticks;
+            ticks++;
             switch(ticks){
-                case > 15:
+                case > 20:
                     quality = 0;
                     break;
-                case > 10:
+                case > 15:
                     quality = 1;
                     break;
-                case > 5:
+                case > 10:
                     quality = 2;
                     break;
             }
@@ -49,7 +49,7 @@ namespace WorldSystem
     }
     [Serializable]
     public class BadBoard : Board{
-        public BadBoard() : base(BadBoardName, 40, 5){
+        public BadBoard() : base(BadBoardName, 60, 5){
         }
         public override void MakeTick(){
             ++ticks;

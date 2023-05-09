@@ -6,12 +6,12 @@ namespace WorldSystem
 {
     [Serializable]
     public class Beer : Product{
-        public Beer(string subtype, int maincost, int wisdomlevel) : base(NormalBeerName, subtype, 5, maincost, wisdomlevel){
+        public Beer(string subtype, int maincost, int wisdomlevel) : base(NormalBeerName, subtype, 130, maincost, wisdomlevel){
         }
     }
     [Serializable]
     public class NormalBeer : Beer{
-        public NormalBeer() : base(NormalBeerName, 150, 0){
+        public NormalBeer() : base(NormalBeerName, 130, 0){
         }
         public override void MakeTick(){
             ++ticks;
@@ -24,7 +24,7 @@ namespace WorldSystem
     }
     [Serializable]
     public class GoldenBeer : Beer{
-        public GoldenBeer() : base(GoldenBeerName, 450, 25){
+        public GoldenBeer() : base(GoldenBeerName, 350, 90){
         }
         public override void MakeTick(){
             ++ticks;
@@ -37,7 +37,7 @@ namespace WorldSystem
     }
     [Serializable]
     public class BadBeer : Beer{
-        public BadBeer() : base(BadBeerName, 30, 5){
+        public BadBeer() : base(BadBeerName, 10, 70){
         }
         public override void MakeTick(){
             ++ticks;

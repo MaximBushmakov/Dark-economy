@@ -6,23 +6,23 @@ namespace WorldSystem
 {
     [Serializable]
     public class Weapon : Product{
-        public Weapon(string subtype, int maincost, int wisdomlevel) : base(NormalWeaponName, subtype, 100, maincost, wisdomlevel){
+        public Weapon(string subtype, int maincost, int wisdomlevel) : base(NormalWeaponName, subtype, 1000, maincost, wisdomlevel){
         }
     }
     [Serializable]
     public class NormalWeapon : Weapon{
-        public NormalWeapon() : base(NormalWeaponName, 100, 0){
+        public NormalWeapon() : base(NormalWeaponName, 1000, 0){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 15:
+                case > 105:
                     quality = 0;
                     break;
-                case > 10:
+                case > 95:
                     quality = 1;
                     break;
-                case > 5:
+                case > 85:
                     quality = 2;
                     break;
             }
@@ -30,32 +30,29 @@ namespace WorldSystem
     }
     [Serializable]
     public class GoldenWeapon : Weapon{
-        public GoldenWeapon() : base(GoldenWeaponName, 300, 20){
+        public GoldenWeapon() : base(GoldenWeaponName, 2000, 35){
         }
         public override void MakeTick(){
             ticks++;
             switch(ticks){
-                case > 20:
+                case > 1050:
                     quality = 0;
-                    break;
-                case > 15:
-                    quality = 1;
-                    break;
-                case > 10:
-                    quality = 2;
                     break;
             }
         }
     }
     [Serializable]
     public class BadWeapon : Weapon{
-        public BadWeapon() : base(BadWeaponName, 50, 10){
+        public BadWeapon() : base(BadWeaponName, 350, 12){
         }
         public override void MakeTick(){
             ++ticks;
             switch(ticks){
-                case > 40:
+                case > 100:
                     quality = 0;
+                    break;
+                case > 50:
+                    quality = 2;
                     break;
             }
         }
