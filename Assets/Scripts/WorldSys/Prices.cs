@@ -28,8 +28,6 @@ namespace WorldSystem
         private List<Price> listOfPrices;
         // Список id купленных товаров в списке цен
         private List<int> listOfIdBought;
-        // 
-        private Inventory traderInventory;
         // деньги которые получает или отдаёт NPC
         private int money;
         // изменение репутации при торговле
@@ -39,7 +37,6 @@ namespace WorldSystem
         public Prices(){
             listOfPrices = new List<Price>();
             listOfIdBought = new List<int>();
-            traderInventory = new Inventory();
             money = 0;
             reputationChage = 0;
             ban = 0;
@@ -64,9 +61,6 @@ namespace WorldSystem
         }
         public void AddPrice(Price price){
             listOfPrices.Add(price);
-        }
-        public void AddTraderInventory(Inventory thisInventory){
-            traderInventory = thisInventory;
         }
         public List<Price> GetPrices(){
             return listOfPrices;

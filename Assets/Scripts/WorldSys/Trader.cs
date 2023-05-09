@@ -31,7 +31,6 @@ namespace WorldSystem
                 sublocation = tradeNPC.GetSublocation();
                 TimeSystem.GetInstance().WriteLog(name + " торгует с " + tradeNPC.GetProfessionType() + " " + tradeNPC.GetName());
                 Prices pricesBuy = tradeNPC.MakePricesSell();
-                pricesBuy.AddTraderInventory(inventory);
                 List<string> npcWantToSell = tradeNPC.GetProduceProduct();
                 List<string> npcWantToBuy = tradeNPC.GetMaterial();
                 List<Price> ListPrices = pricesBuy.GetPrices();
@@ -50,7 +49,6 @@ namespace WorldSystem
                 tradeNPC.EndSellTrade(pricesBuy);
                 //Sell
                 Prices pricesSell = tradeNPC.MakePricesBuy(inventory);
-                pricesSell.AddTraderInventory(inventory);
                 ListPrices = pricesSell.GetPrices();
                 int moneyNPC = pricesSell.GetMoney();
                 money = 0;
