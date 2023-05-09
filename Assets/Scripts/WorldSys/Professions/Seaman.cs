@@ -7,10 +7,12 @@ namespace WorldSystem
     [Serializable]
     public class Seaman : NPC{
         private int roadTicks;
-        public Seaman(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, SeamanProfessionName, new List<string>(){NormalMilletName,
-         GoldenMilletName, BadMilletName, NormalFlourName, GoldenFlourName, BadFlourName, NormalBreadName, GoldenBreadName, BadBreadName, NormalWoodName,
-          GoldenWoodName, BadWoodName, NormalTableName, GoldenTableName, BadTableName, NormalChairName, GoldenChairName, BadChairName, NormalBoardName,
-           GoldenBoardName, BadBoardName}, new List<string>() {}, ListofSubLocations, 100, 100000, 20){
+        public Seaman(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, SeamanProfessionName, new List<string>(){
+        NormalBreadName, GoldenBreadName, BadBreadName, NormalTableName, GoldenTableName, BadTableName, NormalChairName, GoldenChairName, BadChairName, NormalBoardName,
+        GoldenBoardName,BadBoardName, NormalMetalName, GoldenMetalName, BadMetalName, NormalHorseshoeName, GoldenHorseshoeName, BadHorseshoeName, NormalToolName, GoldenToolName,
+        BadToolName, NormalWeaponName, GoldenWeaponName, BadWeaponName, NormalPotteryName, GoldenPotteryName, BadPotteryName, NormalFurName, GoldenFurName, BadFurName, NormalDriedMeatName,
+        GoldenDriedMeatName, BadDriedMeatName, NormalShoesName, GoldenShoesName, BadShoesName, NormalBeerName, GoldenBeerName, BadBeerName, NormalHoneyName,
+        GoldenHoneyName, BadHoneyName, NormalBookName, GoldenBookName, BadBookName,NormalCandleName, GoldenCandleName, BadCandleName}, new List<string>() {}, ListofSubLocations, 100, 100000, 20){
         }
         protected override void GenerateStartInventory(){
         }
