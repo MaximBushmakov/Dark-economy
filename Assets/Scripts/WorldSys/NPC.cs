@@ -342,16 +342,16 @@ namespace WorldSystem
                 switch (playerReputation)
                 {
                     case < 20:
-                        vPrice += vPrice;
+                        vPrice -= vPrice;
                         break;
                     case < 40:
-                        vPrice += vPrice / 2;
+                        vPrice -= vPrice / 2;
                         break;
                     case < 70:
-                        vPrice += vPrice / 4;
+                        vPrice -= vPrice / 4;
                         break;
                     case < 90:
-                        vPrice += vPrice / 10;
+                        vPrice -= vPrice / 10;
                         break;
                 }
                 Price thisPrice = new(thisInventory[i], tPrice, vPrice);
@@ -359,7 +359,7 @@ namespace WorldSystem
             }
             return thisPrices;
         }
-        // Конец продажи товара, который был у игрока
+        // Конец торговли, когда этот NPC продаёт
         public void EndSellTrade(Prices answerFromTrader)
         {
             kapital += answerFromTrader.GetMoney();
@@ -372,7 +372,7 @@ namespace WorldSystem
             }
             ban += answerFromTrader.GetBan();
         }
-        // Конец покупки товара, который был у игрока
+        // Конец торговли, когда этот NPC покупает
         public void EndBuyTrade(Prices answerFromTrader)
         {
             kapital -= answerFromTrader.GetMoney();

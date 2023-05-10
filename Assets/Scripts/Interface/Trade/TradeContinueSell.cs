@@ -16,11 +16,12 @@ public class TradeContinueSell : ButtonTemplate
             var playerCells = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
                 .Find(obj => obj.name == "Canvas").transform
                 .GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetChild(0);
-            for (int i = 0; i < playerCells.childCount; ++i)
+            for (int i = 0; i < GameData.Player.Inventory.Count; ++i)
             {
                 if (playerCells.GetChild(i).childCount == 0)
                 {
                     prices.AddBought(i);
+                    GameData.Player.RemoveProduct(i);
                 }
             }
 
@@ -41,7 +42,6 @@ public class TradeContinueSell : ButtonTemplate
                 {
                     Price price = traderCells.GetChild(i).GetChild(0).GetComponent<PopUpTrade>().Price;
                     sum += price.GetTruePrice();
-                    GameData.Player.AddProduct(price.GetProduct());
                 }
             }
 

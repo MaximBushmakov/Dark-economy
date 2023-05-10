@@ -24,7 +24,6 @@ public class TradeMakeSell : ButtonTemplate
         }
 
         int ans = Convert.ToInt32(transform.parent.GetChild(1).GetChild(0).GetComponent<InputField>().text);
-        Debug.Log(sum);
         if (ans > GameData.CurTrader.GetKapital() || ((float)ans / sum - 1) * 100 > GameData.Player.Charisma)
         {
             --_patience;
