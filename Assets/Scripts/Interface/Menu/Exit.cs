@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using WorldSystem;
 
 public class Exit : ButtonTemplate
 {
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
+        TimeSystem.GetInstance().EndLog();
         Application.Quit();
     }
 }
