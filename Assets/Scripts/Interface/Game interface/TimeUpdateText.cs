@@ -4,7 +4,7 @@ using PlayerSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeUpdate : MonoBehaviour
+public class TimeUpdateText : MonoBehaviour
 {
     public void Start()
     {

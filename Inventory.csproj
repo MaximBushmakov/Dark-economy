@@ -63,7 +63,7 @@
      <Compile Include="Assets\Scripts\Interface\Game interface\NotesOpen.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\GenInventoryPlayerBuy.cs" />
      <Compile Include="Assets\Scripts\Interface\Menu\Continue.cs" />
-     <Compile Include="Assets\Scripts\Interface\Game interface\TimeUpdate.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\TimeUpdateText.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\UpdateTraderMoney.cs" />
      <Compile Include="Assets\Scripts\Interface\House\BuyAction.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\TradeContinue.cs" />
@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Interface\House\TalkAction.cs" />
      <Compile Include="Assets\Scripts\Interface\Game interface\MenuOpen.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\TradeExitButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Game interface\TimeUpdateButton.cs" />
      <None Include="Assets\Scripts\Interface\Inventory.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

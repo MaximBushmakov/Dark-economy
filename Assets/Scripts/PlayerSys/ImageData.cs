@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 using WorldSystem;
 
@@ -8,12 +9,14 @@ namespace PlayerSystem
 {
     public static class ImageData
     {
+        private static readonly Font _font;
         private static readonly GameObject _inventoryCell;
         private static readonly Dictionary<string, Sprite> _productSprites;
         private static readonly Dictionary<string, Sprite> _npcSprites;
 
         static ImageData()
         {
+            _font = Resources.Load("Halogen_0") as Font;
             _inventoryCell = Resources.Load("Prefabs/cell") as GameObject;
             _productSprites =
                 Resources.LoadAll("Images/Products", typeof(Sprite)).Cast<Sprite>()
@@ -89,6 +92,7 @@ namespace PlayerSystem
             GameObject obj = new(name);
             obj.AddComponent<SpriteRenderer>().sprite = _npcSprites[name];
             obj.transform.SetParent(p: parent);
+
             RectTransform rectTransform = obj.AddComponent<RectTransform>();
             rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
@@ -96,10 +100,25 @@ namespace PlayerSystem
             rectTransform.anchoredPosition = new(0, 0);
             rectTransform.sizeDelta = new(1, 1);
             rectTransform.localScale = new(size, size);
+
             var collider = obj.AddComponent<BoxCollider2D>();
             collider.isTrigger = true;
             collider.size = new(2, 3);
             obj.AddComponent<NPCDialogOpen>().SetActionButtons(actions);
+
+            GameObject nameplateObj = new();
+            nameplateObj.transform.SetParent(obj.transform);
+            Text text = nameplateObj.AddComponent<Text>();
+            text.text = name;
+            text.font = _font;
+            text.fontSize = 80;
+            text.alignment = TextAnchor.MiddleCenter;
+
+            rectTransform = nameplateObj.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new(0, -4.5f);
+            rectTransform.sizeDelta = new(400, 80);
+            rectTransform.localScale = new(0.01f, 0.01f);
+
             return obj;
         }
     }

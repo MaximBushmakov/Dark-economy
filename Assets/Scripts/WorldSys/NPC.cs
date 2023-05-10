@@ -365,10 +365,6 @@ namespace WorldSystem
             kapital += answerFromTrader.GetMoney();
             playerReputation += answerFromTrader.GetReputationChange();
             List<int> ListOfBought = answerFromTrader.GetBought();
-            foreach (int el in ListOfBought)
-            {
-                UnityEngine.Debug.Log(el);
-            }
             ListOfBought.Sort();
             for (int i = ListOfBought.Count - 1; i >= 0; --i)
             {

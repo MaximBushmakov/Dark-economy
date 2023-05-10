@@ -35,6 +35,9 @@ public class TradeMake : ButtonTemplate
             {
                 GameData.CurPrices.SetBan(1);
                 GameData.CurTrader.EndSellTrade(GameData.CurPrices);
+
+                GameData.UpdateTime();
+
                 transform.parent.gameObject.SetActive(false);
                 transform.parent.parent.GetChild(2).gameObject.SetActive(true);
                 return;
