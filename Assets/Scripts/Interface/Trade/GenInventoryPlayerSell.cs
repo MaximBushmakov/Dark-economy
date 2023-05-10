@@ -5,13 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using WorldSystem;
 
-public class GenInventoryTraderBuy : MonoBehaviour
+public class GenInventoryPlayerSell : MonoBehaviour
 {
     public void Start()
     {
-        Player player = GameData.Player;
         NPC trader = GameData.CurTrader;
-        GameData.CurPrices = trader.MakePricesSell();
+        GameData.CurPrices = trader.MakePricesBuy(sellInventory: GameData.Player.GetInventory());
         List<Price> inventory = GameData.CurPrices.GetPrices();
         int size = inventory.Count;
         // grid has 3 cells in a row, cells has size 200 x 200
@@ -30,7 +29,7 @@ public class GenInventoryTraderBuy : MonoBehaviour
         {
             GameObject productObject = ImageData.CreateTradeProductObject(
                 inventory[i], transform.GetChild(i), 200, dataObject);
-            productObject.gameObject.AddComponent<InventoryDragBuy>();
+            productObject.gameObject.AddComponent<InventoryDragSell>();
         }
     }
 }

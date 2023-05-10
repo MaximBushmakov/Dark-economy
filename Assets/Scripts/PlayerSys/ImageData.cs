@@ -113,6 +113,7 @@ namespace PlayerSystem
             text.font = _font;
             text.fontSize = 80;
             text.alignment = TextAnchor.MiddleCenter;
+            text.color = Color.black;
 
             rectTransform = nameplateObj.GetComponent<RectTransform>();
             rectTransform.anchoredPosition = new(0, -4.5f);

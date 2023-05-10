@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TradeMake : ButtonTemplate
+public class TradeMakeBuy : ButtonTemplate
 {
     [SerializeField] private Transform _answer;
     private int _patience = 3;

@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDragHandler
+public class InventoryDragSell : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDragHandler
 {
     private static float _scale = 0;
     private RectTransform _rectTransform;
@@ -39,7 +39,7 @@ public class InventoryDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBegi
             var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             var colliders = Physics2D.OverlapPointAll(position);
 
-            if (colliders.Count() == 2 && colliders[1].name == "Cell(Clone)" && colliders[1].transform.parent.parent.parent.parent.parent.name == "Player part")
+            if (colliders.Count() == 2 && colliders[1].name == "Cell(Clone)" && colliders[1].transform.parent.parent.parent.parent.parent.name == "Trader part")
             {
                 _rectTransform.SetParent(colliders[1].transform);
                 _rectTransform.anchoredPosition = new(0, 0);

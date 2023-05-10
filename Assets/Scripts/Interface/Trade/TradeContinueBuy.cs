@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WorldSystem;
 
-public class TradeContinue : ButtonTemplate
+public class TradeContinueBuy : ButtonTemplate
 {
     public void OnMouseDown()
     {
@@ -32,14 +32,14 @@ public class TradeContinue : ButtonTemplate
             GameData.Player.Money -= ans;
 
             int sum = 0;
-            Transform content = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
+            Transform playerCells = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
                      .Find(obj => obj.name == "Canvas").transform
                      .GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetChild(0);
-            for (int i = 0; i < content.childCount; ++i)
+            for (int i = 0; i < playerCells.childCount; ++i)
             {
-                if (content.GetChild(i).childCount == 1)
+                if (playerCells.GetChild(i).childCount == 1)
                 {
-                    Price price = content.GetChild(i).GetChild(0).GetComponent<PopUpTrade>().Price;
+                    Price price = playerCells.GetChild(i).GetChild(0).GetComponent<PopUpTrade>().Price;
                     sum += price.GetTruePrice();
                     GameData.Player.AddProduct(price.GetProduct());
                 }

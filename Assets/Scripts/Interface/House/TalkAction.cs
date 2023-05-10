@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using PlayerSystem;
 
-public class TalkAction : MonoBehaviour
+public class TalkAction : ButtonTemplate
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnMouseDown()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (GameData.CurTrader.CheckBan() == true)
+        {
+            //
+        }
     }
 }

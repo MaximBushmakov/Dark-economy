@@ -1,9 +1,13 @@
+using PlayerSystem;
 using UnityEngine.SceneManagement;
 
 public class BuyAction : ButtonTemplate
 {
     public void OnMouseDown()
     {
-        SceneManager.LoadScene("Покупка");
+        if (GameData.CurTrader.CheckBan() == true)
+        {
+            SceneManager.LoadScene("Покупка");
+        }
     }
 }

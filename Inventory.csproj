@@ -42,12 +42,12 @@
      <Compile Include="Assets\Scripts\Interface\Trade\TradeStop.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\GenInventoryTraderBuy.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\UpdatePlayerMoney.cs" />
-     <Compile Include="Assets\Scripts\Interface\Trade\TradeMake.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\TradeMakeBuy.cs" />
      <Compile Include="Assets\Scripts\Interface\Game interface\NotesClose.cs" />
      <Compile Include="Assets\Scripts\Interface\House\SellAction.cs" />
      <Compile Include="Assets\Scripts\Interface\House\ToMainButton.cs" />
      <Compile Include="Assets\Scripts\Interface\Menu\NewGame.cs" />
-     <Compile Include="Assets\Scripts\Interface\Trade\TradeOpen.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\TradeOpenBuy.cs" />
      <Compile Include="Assets\Scripts\Interface\ButtonTemplate.cs" />
      <Compile Include="Assets\Scripts\Interface\Map\Road.cs" />
      <Compile Include="Assets\Scripts\Interface\Map\InfoBoard.cs" />
@@ -66,14 +66,20 @@
      <Compile Include="Assets\Scripts\Interface\Game interface\TimeUpdateText.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\UpdateTraderMoney.cs" />
      <Compile Include="Assets\Scripts\Interface\House\BuyAction.cs" />
-     <Compile Include="Assets\Scripts\Interface\Trade\TradeContinue.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\TradeContinueBuy.cs" />
      <Compile Include="Assets\Scripts\Interface\Game interface\InventoryOpen.cs" />
-     <Compile Include="Assets\Scripts\Interface\Trade\InventoryDrag.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\InventoryDragBuy.cs" />
      <Compile Include="Assets\Scripts\Interface\Menu\Exit.cs" />
      <Compile Include="Assets\Scripts\Interface\House\TalkAction.cs" />
      <Compile Include="Assets\Scripts\Interface\Game interface\MenuOpen.cs" />
      <Compile Include="Assets\Scripts\Interface\Trade\TradeExitButton.cs" />
      <Compile Include="Assets\Scripts\Interface\Game interface\TimeUpdateButton.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\GenInventoryPlayerSell.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\GenInventoryTraderSell.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\InventoryDragSell.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\TradeOpenSell.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\TradeMakeSell.cs" />
+     <Compile Include="Assets\Scripts\Interface\Trade\TradeContinueSell.cs" />
      <None Include="Assets\Scripts\Interface\Inventory.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

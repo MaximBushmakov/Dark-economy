@@ -10,6 +10,10 @@ namespace PlayerSystem
     {
         private readonly Inventory _inventory;
         public List<Product> Inventory { get => _inventory.GetInventory(); }
+        public Inventory GetInventory()
+        {
+            return _inventory;
+        }
         public void AddProduct(Product product)
         {
             _inventory.AddProduct(product);
@@ -77,7 +81,7 @@ namespace PlayerSystem
             _inventory.AddProduct(new GoldenMillet());
             _wagon = WagonData.Donkey;
             _money = 1000;
-            _wisdom = 20;
+            _wisdom = 40;
             _charisma = 0;
             _location = "Деревня";
             _sublocation = "Деревня";

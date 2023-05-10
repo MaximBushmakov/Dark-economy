@@ -4,7 +4,7 @@ using PlayerSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TradeOpen : ButtonTemplate
+public class TradeOpenBuy : ButtonTemplate
 {
     [SerializeField] private GameObject _tradeMessage;
     public void OnMouseDown()
