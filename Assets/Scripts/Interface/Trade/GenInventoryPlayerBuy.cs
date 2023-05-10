@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using WorldSystem;
 
-public class GenInventoryPlayer : MonoBehaviour
+public class GenInventoryPlayerBuy : MonoBehaviour
 {
     public void Start()
     {

@@ -16,6 +16,7 @@ namespace PlayerSystem
         private static Player _player;
         public static Player Player { get => _player; }
         public static NPC CurTrader { get; set; }
+        public static Prices CurPrices { get; set; }
         private static TimeSystem timeSystem;
         private static Dictionary<string, string> _notes;
         public static Dictionary<string, string> Notes { get => _notes; }

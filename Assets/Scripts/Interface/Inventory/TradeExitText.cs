@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TradeExitButton : MonoBehaviour
+public class TradeExitText : MonoBehaviour
 {
     static Color deltaColor = new(0.1f, 0.1f, 0.1f, 0);
     private Text component;

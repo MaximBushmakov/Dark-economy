@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using WorldSystem;
 
 namespace PlayerSystem
 {
@@ -27,7 +28,7 @@ namespace PlayerSystem
             return _inventoryCell;
         }
 
-        public static GameObject CreateProductObject(WorldSystem.Product product, Transform parent, float size, GameObject dataObject)
+        public static GameObject CreateProductObject(Product product, Transform parent, float size, GameObject dataObject)
         {
             string productName = product.GetVisibleType(GameData.Player.Wisdom);
             GameObject obj = Object.Instantiate(_inventoryCell, parent);
@@ -52,6 +53,34 @@ namespace PlayerSystem
             var popup = obj.AddComponent<PopUp>();
             popup.SetDataObject(dataObject);
             popup.SetProduct(product);
+            return obj;
+        }
+
+        public static GameObject CreateTradeProductObject(Price price, Transform parent, float size, GameObject dataObject)
+        {
+            string productName = price.GetProduct().GetVisibleType(GameData.Player.Wisdom);
+            GameObject obj = Object.Instantiate(_inventoryCell, parent);
+            obj.name = productName;
+            GameObject productObj = new();
+            productObj.transform.SetParent(obj.transform);
+            Image img = productObj.AddComponent<Image>();
+            img.sprite = _productSprites[productName];
+            RectTransform rectTransform = obj.GetComponent<RectTransform>();
+            rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            rectTransform.localScale = new(1, 1);
+            rectTransform.sizeDelta = new Vector2(size, size);
+
+            RectTransform productRectTransform = productObj.GetComponent<RectTransform>();
+            productRectTransform.anchoredPosition = new(0, 0);
+            productRectTransform.localScale = new Vector2(0.8f, 0.8f);
+            productRectTransform.sizeDelta = new Vector2(size, size);
+            var collider = obj.AddComponent<BoxCollider2D>();
+            collider.size = new(size, size);
+            var popup = obj.AddComponent<PopUpTrade>();
+            popup.SetDataObject(dataObject);
+            popup.Price = price;
             return obj;
         }
 

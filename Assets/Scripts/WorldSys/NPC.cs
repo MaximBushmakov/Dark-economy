@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using static WorldSystem.GlobalNames;
@@ -358,12 +359,16 @@ namespace WorldSystem
             }
             return thisPrices;
         }
-        // Конец продажи товара, который был у NPC
+        // Конец продажи товара, который был у игрока
         public void EndSellTrade(Prices answerFromTrader)
         {
             kapital += answerFromTrader.GetMoney();
             playerReputation += answerFromTrader.GetReputationChange();
             List<int> ListOfBought = answerFromTrader.GetBought();
+            foreach (int el in ListOfBought)
+            {
+                UnityEngine.Debug.Log(el);
+            }
             ListOfBought.Sort();
             for (int i = ListOfBought.Count - 1; i > 0; --i)
             {
@@ -371,7 +376,7 @@ namespace WorldSystem
             }
             ban += answerFromTrader.GetBan();
         }
-        // Конец покупки товара, который был у NPC
+        // Конец покупки товара, который был у игрока
         public void EndBuyTrade(Prices answerFromTrader)
         {
             kapital -= answerFromTrader.GetMoney();

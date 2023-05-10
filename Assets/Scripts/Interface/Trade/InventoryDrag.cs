@@ -50,6 +50,5 @@ public class InventoryDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBegi
                 _rectTransform.anchoredPosition = new(0, 0);
             }
         }
-        // transform.SetParent(GameObject.Find("Canvas").transform);
     }
 }

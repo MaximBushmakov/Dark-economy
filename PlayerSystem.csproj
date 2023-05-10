@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerSys\ButtonTemplate.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\NPCDialogOpen.cs" />
+     <Compile Include="Assets\Scripts\PlayerSys\PopUpTrade.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\Wagon.cs" />
      <Compile Include="Assets\Scripts\PlayerSys\PopUp.cs" />

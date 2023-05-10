@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using WorldSystem;
 
 namespace PlayerSystem
@@ -9,12 +10,21 @@ namespace PlayerSystem
     {
         private readonly Inventory _inventory;
         public List<Product> Inventory { get => _inventory.GetInventory(); }
+        public void AddProduct(Product product)
+        {
+            _inventory.AddProduct(product);
+        }
+
+        public void RemoveProduct(int i)
+        {
+            _inventory.DeleteProd(i);
+        }
         private readonly Wagon _wagon;
         public int Capacity { get => _wagon.Capacity; }
         public float Speed { get => _wagon.Speed; }
         public string WagonName { get => _wagon.Name; }
         private int _money;
-        public int Money { get => _money; }
+        public int Money { get => _money; set => _money = value; }
         private int _reputation;
         public int Reputation { get => _reputation; }
         private int _wisdom;
@@ -66,7 +76,7 @@ namespace PlayerSystem
             _inventory.AddProduct(new GoldenMillet());
             _inventory.AddProduct(new GoldenMillet());
             _wagon = WagonData.Donkey;
-            _money = 100;
+            _money = 1000;
             _wisdom = 1000;
             _charisma = 0;
             _location = "Деревня";
