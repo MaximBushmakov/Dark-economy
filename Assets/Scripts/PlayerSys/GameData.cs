@@ -63,6 +63,8 @@ namespace PlayerSystem
         {
             ++_time;
             timeSystem.WriteLog("Идёт тик " + _time);
+            AllLocalEvents.GetInstance().GetRandomEvent(_player.Luck,
+                LocationData.Locations[_player.Location].GetLocationType());
             timeSystem.MakeTicks(1);
             CurEvents = timeSystem.ReadEvents();
             UpdateEvent();
