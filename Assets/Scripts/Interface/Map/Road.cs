@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PlayerSystem;
 using UnityEngine;
 using WorldSystem;
 
@@ -35,6 +36,7 @@ public class Road : MonoBehaviour
         {
             throw new Exception("There is no road named " + name);
         }
+        GameData.CurRoad = name;
         informationBoard.SetActive(true);
         informationBoard.GetComponent<InfoBoard>().SetText(RoadData.Roads[name].Description);
     }

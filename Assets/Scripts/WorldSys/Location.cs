@@ -26,6 +26,13 @@ namespace WorldSystem
             TimeSystem.GetInstance().AddLocationtoTimeSystem(this);
         }
 
+        public void Reset()
+        {
+            listOfNPC = new();
+            listOfNPCSellers = new();
+            DictionaryofPriceEffects = new();
+        }
+
         public List<Effect> GetEffects()
         {
             return ListOfEffects;

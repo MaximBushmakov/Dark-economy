@@ -27,11 +27,11 @@ namespace WorldSystem
     {
         public static Road
             Safe = new("Safe", ("Город", "Деревня"), 3, 0,
-                "Safe road"),
+                "Безопасная дорога"),
             Unsafe = new("Unsafe", ("Город", "Деревня"), 2, 1,
-                "Not so safe road"),
+                "Дорога с приключениями"),
             Dangerous = new("Dangerous", ("Город", "Деревня"), 1, 2,
-                "Very dangerous road");
+                "Опасная дорога");
         public static readonly Dictionary<string, Road> Roads = new List<Road> {
             Safe,
             Unsafe,

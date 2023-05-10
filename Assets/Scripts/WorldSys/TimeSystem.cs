@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using static WorldSystem.GlobalNames;
@@ -11,10 +12,10 @@ namespace WorldSystem
     {
         private object threadLock = new();
         private static TimeSystem instance;
-        private List<Product> ListOfProducts;
-        private List<NPC> ListOfNPC;
-        private List<Effect> ListOfEffects;
-        private Dictionary<string, Location> DictionaryOfLocations;
+        private List<Product> ListOfProducts = new();
+        private List<NPC> ListOfNPC = new();
+        private List<Effect> ListOfEffects = new();
+        private Dictionary<string, Location> DictionaryOfLocations = new();
         private StreamWriter sw;
         private Event currentEvent;
         protected Random rand;
@@ -29,6 +30,19 @@ namespace WorldSystem
             rand = new Random();
         }
 
+        public TimeSystem(bool isNew)
+        {
+            if (isNew)
+            {
+                ListOfNPC = new List<NPC>();
+                ListOfProducts = new List<Product>();
+                DictionaryOfLocations = new Dictionary<string, Location>();
+                ListOfEffects = new List<Effect>();
+                sw = new StreamWriter("Logs.txt");
+                rand = new Random();
+            }
+        }
+
         public static TimeSystem GetInstance()
         {
             instance ??= new TimeSystem();
@@ -38,6 +52,14 @@ namespace WorldSystem
         public static void Reset()
         {
             instance.EndLog();
+            foreach ((_, Location loc) in instance.DictionaryOfLocations)
+            {
+                loc.Reset();
+            }
+            instance.DictionaryOfLocations = null;
+            instance.ListOfEffects = null;
+            instance.ListOfNPC = null;
+            instance.ListOfProducts = null;
             instance = new TimeSystem();
         }
 
@@ -86,7 +108,7 @@ namespace WorldSystem
         }
         public void EndLog()
         {
-            sw.Close();
+            sw?.Close();
         }
         public void StartRumors(Event thisevent)
         {

@@ -12,10 +12,11 @@ public class PlaceNPC : MonoBehaviour
     {
         List<NPC> npc = TimeSystem.GetInstance().GetLocation(GameData.Player.Location)
             .FindNPCInSublocation(GameData.Player.Sublocation);
+        Debug.Log(npc.Count);
         GameObject actions = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
-                .Find(obj => obj.name == "Canvas")
-                .GetComponentsInChildren<Transform>(true).ToList()
-                .Find(transform => transform.name == "Action buttons").gameObject;
+            .Find(obj => obj.name == "Canvas")
+            .GetComponentsInChildren<Transform>(true).ToList()
+            .Find(transform => transform.name == "Action buttons").gameObject;
         for (int i = 0; i < npc.Count; ++i)
         {
             ImageData.CreateNPCObject(npc[i].GetName(), transform.GetChild(i), actions, _size);

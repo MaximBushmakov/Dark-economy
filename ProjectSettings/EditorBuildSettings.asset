@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: "Assets/Scenes/\u0414\u0435\u0440\u0435\u0432\u043D\u044F.unity"
     guid: e687e00294ed56e489c02db4e450b3ce
   - enabled: 1
+    path: "Assets/Scenes/\u0413\u043E\u0440\u043E\u0434.unity"
+    guid: ca5bc2cd00ca47a469fdfa24934b6b24
+  - enabled: 1
     path: "Assets/Scenes/\u0425\u0430\u0442\u0430 \u041C\u0430\u0440\u043A\u0430.unity"
     guid: 89ef011358e575a429abc457fef84b63
   m_configObjects: {}

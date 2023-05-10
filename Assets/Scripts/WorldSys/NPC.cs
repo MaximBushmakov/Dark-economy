@@ -72,15 +72,7 @@ namespace WorldSystem
         }
         public bool CheckBan()
         {
-            if (ban > 0)
-            {
-                return false;
-            }
-            if (playerReputation < 0)
-            {
-                return false;
-            }
-            return true;
+            return !(ban > 0 || playerReputation < 0);
         }
         public string GetName()
         {

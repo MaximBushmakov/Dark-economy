@@ -35,11 +35,21 @@ namespace PlayerSystem
         public int Wisdom { get => _wisdom / 2; }
         private int _charisma;
         public int Charisma { get => _charisma / 2; }
+        private int _luck;
+        public int Luck { get => Luck; }
 
         public void UpdateStats()
         {
             ++_wisdom;
             ++_charisma;
+            if (new Random().Next() % 2 == 0)
+            {
+                ++_luck;
+            }
+            else if (_luck > 0)
+            {
+                --_luck;
+            }
         }
 
 

@@ -17,6 +17,7 @@ namespace PlayerSystem
         public static Player Player { get => _player; }
         public static NPC CurTrader { get; set; }
         public static Prices CurPrices { get; set; }
+        public static string CurRoad { get; set; }
         private static TimeSystem timeSystem;
         private static Dictionary<string, string> _notes;
         public static Dictionary<string, string> Notes { get => _notes; }
@@ -55,15 +56,21 @@ namespace PlayerSystem
         public static void UpdateTime()
         {
             ++_time;
+            timeSystem.WriteLog("Идёт тик " + _time);
             timeSystem.MakeTicks(1);
+        }
+
+        public static void UpdateTime(int n)
+        {
+            for (int i = 0; i < n; ++i)
+            {
+                UpdateTime();
+            }
         }
 
         public static void NewGame()
         {
-            if (timeSystem != null)
-            {
-                TimeSystem.Reset();
-            }
+            TimeSystem.Reset();
             timeSystem = TimeSystem.GetInstance();
             LocationData.Initialize();
             NPCData.Initialize();
@@ -95,7 +102,11 @@ namespace PlayerSystem
 
         public static void Load()
         {
-            TimeSystem.Reset();
+            if (timeSystem != null)
+            {
+                TimeSystem.Reset();
+            }
+            timeSystem = TimeSystem.GetInstance();
             FileStream SaveFS = new(_savePath, FileMode.Open);
             BinaryFormatter formatter = new();
             try

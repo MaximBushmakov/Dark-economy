@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using static WorldSystem.GlobalNames;
 
 namespace WorldSystem
@@ -12,6 +13,12 @@ namespace WorldSystem
 
         [field: NonSerialized]
         private Random rand = new Random();
+
+        [OnDeserialized]
+        private void OnDeserializeMethod(StreamingContext context)
+        {
+            rand = new Random();
+        }
         public Inventory()
         {
             listOfProducts = new List<Product>();
