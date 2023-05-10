@@ -370,7 +370,7 @@ namespace WorldSystem
                 UnityEngine.Debug.Log(el);
             }
             ListOfBought.Sort();
-            for (int i = ListOfBought.Count - 1; i > 0; --i)
+            for (int i = ListOfBought.Count - 1; i >= 0; --i)
             {
                 inventory.DeleteFromInventoryProd(ListOfBought[i]);
             }
@@ -383,7 +383,7 @@ namespace WorldSystem
             playerReputation += answerFromTrader.GetReputationChange();
             List<int> ListOfBought = answerFromTrader.GetBought();
             ListOfBought.Sort();
-            for (int i = ListOfBought.Count - 1; i > 0; --i)
+            for (int i = ListOfBought.Count - 1; i >= 0; --i)
             {
                 inventory.AddProduct(answerFromTrader.GetPrices()[ListOfBought[i]].GetProduct());
             }

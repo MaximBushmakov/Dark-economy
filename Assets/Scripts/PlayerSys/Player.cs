@@ -28,9 +28,9 @@ namespace PlayerSystem
         private int _reputation;
         public int Reputation { get => _reputation; }
         private int _wisdom;
-        public int Wisdom { get => _wisdom / 10; }
+        public int Wisdom { get => _wisdom / 2; }
         private int _charisma;
-        public int Charisma { get => _charisma / 10; }
+        public int Charisma { get => _charisma / 2; }
 
         public void UpdateStats()
         {
@@ -77,7 +77,7 @@ namespace PlayerSystem
             _inventory.AddProduct(new GoldenMillet());
             _wagon = WagonData.Donkey;
             _money = 1000;
-            _wisdom = 1000;
+            _wisdom = 20;
             _charisma = 0;
             _location = "Деревня";
             _sublocation = "Деревня";
