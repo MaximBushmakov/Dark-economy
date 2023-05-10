@@ -12,6 +12,7 @@ namespace WorldSystem
     {
         private object threadLock = new();
         private static TimeSystem instance;
+        private List<LocalEvent> _events = new();
         private List<Product> ListOfProducts = new();
         private List<NPC> ListOfNPC = new();
         private List<Effect> ListOfEffects = new();
@@ -74,6 +75,13 @@ namespace WorldSystem
             ListOfProducts = ListOfNPC.SelectMany(npc => npc.GetInventoryProducts()).ToList();
         }
 
+        public List<LocalEvent> ReadEvents()
+        {
+            List<LocalEvent> ans = new List<LocalEvent>((IEnumerable<LocalEvent>)_events);
+            _events.Clear();
+            return ans;
+
+        }
         public Event GetCurrentEvent()
         {
             return currentEvent;

@@ -83,6 +83,8 @@
      <Compile Include="Assets\Scripts\Interface\House\TalkClose.cs" />
      <Compile Include="Assets\Scripts\Interface\Game interface\MapOpen.cs" />
      <Compile Include="Assets\Scripts\Interface\Map\LocationUpdate.cs" />
+     <Compile Include="Assets\Scripts\Interface\Event\Answer.cs" />
+     <Compile Include="Assets\Scripts\Interface\Event\EventExit.cs" />
      <None Include="Assets\Scripts\Interface\Inventory.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

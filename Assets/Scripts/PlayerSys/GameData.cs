@@ -4,8 +4,13 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.UI;
 using WorldSystem;
+using static WorldSystem.GlobalNames;
 
 namespace PlayerSystem
 {
@@ -18,6 +23,8 @@ namespace PlayerSystem
         public static NPC CurTrader { get; set; }
         public static Prices CurPrices { get; set; }
         public static string CurRoad { get; set; }
+        public static List<LocalEvent> CurEvents { get; set; }
+        public static LocalEvent CurEvent { get; set; }
         private static TimeSystem timeSystem;
         private static Dictionary<string, string> _notes;
         public static Dictionary<string, string> Notes { get => _notes; }
@@ -46,7 +53,6 @@ namespace PlayerSystem
             _notes = new Dictionary<string, string>
             {
                 {"Торговля", ""},
-                {"Квесты", ""},
                 {"Слухи", ""},
                 {"Другое", ""}
             };
@@ -58,6 +64,65 @@ namespace PlayerSystem
             ++_time;
             timeSystem.WriteLog("Идёт тик " + _time);
             timeSystem.MakeTicks(1);
+            CurEvents = timeSystem.ReadEvents();
+            UpdateEvent();
+        }
+
+        public static void UpdateEvent()
+        {
+            if (CurEvents.Count > 0)
+            {
+                LocalEvent e = CurEvents[^1];
+                CurEvents.RemoveAt(CurEvents.Count - 1);
+                CurEvent = e;
+                Transform message = SceneManager.GetActiveScene().GetRootGameObjects()
+                    .First(obj => obj.name == "Event canvas")
+                    .transform.GetChild(0);
+                message.GetChild(1).GetComponent<Text>().text = e.GetText();
+                var answers = e.GetAnswers();
+                for (int i = 0; i < answers.Count; ++i)
+                {
+                    message.GetChild(i + 2).GetComponent<Text>().text = answers[i];
+                }
+                message.gameObject.SetActive(true);
+            }
+        }
+
+        public static void HandleEvent(int ans)
+        {
+            Transform canvas = SceneManager.GetActiveScene().GetRootGameObjects()
+                    .First(obj => obj.name == "Event canvas")
+                    .transform;
+            Transform answer = canvas.GetChild(1);
+
+            LocalEvent e = AllLocalEvents.GetInstance()
+                .GetEvent(CurEvent.GetAnswerId()[ans], CurEvent.GetEventType());
+
+            answer.GetChild(0).GetComponent<Text>().text = e.GetText();
+
+            foreach (LocalEventEffect effect in e.GetEffects())
+            {
+                switch (effect.GetEffectType())
+                {
+                    case KapitalLocalEffectName:
+                        _player.Money += effect.GetBaf();
+                        break;
+                    case ReputationLocalEffectName:
+                        _player.Reputation += effect.GetBaf();
+                        break;
+                    case MinusProductLocalEffectName:
+                        _player.GetInventory().DeleteSomeProduct(effect.GetBaf());
+                        break;
+                    default:
+                        _player.GetInventory().AddProductType(effect.GetEffectType(), effect.GetBaf());
+                        break;
+                }
+            }
+
+            canvas.GetChild(0).gameObject.SetActive(false);
+            answer.gameObject.SetActive(true);
+
+            UpdateEvent();
         }
 
         public static void UpdateTime(int n)
@@ -71,9 +136,19 @@ namespace PlayerSystem
         public static void NewGame()
         {
             TimeSystem.Reset();
-            timeSystem = TimeSystem.GetInstance();
             LocationData.Initialize();
             NPCData.Initialize();
+
+            _player = new();
+            timeSystem = TimeSystem.GetInstance();
+            _notes = new Dictionary<string, string>
+            {
+                {"Торговля", ""},
+                {"Слухи", ""},
+                {"Другое", ""}
+            };
+            _time = 0;
+
             timeSystem.StartFirstEvent();
         }
 

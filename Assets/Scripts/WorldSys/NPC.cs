@@ -34,7 +34,6 @@ namespace WorldSystem
         private void OnDeserializeMethod(StreamingContext context)
         {
             rand = new Random();
-            TimeSystem.GetInstance().AddNPCtoTimeSystem(this);
         }
 
         public List<Effect> GetEffects()
@@ -199,7 +198,7 @@ namespace WorldSystem
             {
                 productType = thisInventory[i].GetVisibleType(wisdomLevel);
                 int tPrice = thisInventory[i].GetCost(wisdomLevel);
-                if (!ListofProduceMaterial.Contains(productType))
+                if (ListofProduceMaterial.Contains(productType))
                 {
                     tPrice *= 2;
                 }

@@ -30,7 +30,7 @@ namespace PlayerSystem
         private int _money;
         public int Money { get => _money; set => _money = value; }
         private int _reputation;
-        public int Reputation { get => _reputation; }
+        public int Reputation { get => _reputation; set => _reputation = value; }
         private int _wisdom;
         public int Wisdom { get => _wisdom / 2; }
         private int _charisma;

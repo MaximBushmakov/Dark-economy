@@ -25,9 +25,9 @@ namespace WorldSystem
         private static void SetEvents()
         {
             instance.DictionaryOfEvents = new Dictionary<string, Event>();
-            Event newEvent = new("Засуха", AllLocationsName, "Погода сильно изменилась, температура резко поднялась, поля терпят неурожай", 3, new List<Effect> { new Effect("Засуха", PriceEffectType, NormalMilletName, 100, 3) }, new List<String> { "Мне вчера колдун рассказал, что маги солнце заклили и оно теперь нас всех сожжёт.", "Знаешь, что-то в последнее время жара усиливается, не к добру это", "Я слышал, что речка тут недалеко совсем засохла, не к добру это." });
+            Event newEvent = new("Засуха", AllLocationsName, "Погода сильно изменилась, температура резко поднялась, поля терпят неурожай", 3, new List<Effect> { new Effect("Засуха", PriceEffectType, NormalMilletName, 20, 3) }, new List<String> { "Мне вчера колдун рассказал, что маги солнце заклили и оно теперь нас всех сожжёт.", "Знаешь, что-то в последнее время жара усиливается, не к добру это", "Я слышал, что речка тут недалеко совсем засохла, не к добру это." });
             instance.DictionaryOfEvents.Add(newEvent.GetName(), newEvent);
-            newEvent = new("Урожай", AllLocationsName, "Похоже богиня плодородия сжалилась над нами. Скоро в деревнях и городах будет много еды", 3, new List<Effect> { new Effect("Урожай", PriceEffectType, NormalMilletName, 100, 3) }, new List<String> { "Слышал, вчера богине урожая принесли в жертву корову.", "Один знакомый рассказал мне, что в этом году засадили намного больше пшена, чем прежде.", "С каждый днём погода всё лучше и лучше, разве это не прекрасный год?" });
+            newEvent = new("Урожай", AllLocationsName, "Похоже богиня плодородия сжалилась над нами. Скоро в деревнях и городах будет много еды", 3, new List<Effect> { new Effect("Урожай", PriceEffectType, NormalMilletName, -20, 3) }, new List<String> { "Слышал, вчера богине урожая принесли в жертву корову.", "Один знакомый рассказал мне, что в этом году засадили намного больше пшена, чем прежде.", "С каждый днём погода всё лучше и лучше, разве это не прекрасный год?" });
             instance.DictionaryOfEvents.Add(newEvent.GetName(), newEvent);
         }
         public Event GetRandomEvent()
