@@ -200,7 +200,7 @@ namespace WorldSystem
                 int tPrice = thisInventory[i].GetCost(wisdomLevel);
                 if (ListofProduceMaterial.Contains(productType))
                 {
-                    tPrice *= 2;
+                    tPrice +=  tPrice / 10;
                 }
                 switch (thisInventory[i].GetQuality())
                 {
@@ -280,9 +280,9 @@ namespace WorldSystem
             {
                 productType = thisInventory[i].GetVisibleType(wisdomLevel);
                 int tPrice = thisInventory[i].GetCost(wisdomLevel);
-                if (!ListOfBuyProducts.Contains(productType))
+                if (ListOfBuyProducts.Contains(productType))
                 {
-                    tPrice /= 2;
+                    tPrice -= tPrice / 10;
                 }
                 switch (thisInventory[i].GetQuality())
                 {
