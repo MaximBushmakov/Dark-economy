@@ -11,6 +11,5 @@ public class NewGame : ButtonTemplate
     {
         TimeSystem.GetInstance();
         GameData.NewGame();
-        SceneManager.LoadScene(GameData.Player.Location);
     }
 }
