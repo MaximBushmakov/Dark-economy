@@ -63,8 +63,13 @@ namespace PlayerSystem
         {
             ++_time;
             timeSystem.WriteLog("Идёт тик " + _time);
-            AllLocalEvents.GetInstance().GetRandomEvent(_player.Luck,
-                LocationData.Locations[_player.Location].GetLocationType());
+            if (Random.Range(0, 2) == 1)
+            {
+                timeSystem.AddEvent(
+                AllLocalEvents.GetInstance().GetRandomEvent(_player.Luck,
+                    LocationData.Locations[_player.Location].GetLocationType())
+                );
+            }
             timeSystem.MakeTicks(1);
             CurEvents = timeSystem.ReadEvents();
             UpdateEvent();
@@ -75,32 +80,56 @@ namespace PlayerSystem
             if (CurEvents.Count > 0)
             {
                 LocalEvent e = CurEvents[^1];
+                Debug.Log(e.GetText());
                 CurEvents.RemoveAt(CurEvents.Count - 1);
                 CurEvent = e;
-                Transform message = SceneManager.GetActiveScene().GetRootGameObjects()
-                    .First(obj => obj.name == "Event canvas")
-                    .transform.GetChild(0);
-                message.GetChild(1).GetComponent<Text>().text = e.GetText();
                 var answers = e.GetAnswers();
+                if (answers.Count == 0)
+                {
+                    HandleEvent(-1);
+                    return;
+                }
+
+                Transform message = SceneManager.GetActiveScene().GetRootGameObjects()
+                                    .First(obj => obj.name == "Event canvas")
+                                    .transform.GetChild(0);
+                message.GetChild(1).GetComponent<Text>().text = e.GetText();
                 for (int i = 0; i < answers.Count; ++i)
                 {
                     message.GetChild(i + 2).GetComponent<Text>().text = answers[i];
+                    message.GetChild(i + 2).gameObject.SetActive(true);
+                }
+                for (int i = answers.Count; i < 3; ++i)
+                {
+                    message.GetChild(i + 2).gameObject.SetActive(false);
                 }
                 message.gameObject.SetActive(true);
+            }
+            else if (CurEvent == null)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
 
         public static void HandleEvent(int ans)
         {
+            LocalEvent e;
+            if (ans == -1)
+            {
+                e = CurEvent;
+            }
+            else
+            {
+                Debug.Log(ans);
+                e = AllLocalEvents.GetInstance()
+                    .GetEvent(CurEvent.GetAnswerId()[ans], CurEvent.GetEventType());
+            }
+
             Transform canvas = SceneManager.GetActiveScene().GetRootGameObjects()
                     .First(obj => obj.name == "Event canvas")
                     .transform;
             Transform answer = canvas.GetChild(1);
-
-            LocalEvent e = AllLocalEvents.GetInstance()
-                .GetEvent(CurEvent.GetAnswerId()[ans], CurEvent.GetEventType());
-
-            answer.GetChild(0).GetComponent<Text>().text = e.GetText();
+            answer.GetChild(1).GetComponent<Text>().text = e.GetText();
 
             foreach (LocalEventEffect effect in e.GetEffects())
             {
@@ -123,16 +152,18 @@ namespace PlayerSystem
 
             canvas.GetChild(0).gameObject.SetActive(false);
             answer.gameObject.SetActive(true);
-
-            UpdateEvent();
         }
 
         public static void UpdateTime(int n)
         {
             for (int i = 0; i < n; ++i)
             {
-                UpdateTime();
+                ++_time;
+                timeSystem.WriteLog("Идёт тик " + _time);
+                timeSystem.MakeTicks(1);
             }
+            CurEvents = timeSystem.ReadEvents();
+            UpdateEvent();
         }
 
         public static void NewGame()
@@ -165,6 +196,7 @@ namespace PlayerSystem
                 formatter.Serialize(SaveFS, timeSystem.GetCurrentEvent());
                 formatter.Serialize(SaveFS, _player);
                 formatter.Serialize(SaveFS, _notes);
+                formatter.Serialize(SaveFS, _time);
             }
             catch (SerializationException e)
             {
@@ -193,6 +225,7 @@ namespace PlayerSystem
                     formatter.Deserialize(SaveFS) as WorldSystem.Event);
                 _player = formatter.Deserialize(SaveFS) as Player;
                 _notes = formatter.Deserialize(SaveFS) as Dictionary<string, string>;
+                _time = (int)formatter.Deserialize(SaveFS);
             }
             catch (SerializationException e)
             {

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EventExit : MonoBehaviour
@@ -10,6 +9,8 @@ public class EventExit : MonoBehaviour
     public void Start()
     {
         _text = GetComponent<Text>();
+        var collider = gameObject.AddComponent<BoxCollider2D>();
+        collider.size = new(100, 100);
     }
 
     public void OnMouseEnter()
@@ -25,5 +26,13 @@ public class EventExit : MonoBehaviour
     public void OnMouseDown()
     {
         transform.parent.gameObject.SetActive(false);
+        if (GameData.CurEvents.Count == 0)
+        {
+            GameData.CurEvent = null;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        GameData.UpdateEvent();
+
     }
 }

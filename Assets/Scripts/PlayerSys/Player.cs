@@ -36,7 +36,7 @@ namespace PlayerSystem
         private int _charisma;
         public int Charisma { get => _charisma / 2; }
         private int _luck;
-        public int Luck { get => Luck; }
+        public int Luck { get => _luck; }
 
         public void UpdateStats()
         {
@@ -93,6 +93,7 @@ namespace PlayerSystem
             _money = 1000;
             _wisdom = 40;
             _charisma = 0;
+            _luck = 0;
             _location = "Деревня";
             _sublocation = "Деревня";
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.UI;
 
 public class Answer : MonoBehaviour
@@ -24,6 +25,7 @@ public class Answer : MonoBehaviour
 
     public void OnMouseDown()
     {
-        GameData.HandleEvent(_text.text[^1]);
+        _text.fontStyle = FontStyle.Normal;
+        GameData.HandleEvent(transform.name[^1] - '0');
     }
 }

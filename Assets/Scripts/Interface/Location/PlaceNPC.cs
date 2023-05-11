@@ -12,7 +12,6 @@ public class PlaceNPC : MonoBehaviour
     {
         List<NPC> npc = TimeSystem.GetInstance().GetLocation(GameData.Player.Location)
             .FindNPCInSublocation(GameData.Player.Sublocation);
-        Debug.Log(npc.Count);
         GameObject actions = SceneManager.GetActiveScene().GetRootGameObjects().ToList()
             .Find(obj => obj.name == "Canvas")
             .GetComponentsInChildren<Transform>(true).ToList()
