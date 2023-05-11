@@ -12,8 +12,8 @@ namespace WorldSystem
         protected int timeToStart;
         protected int startTime;
         protected bool used;
-        List<Effect> ListOfEffects;
-        List<string> ListOfRumors;
+        protected List<Effect> ListOfEffects;
+        protected List<string> ListOfRumors;
         public Event(string thisName, string thisLocation, string thisText, int thisTimeToStart, List<Effect> thisListOfEffects, List<String> thisListOfRumors)
         {
             name = thisName;
