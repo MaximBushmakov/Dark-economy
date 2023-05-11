@@ -54,9 +54,4 @@ namespace WorldSystem
             ++ticks;
         }
     }
-    public class PriceEffect : Effect
-    {
-        public PriceEffect(string thisName, int thisLifeTime, int thisEffectBaf, string thisproductType)
-            : base(thisName, "Price", thisproductType, thisEffectBaf, thisLifeTime) { }
-    }
 }

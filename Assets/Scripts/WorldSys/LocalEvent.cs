@@ -6,8 +6,8 @@ namespace WorldSystem
     [Serializable]
     public class LocalEventEffect
     {
-        protected string type;
-        protected int baf;
+        private string type;
+        private int baf;
         public LocalEventEffect(string thisType, int thisBaf)
         {
             type = thisType;
@@ -25,12 +25,12 @@ namespace WorldSystem
     [Serializable]
     public class LocalEvent
     {
-        protected string name;
-        protected string text;
-        protected string type;
-        protected List<int> ListOfAnswerId;
-        protected List<string> ListOfAnswers;
-        protected List<LocalEventEffect> ListOfEffects;
+        private string name;
+        private string text;
+        private string type;
+        private List<int> ListOfAnswerId;
+        private List<string> ListOfAnswers;
+        private List<LocalEventEffect> ListOfEffects;
         public LocalEvent(string thisName, string thisType, string thisText, List<int> thisListOfAnswerId, List<String> thisListOfAnswers, List<LocalEventEffect> thisListOfEffects)
         {
             name = thisName;
