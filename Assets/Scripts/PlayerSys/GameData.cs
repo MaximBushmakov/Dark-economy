@@ -3,11 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading;
-using UnityEditor.SearchService;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 using WorldSystem;
 using static WorldSystem.GlobalNames;
@@ -29,8 +27,8 @@ namespace PlayerSystem
         private static TimeSystem timeSystem;
         private static Dictionary<string, string> _notes;
         public static Dictionary<string, string> Notes { get => _notes; }
-        private static int _time = -1;
-        public static int Day { get => _time / 4 + 1; }
+        private static int _time;
+        public static int Day { get => _time / 4; }
         public static string TimeOfDay
         {
             get
@@ -81,7 +79,6 @@ namespace PlayerSystem
             if (CurEvents.Count > 0)
             {
                 LocalEvent e = CurEvents[^1];
-                Debug.Log(e.GetText());
                 CurEvents.RemoveAt(CurEvents.Count - 1);
                 CurEvent = e;
                 var answers = e.GetAnswers();
@@ -135,7 +132,6 @@ namespace PlayerSystem
             }
             else
             {
-                Debug.Log(ans);
                 e = AllLocalEvents.GetInstance()
                     .GetEvent(CurEvent.GetAnswerId()[ans], CurEvent.GetEventType());
             }
@@ -181,7 +177,7 @@ namespace PlayerSystem
             UpdateEvent();
         }
 
-        public static void NewGame()
+        public static async void NewGame()
         {
             TimeSystem.Reset();
             LocationData.Initialize();
@@ -195,15 +191,20 @@ namespace PlayerSystem
                 {"Слухи", ""},
                 {"Другое", ""}
             };
-            _time = 0;
+            _time = 3;
 
             timeSystem.StartFirstEvent();
 
             timeSystem.AddEvent(AllLocalEvents.GetInstance().GetEvent(0, StoryEventName));
 
-            SceneManager.LoadScene(Player.Location);
+            SceneManager.LoadSceneAsync(Player.Location, LoadSceneMode.Single);
+            int curFrame = Time.frameCount + 1;
+            while (curFrame >= Time.frameCount)
+            {
+                await Task.Yield();
+            }
 
-            UpdateTime();
+            UpdateTime(1);
         }
 
         public static void Save()
