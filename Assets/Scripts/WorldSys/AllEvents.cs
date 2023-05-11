@@ -46,7 +46,7 @@ namespace WorldSystem
         public List<string> GetRumors(Event currentEvent, int NPCcount)
         {
             List<string> ListOfRumors = new();
-            int correctRumorNumber = NPCcount * 4 / 10;
+            int correctRumorNumber = NPCcount * 6 / 10;
             for (int i = 0; i < correctRumorNumber; ++i)
             {
                 ListOfRumors.Add(currentEvent.GetRumors()[instance.rand.Next() % currentEvent.GetRumors().Count]);
