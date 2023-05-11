@@ -105,8 +105,10 @@ namespace PlayerSystem
             }
             else if (CurEvent == null)
             {
+                Debug.Log("hi");
                 if (CurGlobEvent != null)
                 {
+                    Debug.Log("hello");
                     Transform canvas = SceneManager.GetActiveScene().GetRootGameObjects()
                         .First(obj => obj.name == "Event canvas")
                         .transform;
@@ -141,6 +143,16 @@ namespace PlayerSystem
                     .transform;
             Transform answer = canvas.GetChild(1);
             answer.GetChild(1).GetComponent<Text>().text = e.GetText();
+
+            if (answer.GetChild(2).GetComponent<BoxCollider2D>() == null)
+            {
+                var collider = answer.GetChild(0).gameObject.AddComponent<BoxCollider2D>();
+                collider.size = new(2320, 1200);
+                collider.isTrigger = true;
+                collider = answer.GetChild(2).gameObject.AddComponent<BoxCollider2D>();
+                collider.size = new(100, 100);
+                collider.isTrigger = true;
+            }
 
             foreach (LocalEventEffect effect in e.GetEffects())
             {
