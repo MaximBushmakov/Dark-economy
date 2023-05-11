@@ -24,11 +24,12 @@ namespace PlayerSystem
         public static Prices CurPrices { get; set; }
         public static string CurRoad { get; set; }
         public static List<LocalEvent> CurEvents { get; set; }
-        public static LocalEvent CurEvent { get; set; }
+        public static LocalEvent CurEvent { get; set; } = null;
+        public static WorldSystem.Event CurGlobEvent { get; set; } = null;
         private static TimeSystem timeSystem;
         private static Dictionary<string, string> _notes;
         public static Dictionary<string, string> Notes { get => _notes; }
-        private static int _time;
+        private static int _time = -1;
         public static int Day { get => _time / 4 + 1; }
         public static string TimeOfDay
         {
@@ -107,7 +108,21 @@ namespace PlayerSystem
             }
             else if (CurEvent == null)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                if (CurGlobEvent != null)
+                {
+                    Transform canvas = SceneManager.GetActiveScene().GetRootGameObjects()
+                        .First(obj => obj.name == "Event canvas")
+                        .transform;
+                    Transform answer = canvas.GetChild(1);
+                    answer.GetChild(1).GetComponent<Text>().text = CurGlobEvent.GetText();
+                    canvas.GetChild(0).gameObject.SetActive(false);
+                    answer.gameObject.SetActive(true);
+                    CurGlobEvent = null;
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
             }
         }
 
@@ -183,6 +198,12 @@ namespace PlayerSystem
             _time = 0;
 
             timeSystem.StartFirstEvent();
+
+            timeSystem.AddEvent(AllLocalEvents.GetInstance().GetEvent(0, StoryEventName));
+
+            SceneManager.LoadScene(Player.Location);
+
+            UpdateTime();
         }
 
         public static void Save()

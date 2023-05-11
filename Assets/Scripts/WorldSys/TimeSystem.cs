@@ -149,6 +149,7 @@ namespace WorldSystem
         {
             if (instance.currentEvent.Start())
             {
+                _globEvent = instance.currentEvent;
                 List<Effect> newEffects = currentEvent.GetEffects();
                 string location = currentEvent.GetLocation();
                 if (location == AllLocationsName)
