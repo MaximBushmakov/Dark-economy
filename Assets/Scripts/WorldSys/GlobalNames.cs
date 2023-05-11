@@ -89,9 +89,9 @@ namespace WorldSystem
         public const string NormalDriedMeatName = "Вяленная Кабанина";
         public const string GoldenDriedMeatName = "Вяленная Лосятина";
         public const string BadDriedMeatName = "Вяленная Зайчатина";
-        public const string NormalShoesName = "Кожанная обувь";
-        public const string GoldenShoesName = "Удобная кожанная обувь";
-        public const string BadShoesName = "Разваливающаяся кожанная обувь";
+        public const string NormalShoesName = "Кожаная обувь";
+        public const string GoldenShoesName = "Удобная кожаная обувь";
+        public const string BadShoesName = "Разваливающаяся кожаная обувь";
         public const string NormalBeerName = "Людское пиво";
         public const string GoldenBeerName = "Гномское Пиво";
         public const string BadBeerName = "Эльфийское пиво";

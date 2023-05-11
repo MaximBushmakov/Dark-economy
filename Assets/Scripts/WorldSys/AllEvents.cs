@@ -9,7 +9,7 @@ namespace WorldSystem
     {
         private static AllEvents instance;
         private Dictionary<string, Event> DictionaryOfEvents;
-        protected Random rand;
+        private Random rand;
         public static AllEvents GetInstance()
         {
             if (instance == null)
