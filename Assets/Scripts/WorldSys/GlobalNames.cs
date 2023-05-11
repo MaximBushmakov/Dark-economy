@@ -14,6 +14,7 @@ namespace WorldSystem
         public const string BadTownEventName =  "Плохое событие в городе";
         public const string GoodVillageEventName = "Хорошее событие в деревне";
         public const string BadVillageEventName = "Плохое событие в деревне";
+        public const string StoryEventName = "Сюжетное событие";
         public const string KapitalLocalEffectName = "Капитал";
         public const string ReputationLocalEffectName = "Репутация";
         public const string MinusProductLocalEffectName = "Потеря товара";
