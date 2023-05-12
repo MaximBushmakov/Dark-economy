@@ -6,7 +6,7 @@ namespace WorldSystem
 {
     [Serializable]
     public class Priest : NPC{
-        public Priest(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, PriestProfessionName, new List<string>() { GoldenWaxName, NormalWaxName, BadWaxName}, new List<string>() { GoldenCandleName, NormalCandleName, BadCandleName, GoldenBookName, NormalBookName, BadBookName} , ListofSubLocations, 20, 20000, 20){
+        public Priest(string npcName, string npcLocation, List<String> ListofSubLocations) : base(npcName, npcLocation, PriestProfessionName, new List<string>() { GoldenWaxName, NormalWaxName, BadWaxName}, new List<string>() { GoldenCandleName, NormalCandleName, BadCandleName, GoldenBookName, NormalBookName, BadBookName} , ListofSubLocations, 100, 20000, 20){
         }
         protected override void GenerateStartInventory(){
             inventory.AddProduct(new NormalMillet());
