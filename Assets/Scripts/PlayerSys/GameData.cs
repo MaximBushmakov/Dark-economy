@@ -193,7 +193,7 @@ namespace PlayerSystem
             timeSystem.AddEvent(AllLocalEvents.GetInstance().GetEvent(0, StoryEventName));
 
             SceneManager.LoadSceneAsync(Player.Location, LoadSceneMode.Single);
-            int curFrame = Time.frameCount + 10;
+            int curFrame = Time.frameCount + 50;
             while (curFrame >= Time.frameCount)
             {
                 await Task.Yield();
