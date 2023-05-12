@@ -10,7 +10,6 @@ namespace WorldSystem
 {
     public class TimeSystem
     {
-        private object threadLock = new();
         private static TimeSystem instance;
         private List<LocalEvent> _events = new();
         private Event _globEvent;
@@ -98,20 +97,17 @@ namespace WorldSystem
 
         public void AddEffecttoTimeSystem(Effect newEffect)
         {
-            lock (threadLock) ;
             ListOfEffects.Add(newEffect);
             sw.WriteLine(newEffect.GetName() + " теперь часть системы времени");
         }
         public void AddNPCtoTimeSystem(NPC newNPC)
         {
-            lock (threadLock) ;
             ListOfNPC.Add(newNPC);
             DictionaryOfLocations[newNPC.GetLocation()].AddNPC(newNPC);
             sw.WriteLine(newNPC.GetProfessionType() + " " + newNPC.GetName() + " теперь часть системы времени");
         }
         public void AddProducttoTimeSystem(Product newProduct)
         {
-            lock (threadLock) ;
             ListOfProducts.Add(newProduct);
             sw.WriteLine(newProduct.GetSubType() + " теперь часть системы времени");
         }
@@ -160,6 +156,7 @@ namespace WorldSystem
                         for (int i = 0; i < newEffects.Count; ++i)
                         {
                             thislocation.Value.AddEffect(newEffects[i]);
+                            TimeSystem.GetInstance().AddEffecttoTimeSystem(newEffects[i]);
                         }
                     }
                 }
@@ -172,6 +169,7 @@ namespace WorldSystem
                             if (location == thislocation.Key)
                             {
                                 thislocation.Value.AddEffect(newEffects[i]);
+                                TimeSystem.GetInstance().AddEffecttoTimeSystem(newEffects[i]);
                             }
                         }
                     }
