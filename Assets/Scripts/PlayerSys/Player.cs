@@ -29,7 +29,7 @@ namespace PlayerSystem
         public string WagonName { get => _wagon.Name; }
         private int _money;
         public int Money { get => _money; set => _money = value; }
-        private int _reputation;
+        private int _reputation = 20;
         public int Reputation { get => _reputation; set => _reputation = value; }
         private int _wisdom;
         public int Wisdom { get => _wisdom / 2; }

@@ -18,6 +18,8 @@ public class TravelButton : ButtonTemplate
             GameData.Player.Location = cur.Locations.origin;
         }
 
+        GameData.Player.Sublocation = GameData.Player.Location;
+
 
         for (int i = 0; i < cur.DangerLevel; ++i)
         {

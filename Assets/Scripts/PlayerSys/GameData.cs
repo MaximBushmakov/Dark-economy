@@ -28,7 +28,7 @@ namespace PlayerSystem
         private static Dictionary<string, string> _notes;
         public static Dictionary<string, string> Notes { get => _notes; }
         private static int _time;
-        public static int Day { get => _time / 4; }
+        public static int Day { get => _time / 4 + 1; }
         public static string TimeOfDay
         {
             get
@@ -203,7 +203,7 @@ namespace PlayerSystem
                 {"Слухи", ""},
                 {"Другое", ""}
             };
-            _time = 3;
+            _time = 0;
 
             timeSystem.StartFirstEvent();
 
