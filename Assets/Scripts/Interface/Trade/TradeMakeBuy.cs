@@ -33,6 +33,7 @@ public class TradeMakeBuy : ButtonTemplate
             }
             else
             {
+                GameData.CurPrices.SetReputationChange(-1);
                 GameData.CurPrices.SetBan(4);
                 GameData.CurTrader.EndSellTrade(GameData.CurPrices);
 
