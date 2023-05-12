@@ -145,10 +145,13 @@ namespace WorldSystem
         {
             if (instance.currentEvent.Start())
             {
-                UnityEngine.Debug.Log("bye");
                 _globEvent = instance.currentEvent;
                 List<Effect> newEffects = currentEvent.GetEffects();
                 string location = currentEvent.GetLocation();
+                for (int i = 0; i < newEffects.Count; ++i)
+                    {
+                        TimeSystem.GetInstance().AddEffecttoTimeSystem(newEffects[i]);
+                    }
                 if (location == AllLocationsName)
                 {
                     foreach (var thislocation in DictionaryOfLocations)
@@ -156,7 +159,6 @@ namespace WorldSystem
                         for (int i = 0; i < newEffects.Count; ++i)
                         {
                             thislocation.Value.AddEffect(newEffects[i]);
-                            TimeSystem.GetInstance().AddEffecttoTimeSystem(newEffects[i]);
                         }
                     }
                 }
@@ -169,7 +171,6 @@ namespace WorldSystem
                             if (location == thislocation.Key)
                             {
                                 thislocation.Value.AddEffect(newEffects[i]);
-                                TimeSystem.GetInstance().AddEffecttoTimeSystem(newEffects[i]);
                             }
                         }
                     }
