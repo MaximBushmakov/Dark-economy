@@ -103,20 +103,18 @@ namespace PlayerSystem
                 }
                 message.gameObject.SetActive(true);
             }
-            else if (CurEvent == null)
+            else if ((CurGlobEvent = timeSystem.GetActiveEvent()) != null)
             {
-                if ((CurGlobEvent = timeSystem.GetActiveEvent()) != null)
-                {
-                    CurEvent = new(CurGlobEvent.GetName(), null, CurGlobEvent.GetText(),
+                CurEvent = new(CurGlobEvent.GetName(), null, CurGlobEvent.GetText(),
                             new List<int>(), new List<string>(), new List<LocalEventEffect>());
-                    HandleEvent(-1);
-                    CurGlobEvent = null;
-                }
-                else
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
+                HandleEvent(-1);
+                CurGlobEvent = null;
             }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
         }
 
         public static void HandleEvent(int ans)
@@ -136,17 +134,7 @@ namespace PlayerSystem
                     .First(obj => obj.name == "Event canvas")
                     .transform;
             Transform answer = canvas.GetChild(1);
-            answer.GetChild(1).GetComponent<Text>().text = e.GetText();
-
-            if (answer.GetChild(2).GetComponent<BoxCollider2D>() == null)
-            {
-                var collider = answer.GetChild(0).gameObject.AddComponent<BoxCollider2D>();
-                collider.size = new(2320, 1200);
-
-                collider = answer.GetChild(2).gameObject.AddComponent<BoxCollider2D>();
-                collider.size = new(100, 100);
-                collider.isTrigger = true;
-            }
+            answer.GetChild(0).GetComponent<Text>().text = e.GetText();
 
             foreach (LocalEventEffect effect in e.GetEffects())
             {
@@ -169,6 +157,7 @@ namespace PlayerSystem
 
             canvas.GetChild(0).gameObject.SetActive(false);
             answer.gameObject.SetActive(true);
+
         }
 
         public static void UpdateTime(int n)

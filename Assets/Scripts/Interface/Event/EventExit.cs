@@ -9,6 +9,9 @@ public class EventExit : MonoBehaviour
     public void Start()
     {
         _text = GetComponent<Text>();
+        var collider = gameObject.AddComponent<BoxCollider2D>();
+        collider.size = new(100, 100);
+        collider.isTrigger = true;
     }
 
     public void OnMouseEnter()
@@ -24,6 +27,7 @@ public class EventExit : MonoBehaviour
     public void OnMouseDown()
     {
         transform.parent.gameObject.SetActive(false);
+
         if (GameData.CurEvents.Count == 0)
         {
             GameData.CurEvent = null;
