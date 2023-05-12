@@ -23,7 +23,7 @@ namespace WorldSystem
                     new List<string> { "Хата Марка", "Деревня", "Поле", "Хата Марка" }),
 
                 new Millworker("Рудольф", "Деревня",
-                    new List<string> { "Хата Рудольфа", "Деревня", "Мельница", "Хата Рудольфа" }),
+                    new List<string> { "Мельница", "Деревня", "Мельница", "Хата Рудольфа" }),
 
                 new Fermer("Олег", "Деревня",
                     new List<string> { "Хата Олега", "Деревня", "Поле", "Хата Олега" }),
@@ -32,7 +32,7 @@ namespace WorldSystem
                     new List<string> { "Дом Андрея", "Город", "Пекарня", "Дом Андрея" }),
 
                 new Elder("Александро", "Деревня",
-                    new List<string> { "Дом Александро", "Деревня", "Зал старейшины", "Дом Александро" }),
+                    new List<string> { "Дом Александро", "Зал старейшины", "Зал старейшины", "Дом Александро" }),
 
                 new Trader("Джон", new List<string> { "Деревня", "Город" }, new List<List<string>> {
                     new List<string> { ElderProfessionName, FermerProfessionName, MillworkerProfessionName },

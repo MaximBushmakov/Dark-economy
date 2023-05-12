@@ -27,7 +27,6 @@ namespace WorldSystem
             ticks = 0;
             owner = thisOwner;
             effectBaf = thisEffectBaf;
-            TimeSystem.GetInstance().AddEffecttoTimeSystem(this);
         }
         public string GetName()
         {

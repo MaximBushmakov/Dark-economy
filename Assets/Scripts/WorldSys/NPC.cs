@@ -177,6 +177,7 @@ namespace WorldSystem
         public void AddEffect(Effect thisEffect)
         {
             ListOfEffects.Add(thisEffect);
+            TimeSystem.GetInstance().AddEffecttoTimeSystem(thisEffect);
             if (thisEffect.GetEffectType() == PriceEffectType)
             {
                 if (!DictionaryofPriceEffects.ContainsKey(thisEffect.GetOwner()))
@@ -394,6 +395,7 @@ namespace WorldSystem
                     else
                     {
                         TimeSystem.GetInstance().WriteLog(type + " " + name + " голоден и не смог купить поесть");
+                        AddEffect(new Effect("Хочет купить хлеб", PriceEffectType, NormalBreadName, 10, 2));
                     }
                 }
             }
