@@ -62,7 +62,7 @@ namespace PlayerSystem
         {
             ++_time;
             timeSystem.WriteLog("Идёт тик " + _time);
-            if (Random.Range(0, 2) == 1)
+            if (Random.Range(0, 10) == 1)
             {
                 timeSystem.AddEvent(
                 AllLocalEvents.GetInstance().GetRandomEvent(_player.Luck,
@@ -105,17 +105,11 @@ namespace PlayerSystem
             }
             else if (CurEvent == null)
             {
-                Debug.Log("hi");
-                if (CurGlobEvent != null)
+                if ((CurGlobEvent = timeSystem.GetActiveEvent()) != null)
                 {
-                    Debug.Log("hello");
-                    Transform canvas = SceneManager.GetActiveScene().GetRootGameObjects()
-                        .First(obj => obj.name == "Event canvas")
-                        .transform;
-                    Transform answer = canvas.GetChild(1);
-                    answer.GetChild(1).GetComponent<Text>().text = CurGlobEvent.GetText();
-                    canvas.GetChild(0).gameObject.SetActive(false);
-                    answer.gameObject.SetActive(true);
+                    CurEvent = new(CurGlobEvent.GetName(), null, CurGlobEvent.GetText(),
+                            new List<int>(), new List<string>(), new List<LocalEventEffect>());
+                    HandleEvent(-1);
                     CurGlobEvent = null;
                 }
                 else
@@ -148,7 +142,7 @@ namespace PlayerSystem
             {
                 var collider = answer.GetChild(0).gameObject.AddComponent<BoxCollider2D>();
                 collider.size = new(2320, 1200);
-                collider.isTrigger = true;
+
                 collider = answer.GetChild(2).gameObject.AddComponent<BoxCollider2D>();
                 collider.size = new(100, 100);
                 collider.isTrigger = true;

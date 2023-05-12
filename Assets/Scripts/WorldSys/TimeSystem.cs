@@ -88,7 +88,9 @@ namespace WorldSystem
         }
         public Event GetActiveEvent()
         {
-            return _globEvent;
+            Event e = _globEvent;
+            _globEvent = null;
+            return e;
         }
         public Event GetCurrentEvent()
         {
@@ -149,9 +151,9 @@ namespace WorldSystem
                 List<Effect> newEffects = currentEvent.GetEffects();
                 string location = currentEvent.GetLocation();
                 for (int i = 0; i < newEffects.Count; ++i)
-                    {
-                        TimeSystem.GetInstance().AddEffecttoTimeSystem(newEffects[i]);
-                    }
+                {
+                    GetInstance().AddEffecttoTimeSystem(newEffects[i]);
+                }
                 if (location == AllLocationsName)
                 {
                     foreach (var thislocation in DictionaryOfLocations)
