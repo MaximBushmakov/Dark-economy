@@ -395,7 +395,7 @@ namespace WorldSystem
                     else
                     {
                         TimeSystem.GetInstance().WriteLog(type + " " + name + " голоден и не смог купить поесть");
-                        AddEffect(new Effect("Хочет купить хлеб", PriceEffectName, NormalBreadName, 10, 1));
+                        AddEffect(new Effect("Хочет купить хлеб", PriceEffectType, NormalBreadName, 10, 1));
                     }
                 }
             }
