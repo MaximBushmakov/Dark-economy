@@ -51,9 +51,9 @@ namespace PlayerSystem
             timeSystem = TimeSystem.GetInstance();
             _notes = new Dictionary<string, string>
             {
-                {"Торговля", ""},
-                {"Слухи", ""},
-                {"Другое", ""}
+                {"Торговля", "Новая информация"},
+                {"Слухи", "Новая информация"},
+                {"Другое", "Новая информация"}
             };
             _time = 0;
         }
@@ -182,9 +182,9 @@ namespace PlayerSystem
             timeSystem = TimeSystem.GetInstance();
             _notes = new Dictionary<string, string>
             {
-                {"Торговля", ""},
-                {"Слухи", ""},
-                {"Другое", ""}
+                {"Торговля", "Новая информация"},
+                {"Слухи", "Новая информация"},
+                {"Другое", "Новая информация"}
             };
             _time = 0;
 
