@@ -424,7 +424,7 @@ RectTransform:
   - {fileID: 1865923835}
   - {fileID: 1720633894}
   m_Father: {fileID: 382813344}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1590,7 +1590,7 @@ RectTransform:
   m_Children:
   - {fileID: 957953294}
   m_Father: {fileID: 382813344}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2176,7 +2176,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: 458d6f2206ff3224898e7f5298eaf2bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2377,7 +2377,6 @@ RectTransform:
   - {fileID: 227536213}
   - {fileID: 1761307519}
   - {fileID: 976610459}
-  - {fileID: 1716928323}
   - {fileID: 335708758}
   - {fileID: 725118396}
   - {fileID: 46526078}
@@ -2735,6 +2734,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 889456686}
+  - {fileID: 1716928323}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4084,7 +4084,7 @@ RectTransform:
   m_Children:
   - {fileID: 1346847412}
   m_Father: {fileID: 382813344}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7325,14 +7325,14 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716928322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.99994755}
   m_LocalScale: {x: 118.715996, y: 69.324, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1724258790}
   - {fileID: 378009446}
-  m_Father: {fileID: 382813344}
-  m_RootOrder: 17
+  m_Father: {fileID: 433542193}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7379,7 +7379,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 0ad4010d571cdcb4f9185188e36d6ec1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
