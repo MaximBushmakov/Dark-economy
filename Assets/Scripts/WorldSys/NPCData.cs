@@ -79,7 +79,7 @@ namespace WorldSystem
                     new List<string> { CookProfessionName, TavernKeeperProfessionName, ShoemakerProfessionName, SeamanProfessionName }
                     }, 50),
                 new Brewer("Соломон", "Город",
-                    new List<string> { "Дом Соломона", "Пивоварня", "Пивоварня", "Дом Соломона" }),
+                    new List<string> { "Дом Соломона", "Пивоварня", "Город", "Дом Соломона" }),
                  new Trader("Иван", new List<string> { "Деревня", "Город" }, new List<List<string>> {
                     new List<string> { FermerProfessionName},
                     new List<string> { BrewerProfessionName, TavernKeeperProfessionName}
