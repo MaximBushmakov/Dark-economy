@@ -20,13 +20,13 @@ namespace WorldSystem
             _NPC = new ReadOnlyDictionary<string, NPC>(new List<NPC>
             {
                 new Fermer("Марк", "Деревня",
-                    new List<string> { "Хата Марка", "Деревня", "Поле", "Хата Марка" }),
+                    new List<string> { "Дом Марка", "Деревня", "Поле", "Дом Марка" }),
 
                 new Millworker("Рудольф", "Деревня",
-                    new List<string> { "Мельница", "Деревня", "Мельница", "Хата Рудольфа" }),
+                    new List<string> { "Мельница", "Деревня", "Мельница", "Дом Рудольфа" }),
 
                 new Fermer("Олег", "Деревня",
-                    new List<string> { "Хата Олега", "Деревня", "Поле", "Хата Олега" }),
+                    new List<string> { "Дом Олега", "Деревня", "Поле", "Дом Олега" }),
 
                 new Baker("Андрей", "Город",
                     new List<string> { "Дом Андрея", "Город", "Пекарня", "Дом Андрея" }),
