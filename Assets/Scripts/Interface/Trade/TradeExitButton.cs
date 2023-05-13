@@ -5,6 +5,6 @@ public class TradeExitButton : ButtonTemplate
 {
     public void OnMouseDown()
     {
-        SceneManager.LoadScene(GameData.Player.Sublocation);
+        GameData.UpdateTime();
     }
 }

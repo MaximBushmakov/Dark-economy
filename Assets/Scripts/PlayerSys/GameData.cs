@@ -110,9 +110,9 @@ namespace PlayerSystem
                 HandleEvent(-1);
                 CurGlobEvent = null;
             }
-            else
+            else if (CurEvent == null)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(_player.Sublocation);
             }
 
         }

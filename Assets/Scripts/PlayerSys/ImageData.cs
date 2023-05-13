@@ -108,17 +108,26 @@ namespace PlayerSystem
 
             GameObject nameplateObj = new();
             nameplateObj.transform.SetParent(obj.transform);
-            Text text = nameplateObj.AddComponent<Text>();
-            text.text = name;
-            text.font = _font;
-            text.fontSize = 80;
-            text.alignment = TextAnchor.MiddleCenter;
-            text.color = Color.black;
-
-            rectTransform = nameplateObj.GetComponent<RectTransform>();
+            var cell = nameplateObj.AddComponent<SpriteRenderer>();
+            cell.sprite = _inventoryCell.GetComponent<Image>().sprite;
+            rectTransform = nameplateObj.AddComponent<RectTransform>();
+            rectTransform.sizeDelta = new(1, 1);
+            rectTransform.localScale = new(0.7f, 0.7f);
             rectTransform.anchoredPosition = new(0, -4.5f);
+
+            GameObject text = new();
+            text.transform.SetParent(nameplateObj.transform);
+            Text _text = text.AddComponent<Text>();
+            _text.text = name;
+            _text.font = _font;
+            _text.fontSize = 80;
+            _text.alignment = TextAnchor.MiddleCenter;
+            _text.color = Color.black;
+
+            rectTransform = text.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new(0, 0);
             rectTransform.sizeDelta = new(400, 80);
-            rectTransform.localScale = new(0.01f, 0.01f);
+            rectTransform.localScale = new(0.02f, 0.02f);
 
             return obj;
         }

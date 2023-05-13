@@ -52,7 +52,6 @@ public class TradeContinueBuy : ButtonTemplate
             GameData.CurTrader.EndSellTrade(prices);
 
             GameData.Player.UpdateStats();
-            GameData.UpdateTime();
 
             transform.parent.gameObject.SetActive(false);
             transform.parent.parent.GetChild(3).gameObject.SetActive(true);
