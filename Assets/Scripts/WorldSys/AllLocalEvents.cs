@@ -38,7 +38,7 @@ namespace WorldSystem
             // Good Road
             DictionaryOfGoodRoadEvents = new Dictionary<int, LocalEvent>();
             GoodRoadEventsStartEvents = new List<int>();
-            DictionaryOfGoodRoadEvents.Add(0, new LocalEvent("Найдена потерянная повозка", GoodRoadEventName, "На окраине дороги вы находите чью-то потерянную повозку, внутри лежат какие-то товары. Есть варианты: забрать товары или забрать из повозки деньги.", new List<int>() { 1, 2 }, new List<string>() { "Товары", "Деньги" }, new List<LocalEventEffect>()));
+            DictionaryOfGoodRoadEvents.Add(0, new LocalEvent("Найдена потерянная повозка", GoodRoadEventName, "На окраине дороги вы находите чью-то потерянную повозку, внутри лежат какие-то товары. Есть варианты: забрать товары или забрать из повозки деньги.", new List<int>() { 1, 2 }, new List<string>() {"Деньги", "Товары"}, new List<LocalEventEffect>()));
             DictionaryOfGoodRoadEvents.Add(1, new LocalEvent("Найдено золото", GoodRoadEventName, "Разрывая повозку, на дну вы находите мешочек с золотом", new List<int>(), new List<string>(), new List<LocalEventEffect>() { new LocalEventEffect(KapitalLocalEffectName, 100) }));
             DictionaryOfGoodRoadEvents.Add(2, new LocalEvent("Найдено зерно", GoodRoadEventName, "Разрывая повозку, вы находите немного зерна", new List<int>(), new List<string>(), new List<LocalEventEffect>() { new LocalEventEffect(NormalMilletName, 2) }));
             GoodRoadEventsStartEvents.Add(0);
