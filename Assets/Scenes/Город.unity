@@ -3299,7 +3299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u0440\u0438\u0447\u0430\u043B"
+  m_Text: "\u041F\u043E\u0440\u0442"
 --- !u!222 &502945766
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3401,7 +3401,7 @@ GameObject:
   - component: {fileID: 529313569}
   - component: {fileID: 529313570}
   m_Layer: 0
-  m_Name: "\u041F\u0440\u0438\u0447\u0430\u043B"
+  m_Name: "\u041F\u043E\u0440\u0442"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
