@@ -24,14 +24,11 @@ EditorBuildSettings:
     path: "Assets/Scenes/\u0414\u0435\u0440\u0435\u0432\u043D\u044F.unity"
     guid: e687e00294ed56e489c02db4e450b3ce
   - enabled: 1
-    path: "Assets/Scenes/\u0413\u043E\u0440\u043E\u0434.unity"
-    guid: ca5bc2cd00ca47a469fdfa24934b6b24
-  - enabled: 1
     path: "Assets/Scenes/\u0414\u043E\u043C \u041C\u0430\u0440\u043A\u0430.unity"
-    guid: 89ef011358e575a429abc457fef84b63
+    guid: bcc00c7046dec5144828f259de837fd7
   - enabled: 1
     path: "Assets/Scenes/\u0414\u043E\u043C \u0413\u0435\u0440\u043C\u0430\u043D\u0430.unity"
-    guid: fd0a3ca9b1f997c4b8909034dbbc5bb4
+    guid: 62d85052b32e9bf45833075b7d4c5d11
   - enabled: 1
     path: "Assets/Scenes/\u0414\u043E\u043C \u041A\u0438\u0440\u0438\u043B\u043B\u0430.unity"
     guid: 4cdc3883d742df3419fa8953333674c5
@@ -40,5 +37,33 @@ EditorBuildSettings:
     guid: e53081ecdc1284844b39365cdb1b4374
   - enabled: 1
     path: "Assets/Scenes/\u041C\u0435\u043B\u044C\u043D\u0438\u0446\u0430.unity"
-    guid: 71634fc8a32c2a844b92f9c03cdaec69
+    guid: 3720f6ec10fead14f84d3745c9acd3d1
+  - enabled: 1
+    path: "Assets/Scenes/\u0413\u043E\u0440\u043E\u0434.unity"
+    guid: ca5bc2cd00ca47a469fdfa24934b6b24
+  - enabled: 1
+    path: "Assets/Scenes/\u0413\u043E\u043D\u0447\u0430\u0440\u043D\u0430\u044F.unity"
+    guid: cbd88828d8ffbfd4d920c985c3b99a30
+  - enabled: 1
+    path: "Assets/Scenes/\u041A\u0443\u0437\u043D\u0438\u0446\u0430.unity"
+    guid: ad05ec3c04524b04aadc0f6dfbe669d0
+  - enabled: 1
+    path: "Assets/Scenes/\u041C\u0430\u0441\u0442\u0435\u0440\u0441\u043A\u0430\u044F
+      \u0421\u0430\u043F\u043E\u0436\u043D\u0438\u043A\u0430.unity"
+    guid: 369b6f1cdce673d4ebaa63507de6ec1a
+  - enabled: 1
+    path: "Assets/Scenes/\u041F\u0435\u043A\u0430\u0440\u043D\u044F.unity"
+    guid: 81a111b620fa9c647b4da8940c17d678
+  - enabled: 1
+    path: "Assets/Scenes/\u041F\u0440\u0438\u0447\u0430\u043B.unity"
+    guid: c7708f79b4cdd194f84aeb001f704686
+  - enabled: 1
+    path: "Assets/Scenes/\u041F\u043B\u043E\u0442\u043D\u0438\u0446\u043A\u0430\u044F.unity"
+    guid: 898ff55d0c9b15f4fbf2b046c5f41f30
+  - enabled: 1
+    path: "Assets/Scenes/\u0422\u0430\u0432\u0435\u0440\u043D\u0430.unity"
+    guid: 33f35da989080674680eb148cbab14ac
+  - enabled: 1
+    path: "Assets/Scenes/\u0425\u0440\u0430\u043C.unity"
+    guid: aae3d806bf65a194c8834a220c6df9e4
   m_configObjects: {}
