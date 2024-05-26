@@ -85,10 +85,6 @@ namespace PlayerSystem
         public Player()
         {
             _inventory = new Inventory();
-            _inventory.AddProduct(new BadMillet());
-            _inventory.AddProduct(new NormalMillet());
-            _inventory.AddProduct(new GoldenMillet());
-            _inventory.AddProduct(new GoldenMillet());
             _wagon = WagonData.Donkey;
             _money = 1000;
             _wisdom = 40;

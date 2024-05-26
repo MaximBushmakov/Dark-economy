@@ -1,5 +1,7 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using static WorldSystem.GlobalNames;
 
@@ -18,29 +20,32 @@ namespace WorldSystem
                 {
                     rand = new Random()
                 };
-                SetEvents();
+                instance.LoadEventsFromJson("Assets/Scripts/WorldSys/events.json");
             }
             return instance;
         }
-        private static void SetEvents()
+
+        private void LoadEventsFromJson(string jsonFilePath)
         {
-            instance.DictionaryOfEvents = new Dictionary<string, Event>();
-            Event newEvent = new("Засуха", AllLocationsName, "Погода сильно изменилась, температура резко поднялась, поля терпят неурожай", 3, new List<Effect> { new Effect("Засуха", PriceEffectType, NormalMilletName, 20, 3) }, new List<String> { "Мне вчера колдун рассказал, что маги солнце заклили и оно теперь нас всех сожжёт.", "Знаешь, что-то в последнее время жара усиливается, не к добру это", "Я слышал, что речка тут недалеко совсем засохла, не к добру это." });
-            instance.DictionaryOfEvents.Add(newEvent.GetName(), newEvent);
-            newEvent = new("Урожай", AllLocationsName, "Похоже богиня плодородия сжалилась над нами. Скоро в деревнях и городах будет много еды", 3, new List<Effect> { new Effect("Урожай", PriceEffectType, NormalMilletName, -20, 3) }, new List<String> { "Слышал, вчера богине урожая принесли в жертву корову.", "Один знакомый рассказал мне, что в этом году засадили намного больше пшена, чем прежде.", "С каждый днём погода всё лучше и лучше, разве это не прекрасный год?" });
-            instance.DictionaryOfEvents.Add(newEvent.GetName(), newEvent);
+            string json = File.ReadAllText(jsonFilePath);
+            var eventDtos = JsonConvert.DeserializeObject<List<EventDto>>(json);
+
+            DictionaryOfEvents = eventDtos.ToDictionary(
+                dto => dto.Name,
+                dto => new Event(dto.Name, dto.Location, dto.Text, dto.TimeToStart, dto.Effects.Select(e => new Effect(e.Name, e.Type, e.Owner, e.EffectBaf, e.LifeTime)).ToList(), dto.Rumors)
+            );
         }
         public Event GetRandomEvent()
         {
-            List<string> ArrayAOfEvents = instance.DictionaryOfEvents.Keys.ToList();
-            int randid = instance.rand.Next() % ArrayAOfEvents.Count();
+            List<string> ArrayAOfEvents = DictionaryOfEvents.Keys.ToList();
+            int randid = rand.Next() % ArrayAOfEvents.Count;
             return DictionaryOfEvents[ArrayAOfEvents[randid]];
         }
         private Event GetRandomEventExapt(string eventname)
         {
-            List<string> ArrayAOfEvents = instance.DictionaryOfEvents.Keys.ToList();
+            List<string> ArrayAOfEvents = DictionaryOfEvents.Keys.ToList();
             ArrayAOfEvents.Remove(eventname);
-            int randid = instance.rand.Next() % ArrayAOfEvents.Count();
+            int randid = rand.Next() % ArrayAOfEvents.Count;
             return DictionaryOfEvents[ArrayAOfEvents[randid]];
         }
         public List<string> GetRumors(Event currentEvent, int NPCcount)
@@ -49,16 +54,32 @@ namespace WorldSystem
             int correctRumorNumber = NPCcount * 4 / 10;
             for (int i = 0; i < correctRumorNumber; ++i)
             {
-                ListOfRumors.Add(currentEvent.GetRumors()[instance.rand.Next() % currentEvent.GetRumors().Count]);
+                ListOfRumors.Add(currentEvent.GetRumors()[rand.Next() % currentEvent.GetRumors().Count]);
             }
             Event randEvent;
             for (int i = 0; i < NPCcount - correctRumorNumber; ++i)
             {
-                randEvent = instance.GetRandomEventExapt(currentEvent.GetName());
-                ListOfRumors.Add(randEvent.GetRumors()[instance.rand.Next() % randEvent.GetRumors().Count]);
+                randEvent = GetRandomEventExapt(currentEvent.GetName());
+                ListOfRumors.Add(randEvent.GetRumors()[rand.Next() % randEvent.GetRumors().Count]);
             }
             return ListOfRumors;
         }
-
+    }
+    public class EventDto
+    {
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string Text { get; set; }
+        public int TimeToStart { get; set; }
+        public List<EffectDto> Effects { get; set; }
+        public List<string> Rumors { get; set; }
+    }
+    public class EffectDto
+    {
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Owner { get; set; }
+        public int EffectBaf { get; set; }
+        public int LifeTime { get; set; }
     }
 }

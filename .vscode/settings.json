@@ -2,5 +2,6 @@
     "files.exclude": {
         "**/.git": false
     },
-    "explorer.excludeGitIgnore": true
+    "explorer.excludeGitIgnore": true,
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }

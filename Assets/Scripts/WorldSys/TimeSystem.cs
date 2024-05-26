@@ -20,6 +20,7 @@ namespace WorldSystem
         private StreamWriter sw;
         private Event currentEvent;
         protected Random rand;
+        public ProductFactory productFactory;
 
         public TimeSystem()
         {
@@ -27,6 +28,7 @@ namespace WorldSystem
             ListOfProducts = new List<Product>();
             DictionaryOfLocations = new Dictionary<string, Location>();
             ListOfEffects = new List<Effect>();
+            productFactory = new ProductFactory();
             sw = new StreamWriter("Logs.txt");
             rand = new Random();
         }
@@ -40,6 +42,7 @@ namespace WorldSystem
                 DictionaryOfLocations = new Dictionary<string, Location>();
                 ListOfEffects = new List<Effect>();
                 sw = new StreamWriter("Logs.txt");
+                productFactory = new ProductFactory();
                 rand = new Random();
             }
         }

@@ -1,0 +1,85 @@
+{
+  "npcs": [
+    {
+    "name": "Марк",
+    "location": "Деревня",
+    "type": "Фермер",
+    "produceMaterials": [],
+    "produceProducts": ["Пшено", "Золотое Пшено", "Пшено для скота"],
+    "subLocations": ["Дом Марка", "Деревня", "Поле", "Дом Марка" ],
+    "wisdomLevel": 5,
+    "kapital": 100,
+    "reputation": 10,
+    "activityStrategy": {
+      "strategyType": "RandomItemProduction",
+      "productNames": ["Пшено", "Золотое Пшено", "Пшено для скота"],
+      "probabilities": [10, 60, 30]
+      }
+    },
+  {
+  "name": "Рудольф",
+  "location": "Деревня",
+  "type": "Мельник",
+  "produceMaterials": ["Пшено", "Золотое Пшено", "Пшено для скота"],
+  "produceProducts": ["Мука", "Золотая Мука", "Твёрдая мука"],
+  "subLocations": ["Мельница", "Деревня", "Мельница", "Дом Рудольфа"],
+  "wisdomLevel": 3,
+  "kapital": 50,
+  "reputation": 5,
+  "activityStrategy": {
+    "strategyType": "AbsorbItemProduction",
+    "productNames": ["Мука", "Золотая Мука", "Твёрдая мука"],
+    "materialNames": ["Пшено", "Золотое Пшено", "Пшено для скота"],
+    "probabilities": [10, 30, 60]
+    }
+  },
+  {
+  "name": "Джон",
+  "location": "Деревня",
+  "type": "Торговец",
+  "produceMaterials": [],
+  "produceProducts": [],
+  "subLocations": ["Деревня", "Город"],
+  "wisdomLevel": 7,
+  "kapital": 200,
+  "reputation": 20,
+  "activityStrategy": {
+  "strategyType": "TraderStrategy",
+  "roadMap": ["Деревня", "Город"],
+  "tradeMap": [["Старейшина", "Фермер", "Мельник"], ["Пекарь"]]
+  }
+  },
+  {
+    "name": "Александро",
+    "location": "Деревня",
+    "type": "Старейшина",
+    "produceMaterials": [],
+    "produceProducts": [],
+    "subLocations": ["Дом Александро", "Зал старейшины", "Зал старейшины", "Дом Александро"],
+    "wisdomLevel": 7,
+    "kapital": 200,
+    "reputation": 20,
+    "activityStrategy": {
+      "strategyType": "AddCapital",
+      "amount": 10
+    }
+  },
+  {
+    "name": "Андрей",
+    "location": "Город",
+    "type": "Пекарь",
+    "produceMaterials": ["Мука", "Золотая Мука", "Твёрдая мука"],
+    "produceProducts": ["Хлеб", "Королевский Хлеб", "Чёрствый Хлеб"],
+    "subLocations": ["Мельница", "Деревня", "Мельница", "Дом Рудольфа"],
+    "wisdomLevel": 3,
+    "kapital": 50,
+    "reputation": 5,
+    "activityStrategy": {
+      "strategyType": "AbsorbItemProduction",
+      "productNames": ["Мука", "Золотая Мука", "Твёрдая мука"],
+      "materialNames": ["Хлеб", "Королевский Хлеб", "Чёрствый Хлеб"],
+      "probabilities": [10, 30, 60]
+      }
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+[
+    {
+        "type": "Людское пиво",
+        "subtype": "Людское пиво",
+        "basiccost": 130,
+        "maincost": 130,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, -1, 100]
+    },
+    {
+        "type": "Людское пиво",
+        "subtype": "Гномское Пиво",
+        "basiccost": 130,
+        "maincost": 350,
+        "wisdomlevel": 90,
+        "tickLimits": [-1, -1, 100]
+    },
+    {
+        "type": "Людское пиво",
+        "subtype": "Эльфийское пиво",
+        "basiccost": 130,
+        "maincost": 10,
+        "wisdomlevel": 70,
+        "tickLimits": [-1, -1, 100]
+    },
+    {
+        "type": "Доски из древесины",
+        "subtype": "Доски из древесины",
+        "basiccost": 200,
+        "maincost": 200,
+        "wisdomlevel": 0,
+        "tickLimits": [15, 20, 25]
+    },
+    {
+        "type": "Доски из древесины",
+        "subtype": "Золотые доски из древесины",
+        "basiccost": 200,
+        "maincost": 500,
+        "wisdomlevel": 25,
+        "tickLimits": [10, 15, 20]
+    },
+    {
+        "type": "Доски из древесины",
+        "subtype": "Трухлявые доски из древесины",
+        "basiccost": 200,
+        "maincost": 60,
+        "wisdomlevel": 5,
+        "tickLimits": [5, 10, 15]
+    },
+    {
+        "type": "Книга",
+        "subtype": "Книга",
+        "basiccost": 1000,
+        "maincost": 1000,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, 100, 1000]
+    },
+    {
+        "type": "Книга",
+        "subtype": "Золотая книга",
+        "basiccost": 1000,
+        "maincost": 10000,
+        "wisdomlevel": 100,
+        "tickLimits": [-1, -1, 10000]
+    },
+    {
+        "type": "Книга",
+        "subtype": "Разваливающаяся книга",
+        "basiccost": 1000,
+        "maincost": 100,
+        "wisdomlevel": 70,
+        "tickLimits": [-1, -1, 100]
+    },
+    {
+        "type": "Хлеб",
+        "subtype": "Хлеб",
+        "basiccost": 200,
+        "maincost": 200,
+        "wisdomlevel": 0,
+        "tickLimits": [5, 10, 15]
+    },
+    {
+        "type": "Хлеб",
+        "subtype": "Королевский Хлеб",
+        "basiccost": 200,
+        "maincost": 500,
+        "wisdomlevel": 25,
+        "tickLimits": [5, 10, 15]
+    },
+    {
+        "type": "Хлеб",
+        "subtype": "Чёрствый Хлеб",
+        "basiccost": 1000,
+        "maincost": 5,
+        "wisdomlevel": 5,
+        "tickLimits": [5, 10, 15]
+    },
+    {
+        "type": "Свечи",
+        "subtype": "Свечи",
+        "basiccost": 300,
+        "maincost": 300,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, -1, 1000]
+    },
+    {
+        "type": "Свечи",
+        "subtype": "Золотые свечи",
+        "basiccost": 300,
+        "maincost": 750,
+        "wisdomlevel": 20,
+        "tickLimits": [-1, -1, 1000]
+    },
+    {
+        "type": "Свечи",
+        "subtype": "Неправильные свечи",
+        "basiccost": 300,
+        "maincost": 150,
+        "wisdomlevel": 10,
+        "tickLimits": [-1, -1, 10]
+    },
+    {
+        "type": "Стул из древесины",
+        "subtype": "Стул из древесины",
+        "basiccost": 350,
+        "maincost": 350,
+        "wisdomlevel": 0,
+        "tickLimits": [30, 40, 50]
+    },
+    {
+        "type": "Стул из древесины",
+        "subtype": "Стул из золотой древесины",
+        "basiccost": 350,
+        "maincost": 1000,
+        "wisdomlevel": 40,
+        "tickLimits": [10, 15, 20]
+    },
+    {
+        "type": "Стул из древесины",
+        "subtype": "Стул из трухлявой древесины",
+        "basiccost": 350,
+        "maincost": 150,
+        "wisdomlevel": 20,
+        "tickLimits": [-1, -1, 40]
+    },
+    {
+        "type": "Глина",
+        "subtype": "Глина",
+        "basiccost": 120,
+        "maincost": 120,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, 50, 100]
+    },
+    {
+        "type": "Глина",
+        "subtype": "Золотая Глина",
+        "basiccost": 120,
+        "maincost": 220,
+        "wisdomlevel": 50,
+        "tickLimits": [-1, -1, 700]
+    },
+    {
+        "type": "Глина",
+        "subtype": "Разбавленная Глина",
+        "basiccost": 120,
+        "maincost": 70,
+        "wisdomlevel": 20,
+        "tickLimits": [-1, 5, 10]
+    },
+    {
+        "type": "Вяленная Кабанина",
+        "subtype": "Вяленная Кабанина",
+        "basiccost": 200,
+        "maincost": 200,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, -1, 40]
+    },
+    {
+        "type": "Вяленная Кабанина",
+        "subtype": "Вяленная Лосятина",
+        "basiccost": 200,
+        "maincost": 400,
+        "wisdomlevel": 20,
+        "tickLimits": [-1, -1, 40]
+    },
+    {
+        "type": "Вяленная Кабанина",
+        "subtype": "Вяленная Зайчатина",
+        "basiccost": 200,
+        "maincost": 100,
+        "wisdomlevel": 10,
+        "tickLimits": [-1, -1, 40]
+    },
+    {
+        "type": "Мука",
+        "subtype": "Мука",
+        "basiccost": 150,
+        "maincost": 150,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, -1, 100]
+    },
+    {
+        "type": "Мука",
+        "subtype": "Золотая Мука",
+        "basiccost": 150,
+        "maincost": 450,
+        "wisdomlevel": 25,
+        "tickLimits": [-1, -1, 100]
+    },
+    {
+        "type": "Мука",
+        "subtype": "Твёрдая мука",
+        "basiccost": 150,
+        "maincost": 55,
+        "wisdomlevel": 5,
+        "tickLimits": [-1, -1, 100]
+    },
+    {
+        "type": "Мех",
+        "subtype": "Мех",
+        "basiccost": 250,
+        "maincost": 250,
+        "wisdomlevel": 0,
+        "tickLimits": [15, 25, 35]
+    },
+    {
+        "type": "Мех",
+        "subtype": "Золотой Мех",
+        "basiccost": 250,
+        "maincost": 450,
+        "wisdomlevel": 20,
+        "tickLimits": [50, 70, 90]
+    },
+    {
+        "type": "Мех",
+        "subtype": "Дешёвый Мех",
+        "basiccost": 150,
+        "maincost": 150,
+        "wisdomlevel": 10,
+        "tickLimits": [-1, 15, 20]
+    },
+    {
+        "type": "Мед",
+        "subtype": "Мед",
+        "basiccost": 270,
+        "maincost": 270,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, -1, 1000]
+    },
+    {
+        "type": "Мед",
+        "subtype": "Золотой Мед",
+        "basiccost": 270,
+        "maincost": 570,
+        "wisdomlevel": 80,
+        "tickLimits": [-1, -1, 1000]
+    },
+    {
+        "type": "Мед",
+        "subtype": "Некачественный Мед",
+        "basiccost": 270,
+        "maincost": 10,
+        "wisdomlevel": 50,
+        "tickLimits": [-1, -1, 10]
+    },
+    {
+        "type": "Подкова",
+        "subtype": "Подкова",
+        "basiccost": 320,
+        "maincost": 320,
+        "wisdomlevel": 0,
+        "tickLimits": [60, 70, 80]
+    },
+    {
+        "type": "Подкова",
+        "subtype": "Золотая Подкова",
+        "basiccost": 320,
+        "maincost": 530,
+        "wisdomlevel": 25,
+        "tickLimits": [-1, -1, 700]
+    },
+    {
+        "type": "Подкова",
+        "subtype": "Дефектная Подкова",
+        "basiccost": 320,
+        "maincost": 110,
+        "wisdomlevel": 11,
+        "tickLimits": [-1, 30, 80]
+    },
+    {
+        "type": "Мясо",
+        "subtype": "Мясо",
+        "basiccost": 160,
+        "maincost": 160,
+        "wisdomlevel": 0,
+        "tickLimits": [5, 10, 15]
+    },
+    {
+        "type": "Мясо",
+        "subtype": "Золотое Мясо",
+        "basiccost": 160,
+        "maincost": 360,
+        "wisdomlevel": 30,
+        "tickLimits": [5, 10, 15]
+    },
+    {
+        "type": "Мясо",
+        "subtype": "Порченое Мясо",
+        "basiccost": 160,
+        "maincost": 60,
+        "wisdomlevel": 10,
+        "tickLimits": [5, 10, 15]
+    },
+    {
+        "type": "Металл",
+        "subtype": "Металл",
+        "basiccost": 300,
+        "maincost": 300,
+        "wisdomlevel": 0,
+        "tickLimits": [80, 90, 100]
+    },
+    {
+        "type": "Металл",
+        "subtype": "Золотой Металл",
+        "basiccost": 300,
+        "maincost": 500,
+        "wisdomlevel": 30,
+        "tickLimits": [-1, -1, 1000]
+    },
+    {
+        "type": "Металл",
+        "subtype": "Низкокачественный Металл",
+        "basiccost": 300,
+        "maincost": 100,
+        "wisdomlevel": 10,
+        "tickLimits": [50, -1, 100]
+    },
+    {
+        "type": "Пшено",
+        "subtype": "Пшено",
+        "basiccost": 100,
+        "maincost": 100,
+        "wisdomlevel": 0,
+        "tickLimits": [5, 10, 15]
+    },
+    {
+        "type": "Пшено",
+        "subtype": "Золотое Пшено",
+        "basiccost": 100,
+        "maincost": 300,
+        "wisdomlevel": 20,
+        "tickLimits": [10, 15, 20]
+    },
+    {
+        "type": "Пшено",
+        "subtype": "Пшено для скота",
+        "basiccost": 100,
+        "maincost": 50,
+        "wisdomlevel": 10,
+        "tickLimits": [-1, -1, 40]
+    },
+    {
+        "type": "Гончарные изделия",
+        "subtype": "Гончарные изделия",
+        "basiccost": 170,
+        "maincost": 170,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, 150, 200]
+    },
+    {
+        "type": "Гончарные изделия",
+        "subtype": "Золотые Гончарные изделия",
+        "basiccost": 170,
+        "maincost": 270,
+        "wisdomlevel": 60,
+        "tickLimits": [-1, -1, 900]
+    },
+    {
+        "type": "Гончарные изделия",
+        "subtype": "Некачественные Гончарные изделия",
+        "basiccost": 170,
+        "maincost": 100,
+        "wisdomlevel": 23,
+        "tickLimits": [-1, 5, 10]
+    },
+    {
+        "type": "Обувь",
+        "subtype": "Обувь",
+        "basiccost": 270,
+        "maincost": 270,
+        "wisdomlevel": 0,
+        "tickLimits": [20, 40, 50]
+    },
+    {
+        "type": "Обувь",
+        "subtype": "Золотая обувь",
+        "basiccost": 270,
+        "maincost": 480,
+        "wisdomlevel": 20,
+        "tickLimits": [30, 50, 70]
+    },
+    {
+        "type": "Обувь",
+        "subtype": "Плохая обувь",
+        "basiccost": 270,
+        "maincost": 120,
+        "wisdomlevel": 10,
+        "tickLimits": [10, 20, 30]
+    },
+    {
+        "type": "Кожа",
+        "subtype": "Кожа",
+        "basiccost": 200,
+        "maincost": 200,
+        "wisdomlevel": 0,
+        "tickLimits": [10, 20, 30]
+    },
+    {
+        "type": "Кожа",
+        "subtype": "Золотая кожа",
+        "basiccost": 200,
+        "maincost": 400,
+        "wisdomlevel": 43,
+        "tickLimits": [20, 30, 40]
+    },
+    {
+        "type": "Кожа",
+        "subtype": "Плохая кожа",
+        "basiccost": 200,
+        "maincost": 100,
+        "wisdomlevel": 27,
+        "tickLimits": [5, 10, 20]
+    },
+    {
+        "type": "Стол",
+        "subtype": "Стол",
+        "basiccost": 550,
+        "maincost": 550,
+        "wisdomlevel": 0,
+        "tickLimits": [30, 40, 50]
+    },
+    {
+        "type": "Стол",
+        "subtype": "Золотой стол",
+        "basiccost": 550,
+        "maincost": 1500,
+        "wisdomlevel": 40,
+        "tickLimits": [10, 15, 20]
+    },
+    {
+        "type": "Стол",
+        "subtype": "Плохой стол",
+        "basiccost": 550,
+        "maincost": 200,
+        "wisdomlevel": 20,
+        "tickLimits": [-1, -1, 40]
+    },
+    {
+        "type": "Инструмент",
+        "subtype": "Инструмент",
+        "basiccost": 700,
+        "maincost": 700,
+        "wisdomlevel": 0,
+        "tickLimits": [85, 95, 105]
+    },
+    {
+        "type": "Инструмент",
+        "subtype": "Золотой инструмент",
+        "basiccost": 700,
+        "maincost": 1300,
+        "wisdomlevel": 32,
+        "tickLimits": [-1, -1, 1050]
+    },
+    {
+        "type": "Инструмент",
+        "subtype": "Плохой инструмент",
+        "basiccost": 700,
+        "maincost": 250,
+        "wisdomlevel": 12,
+        "tickLimits": [-1, 50, 100]
+    },
+    {
+        "type": "Воск",
+        "subtype": "Воск",
+        "basiccost": 150,
+        "maincost": 150,
+        "wisdomlevel": 0,
+        "tickLimits": [-1, -1, 1000]
+    },
+    {
+        "type": "Воск",
+        "subtype": "Золотой воск",
+        "basiccost": 150,
+        "maincost": 350,
+        "wisdomlevel": 45,
+        "tickLimits": [-1, -1, 1000]
+    },
+    {
+        "type": "Воск",
+        "subtype": "Плохой воск",
+        "basiccost": 150,
+        "maincost": 100,
+        "wisdomlevel": 15,
+        "tickLimits": [-1, -1, 10]
+    },
+    {
+        "type": "Оружие",
+        "subtype": "Оружие",
+        "basiccost": 1000,
+        "maincost": 1000,
+        "wisdomlevel": 0,
+        "tickLimits": [85, 95, 105]
+    },
+    {
+        "type": "Оружие",
+        "subtype": "Золотое оружие",
+        "basiccost": 1000,
+        "maincost": 2000,
+        "wisdomlevel": 35,
+        "tickLimits": [-1, -1, 1050]
+    },
+    {
+        "type": "Оружие",
+        "subtype": "Плохое оружие",
+        "basiccost": 1000,
+        "maincost": 350,
+        "wisdomlevel": 12,
+        "tickLimits": [-1, 50, 100]
+    },
+    {
+        "type": "Древесина",
+        "subtype": "Древесина",
+        "basiccost": 150,
+        "maincost": 150,
+        "wisdomlevel": 0,
+        "tickLimits": [20, 30, 40]
+    },
+    {
+        "type": "Древесина",
+        "subtype": "Золотая древесина",
+        "basiccost": 150,
+        "maincost": 450,
+        "wisdomlevel": 30,
+        "tickLimits": [-1, -1, 50]
+    },
+    {
+        "type": "Древесина",
+        "subtype": "Плохая древесина",
+        "basiccost": 150,
+        "maincost": 55,
+        "wisdomlevel": 10,
+        "tickLimits": [10, 15, 20]
+    }
+]

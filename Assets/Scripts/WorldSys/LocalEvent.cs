@@ -22,6 +22,7 @@ namespace WorldSystem
             return baf;
         }
     }
+
     [Serializable]
     public class LocalEvent
     {
@@ -31,7 +32,8 @@ namespace WorldSystem
         private List<int> ListOfAnswerId;
         private List<string> ListOfAnswers;
         private List<LocalEventEffect> ListOfEffects;
-        public LocalEvent(string thisName, string thisType, string thisText, List<int> thisListOfAnswerId, List<String> thisListOfAnswers, List<LocalEventEffect> thisListOfEffects)
+
+        public LocalEvent(string thisName, string thisType, string thisText, List<int> thisListOfAnswerId, List<string> thisListOfAnswers, List<LocalEventEffect> thisListOfEffects)
         {
             name = thisName;
             type = thisType;
@@ -40,33 +42,14 @@ namespace WorldSystem
             ListOfAnswerId = thisListOfAnswerId;
             ListOfEffects = thisListOfEffects;
         }
-        public string GetName()
-        {
-            return name;
-        }
-        public string GetText()
-        {
-            return text;
-        }
-        public string GetEventType()
-        {
-            return type;
-        }
-        public LocalEvent MakeChose(int id)
-        {
-            return AllLocalEvents.GetInstance().GetEvent(id, type);
-        }
-        public List<int> GetAnswerId()
-        {
-            return ListOfAnswerId;
-        }
-        public List<string> GetAnswers()
-        {
-            return ListOfAnswers;
-        }
-        public List<LocalEventEffect> GetEffects()
-        {
-            return ListOfEffects;
-        }
+
+        public string GetName() => name;
+        public string GetText() => text;
+        public string GetEventType() => type;
+        public List<int> GetAnswerId() => ListOfAnswerId;
+        public List<string> GetAnswers() => ListOfAnswers;
+        public List<LocalEventEffect> GetEffects() => ListOfEffects;
+
+        public LocalEvent MakeChose(int id) => AllLocalEvents.GetInstance().GetEvent(id, type);
     }
 }

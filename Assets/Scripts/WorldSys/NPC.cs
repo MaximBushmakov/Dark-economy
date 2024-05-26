@@ -13,6 +13,7 @@ namespace WorldSystem
         protected string name;
         protected string location;
         protected int subLocationId;
+        protected string subLocation;
         protected string type;
         protected Inventory inventory;
         protected int wisdomLevel;
@@ -28,7 +29,8 @@ namespace WorldSystem
         protected int hunger;
         protected int ban;
         [field: NonSerialized]
-        protected Random rand;
+        public Random rand;
+        private IActivityStrategy strategy;
 
         [OnDeserialized]
         private void OnDeserializeMethod(StreamingContext context)
@@ -40,16 +42,32 @@ namespace WorldSystem
         {
             return ListOfEffects;
         }
+        public void SetSubLocation(string subLocation){
+            this.subLocation = subLocation;
+        }
 
         public List<Product> GetInventoryProducts()
         {
             return inventory.GetInventory();
         }
 
+        public Inventory GetInventory()
+        {
+            return inventory;
+        }
+        public void SetStrategy(IActivityStrategy newStrategy)
+        {
+            strategy = newStrategy;
+        }
+        public void SetLocation(string thislocation)
+        {
+            location = thislocation;
+        }
         public NPC(string npcName, string npcLocation, string npcType, List<string> npcListofProduceMaterial, List<string> npcListofProduceProduct, List<string> thisListofSubLocations, int thisWisdomLevel, int money, int reputation)
         {
             name = npcName;
             location = npcLocation;
+            subLocation = thisListofSubLocations[0];
             type = npcType;
             rumor = "Новостей нет";
             wisdomLevel = thisWisdomLevel;
@@ -69,6 +87,15 @@ namespace WorldSystem
             ListofSubLocations = thisListofSubLocations;
             subLocationId = 0;
         }
+
+        public void DoActivity()
+        {
+            strategy?.DoActivity(this);
+        }
+
+        public void AddProductType(string type, int numb){
+            this.inventory.AddProductType(type, numb);
+        }
         public bool CheckBan()
         {
             return !(ban > 0 || playerReputation < 0);
@@ -79,11 +106,18 @@ namespace WorldSystem
         }
         public virtual string GetSublocation()
         {
+            if (this.type == "Торговец"){
+                return this.subLocation;
+            }
             return ListofSubLocations[subLocationId];
         }
         public int GetKapital()
         {
             return kapital;
+        }
+        public void AddCapital(int i)
+        {
+            kapital += i;
         }
         public void ReduceKapital(int n)
         {
@@ -140,7 +174,6 @@ namespace WorldSystem
                 }
             }
         }
-        public virtual void DoActivity() { }
         protected void FullWantToBuy()
         {
             AddFoodProductsToWantBuy();
@@ -152,10 +185,12 @@ namespace WorldSystem
         protected virtual void GenerateStartInventory() { }
         protected virtual void ChangeLocation()
         {
-            ++subLocationId;
-            if (subLocationId == ListofSubLocations.Count)
-            {
-                subLocationId = 0;
+            if (this.type != "Торговец"){
+               ++subLocationId;
+                if (subLocationId == ListofSubLocations.Count)
+                {
+                    subLocationId = 0;
+                } 
             }
         }
         public void MakeTick()

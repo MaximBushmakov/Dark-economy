@@ -14,7 +14,8 @@ namespace WorldSystem
         protected bool used;
         protected List<Effect> ListOfEffects;
         protected List<string> ListOfRumors;
-        public Event(string thisName, string thisLocation, string thisText, int thisTimeToStart, List<Effect> thisListOfEffects, List<String> thisListOfRumors)
+
+        public Event(string thisName, string thisLocation, string thisText, int thisTimeToStart, List<Effect> thisListOfEffects, List<string> thisListOfRumors)
         {
             name = thisName;
             location = thisLocation;
@@ -40,7 +41,7 @@ namespace WorldSystem
                 return true;
             }
         }
-        public List<String> GetRumors()
+        public List<string> GetRumors()
         {
             return ListOfRumors;
         }

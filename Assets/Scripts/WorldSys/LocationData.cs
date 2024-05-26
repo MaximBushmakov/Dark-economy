@@ -1,5 +1,7 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using static WorldSystem.GlobalNames;
 
@@ -7,7 +9,7 @@ namespace WorldSystem
 {
     public static class LocationData
     {
-        public static ReadOnlyDictionary<string, Location> _locations;
+        private static ReadOnlyDictionary<string, Location> _locations;
         public static ReadOnlyDictionary<string, Location> Locations { get => _locations; }
 
         public static void Initialize(List<Location> locationsList)
@@ -18,30 +20,23 @@ namespace WorldSystem
 
         public static void Initialize()
         {
-            _locations = new ReadOnlyDictionary<string, Location>(new List<Location>
-            {
-                new ("Город", TownName, new List<string>
-                {
-                    "Город",
-                    "Пекарня",
-                    "Порт",
-                    "Плотницкая",
-                    "Кузница",
-                    "Гончарная",
-                    "Мастерская Сапожника",
-                    "Таверна",
-                    "Храм"
-                }),
-                new ("Деревня", VillageName, new List<string>
-                {
-                    "Деревня",
-                    "Мельница",
-                    "Зал старейшины",
-                    "Дом Марка",
-                    "Дом Кирилла",
-                    "Дом Германа"
-                })
-            }.ToDictionary(loc => loc.GetName(), loc => loc));
+            string jsonFilePath = "Assets/Scripts/WorldSys/locations.json";
+            var locationsList = LoadLocationsFromJson(jsonFilePath);
+            _locations = new ReadOnlyDictionary<string, Location>(locationsList.ToDictionary(loc => loc.GetName(), loc => loc));
         }
+
+        private static List<Location> LoadLocationsFromJson(string jsonFilePath)
+        {
+            string json = File.ReadAllText(jsonFilePath);
+            var locationDtos = JsonConvert.DeserializeObject<List<LocationDto>>(json);
+            return locationDtos.Select(dto => new Location(dto.Name, dto.GlobalName, dto.SubLocations)).ToList();
+        }
+    }
+
+    public class LocationDto
+    {
+        public string Name { get; set; }
+        public string GlobalName { get; set; }
+        public List<string> SubLocations { get; set; }
     }
 }
