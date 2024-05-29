@@ -4,6 +4,7 @@ using PlayerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using WorldSystem;
 
 public class TradeMakeSell : ButtonTemplate
 {
@@ -34,7 +35,7 @@ public class TradeMakeSell : ButtonTemplate
             else
             {
                 GameData.CurPrices.SetBan(4);
-                GameData.CurTrader.EndBuyTrade(GameData.CurPrices);
+                TradeController.EndBuyTrade(GameData.CurTrader, GameData.CurPrices);
 
                 transform.parent.gameObject.SetActive(false);
                 transform.parent.parent.GetChild(2).gameObject.SetActive(true);

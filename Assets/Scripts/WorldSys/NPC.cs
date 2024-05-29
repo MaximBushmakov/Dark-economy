@@ -87,7 +87,34 @@ namespace WorldSystem
             ListofSubLocations = thisListofSubLocations;
             subLocationId = 0;
         }
-
+        public int GetPlayerReputation()
+        {
+            return playerReputation;
+        }
+        public void AddPlayerReputation(int i)
+        {
+            playerReputation += i;
+        }
+        public void AddBan(int i)
+        {
+            ban += i;
+        }
+        public Dictionary<string, List<Effect>> GetDictionaryPrice()
+        {
+            return DictionaryofPriceEffects;
+        }
+        public List<string> GetListofProduceMaterial()
+        {
+            return ListofProduceMaterial;
+        }
+        public List<string> GetListofProduceProduct()
+        {
+            return ListofProduceProduct;
+        }
+        public List<string> GetListOfBuyProducts()
+        {
+            return ListOfBuyProducts;
+        }
         public void DoActivity()
         {
             strategy?.DoActivity(this);
@@ -222,196 +249,6 @@ namespace WorldSystem
                 DictionaryofPriceEffects[thisEffect.GetOwner()].Add(thisEffect);
             }
         }
-        // Создаёт список цен когда этот НПС продаёт товар
-        public Prices MakePricesSell()
-        {
-            Prices thisPrices = new();
-            List<Product> thisInventory = inventory.GetInventory();
-            List<Effect> thisEffects;
-            string productType;
-            Price thisPrice;
-            for (int i = 0; i < thisInventory.Count; ++i)
-            {
-                productType = thisInventory[i].GetVisibleType(wisdomLevel);
-                int tPrice = thisInventory[i].GetCost(wisdomLevel);
-                if (ListofProduceMaterial.Contains(productType))
-                {
-                    tPrice += tPrice / 10;
-                }
-                switch (thisInventory[i].GetQuality())
-                {
-                    case 2:
-                        tPrice = tPrice * 8 / 10;
-                        break;
-                    case 1:
-                        tPrice = tPrice * 5 / 10;
-                        break;
-                    case 0:
-                        tPrice = tPrice * 1 / 10;
-                        break;
-                }
-                if (DictionaryofPriceEffects.ContainsKey(productType))
-                {
-                    thisEffects = DictionaryofPriceEffects[productType];
-                    for (int j = 0; j < thisEffects.Count; ++j)
-                    {
-                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
-                    }
-                }
-                if (DictionaryofPriceEffects.ContainsKey(AllProductsName))
-                {
-                    thisEffects = DictionaryofPriceEffects[AllProductsName];
-                    for (int j = 0; j < thisEffects.Count; ++j)
-                    {
-                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
-                    }
-                }
-                Dictionary<string, List<Effect>> localEffects = TimeSystem.GetInstance().GetLocation(location).GetDictionaryPrice();
-                if (localEffects.ContainsKey(productType))
-                {
-                    thisEffects = localEffects[productType];
-                    for (int j = 0; j < thisEffects.Count; ++j)
-                    {
-                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
-                    }
-                }
-                if (localEffects.ContainsKey(AllProductsName))
-                {
-                    thisEffects = localEffects[AllProductsName];
-                    for (int j = 0; j < thisEffects.Count; ++j)
-                    {
-                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
-                    }
-                }
-                int vPrice = tPrice;
-                switch (playerReputation)
-                {
-                    case < 20:
-                        vPrice += vPrice;
-                        break;
-                    case < 40:
-                        vPrice += vPrice / 2;
-                        break;
-                    case < 70:
-                        vPrice += vPrice / 4;
-                        break;
-                    case < 90:
-                        vPrice += vPrice / 10;
-                        break;
-                }
-                thisPrice = new Price(thisInventory[i], tPrice, vPrice);
-                thisPrices.AddPrice(thisPrice);
-            }
-            return thisPrices;
-        }
-        // Создаёт список цен когда этот НПС покупает товар
-        public Prices MakePricesBuy(Inventory sellInventory)
-        {
-            Prices thisPrices = new();
-            thisPrices.SetMoney(kapital);
-            List<Product> thisInventory = sellInventory.GetInventory();
-            List<Effect> thisEffects;
-            string productType;
-            for (int i = 0; i < thisInventory.Count; ++i)
-            {
-                productType = thisInventory[i].GetVisibleType(wisdomLevel);
-                int tPrice = thisInventory[i].GetCost(wisdomLevel);
-                if (ListOfBuyProducts.Contains(productType))
-                {
-                    tPrice -= tPrice / 10;
-                }
-                switch (thisInventory[i].GetQuality())
-                {
-                    case 2:
-                        tPrice = tPrice * 8 / 10;
-                        break;
-                    case 1:
-                        tPrice = tPrice * 5 / 10;
-                        break;
-                    case 0:
-                        tPrice = tPrice * 1 / 10;
-                        break;
-                }
-                if (DictionaryofPriceEffects.ContainsKey(productType))
-                {
-                    thisEffects = DictionaryofPriceEffects[productType];
-                    for (int j = 0; j < thisEffects.Count; ++j)
-                    {
-                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
-                    }
-                }
-                if (DictionaryofPriceEffects.ContainsKey(AllProductsName))
-                {
-                    thisEffects = DictionaryofPriceEffects[AllProductsName];
-                    for (int j = 0; j < thisEffects.Count; ++j)
-                    {
-                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
-                    }
-                }
-                Dictionary<string, List<Effect>> localEffects = TimeSystem.GetInstance().GetLocation(location).GetDictionaryPrice();
-                if (localEffects.ContainsKey(productType))
-                {
-                    thisEffects = localEffects[productType];
-                    for (int j = 0; j < thisEffects.Count; ++j)
-                    {
-                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
-                    }
-                }
-                if (localEffects.ContainsKey(AllProductsName))
-                {
-                    thisEffects = localEffects[AllProductsName];
-                    for (int j = 0; j < thisEffects.Count; ++j)
-                    {
-                        tPrice += tPrice * thisEffects[j].GetEffectBaf() / 100;
-                    }
-                }
-                int vPrice = tPrice;
-                switch (playerReputation)
-                {
-                    case < 20:
-                        vPrice -= vPrice;
-                        break;
-                    case < 40:
-                        vPrice -= vPrice / 2;
-                        break;
-                    case < 70:
-                        vPrice -= vPrice / 4;
-                        break;
-                    case < 90:
-                        vPrice -= vPrice / 10;
-                        break;
-                }
-                Price thisPrice = new(thisInventory[i], tPrice, vPrice);
-                thisPrices.AddPrice(thisPrice);
-            }
-            return thisPrices;
-        }
-        // Конец торговли, когда этот NPC продаёт
-        public void EndSellTrade(Prices answerFromTrader)
-        {
-            kapital += answerFromTrader.GetMoney();
-            playerReputation += answerFromTrader.GetReputationChange();
-            List<int> ListOfBought = answerFromTrader.GetBought();
-            ListOfBought.Sort();
-            for (int i = ListOfBought.Count - 1; i >= 0; --i)
-            {
-                inventory.DeleteFromInventoryProd(ListOfBought[i]);
-            }
-            ban += answerFromTrader.GetBan();
-        }
-        // Конец торговли, когда этот NPC покупает
-        public void EndBuyTrade(Prices answerFromTrader)
-        {
-            kapital -= answerFromTrader.GetMoney();
-            playerReputation += answerFromTrader.GetReputationChange();
-            List<int> ListOfBought = answerFromTrader.GetBought();
-            ListOfBought.Sort();
-            for (int i = ListOfBought.Count - 1; i >= 0; --i)
-            {
-                inventory.AddProduct(answerFromTrader.GetPrices()[ListOfBought[i]].GetProduct());
-            }
-            ban += answerFromTrader.GetBan();
-        }
         protected virtual void Eat()
         {
             if (hunger == 0)
@@ -441,7 +278,7 @@ namespace WorldSystem
         }
         public bool BuyFood(NPC NPCbuyer)
         {
-            List<Price> prices = MakePricesSell().GetPrices();
+            List<Price> prices = TradeController.MakePricesSell(this).GetPrices();
             int NPCkapital = NPCbuyer.GetKapital();
             for (int i = 0; i < prices.Count; ++i)
             {

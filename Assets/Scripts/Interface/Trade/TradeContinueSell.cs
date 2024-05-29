@@ -47,7 +47,7 @@ public class TradeContinueSell : ButtonTemplate
 
             prices.SetReputationChange(sum / 100 + (sum - ans) / 10);
 
-            GameData.CurTrader.EndBuyTrade(prices);
+            TradeController.EndBuyTrade(GameData.CurTrader, prices);
 
             GameData.Player.UpdateStats();
 

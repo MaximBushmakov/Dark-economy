@@ -11,7 +11,7 @@ public class GenInventoryTraderBuy : MonoBehaviour
     {
         Player player = GameData.Player;
         NPC trader = GameData.CurTrader;
-        GameData.CurPrices = trader.MakePricesSell();
+        GameData.CurPrices = TradeController.MakePricesSell(trader);
         List<Price> inventory = GameData.CurPrices.GetPrices();
         int size = inventory.Count;
         // grid has 3 cells in a row, cells has size 200 x 200

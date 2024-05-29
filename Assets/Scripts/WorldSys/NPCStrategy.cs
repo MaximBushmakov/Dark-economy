@@ -108,7 +108,7 @@ namespace WorldSystem
                 NPC tradeNPC = TimeSystem.GetInstance().GetLocation(npc.GetLocation()).FindRandomNPCType(tradeMap[roadPoint][ticks]);
                 npc.SetSubLocation(tradeNPC.GetSublocation());
                 TimeSystem.GetInstance().WriteLog(npc.GetName() + " торгует с " + tradeNPC.GetProfessionType() + " " + tradeNPC.GetName());
-                Prices pricesBuy = tradeNPC.MakePricesSell();
+                Prices pricesBuy = TradeController.MakePricesSell(tradeNPC);
                 List<string> npcWantToSell = tradeNPC.GetProduceProduct();
                 List<string> npcWantToBuy = tradeNPC.GetMaterial();
                 List<Price> ListPrices = pricesBuy.GetPrices();
@@ -124,9 +124,9 @@ namespace WorldSystem
                     }
                 }
                 pricesBuy.SetMoney(money);
-                tradeNPC.EndSellTrade(pricesBuy);
+                TradeController.EndSellTrade(tradeNPC,pricesBuy);
                 //Sell
-                Prices pricesSell = tradeNPC.MakePricesBuy(npc.GetInventory());
+                Prices pricesSell = TradeController.MakePricesBuy(tradeNPC, npc.GetInventory());
                 ListPrices = pricesSell.GetPrices();
                 int moneyNPC = pricesSell.GetMoney();
                 money = 0;
@@ -144,7 +144,7 @@ namespace WorldSystem
                     }
                 }
                 pricesSell.SetMoney(money);
-                tradeNPC.EndBuyTrade(pricesSell);
+                TradeController.EndBuyTrade(tradeNPC, pricesSell);
                 ++ticks;
             }
         }
